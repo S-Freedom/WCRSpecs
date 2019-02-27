@@ -17,19 +17,17 @@ FOUNDATION_EXPORT const unsigned char WCRCourseWareVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <WCRCourseWare/PublicHeader.h>
 
 #if __has_include("WCRAVCourseWare.h")
-#import <WCRPlayer/WCRAVCourseWare.h>
+#import <WCRCourseWare/WCRAVCourseWare.h>
 #endif
 
 #if __has_include("WCRImageCourseWare.h")
-#import <WCRPlayer/WCRImageCourseWare.h>
+#import <WCRCourseWare/WCRImageCourseWare.h>
 #endif
 
 #if __has_include("WCRViewCourseWare.h")
-#import <WCRPlayer/WCRImageCourseWare.h>
+#import <WCRCourseWare/WCRViewCourseWare.h>
 #endif
 
 #if __has_include("WCRWebCourseWare.h")
-#import <WCRPlayer/WCRImageCourseWare.h>
+#import <WCRCourseWare/WCRWebCourseWare.h>
 #endif
-
-
