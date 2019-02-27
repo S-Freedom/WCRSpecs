@@ -11,6 +11,6 @@ target 'WCRCourseWareDemo' do
   # use_frameworks!
 
   # Pods for WCRCourseWareDemo
-  pod 'WCRCourseWare'
+  pod 'WCRCourseWare/AVCourseWare', :path => '/Users/oyq/Documents/公司代码/WCRCourseWare'
 
 end
