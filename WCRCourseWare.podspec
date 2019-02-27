@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WCRCourseWare"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "WCRCourseWare SDK"
   s.description  = <<-DESC
                   WCRCourseWare SDK 是专门为课件设计的基础架构，具有打开网页课件、音视频课件、图片课件和白板课件的能力。
@@ -13,14 +13,18 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.platform     = :ios, "8.0"
-  s.source_files  = ["WCRCourseWare/WCRCourseWare/*.{h,m}"]
+  s.source_files  = ["WCRCourseWare/WCRCourseWare/*.{h,m}",
+                     "WCRCourseWare/WCRCourseWare/AVCourseWare/*.{h,m}",
+                     "WCRCourseWare/WCRCourseWare/ImageCourseWare/*.{h,m}",
+                     "WCRCourseWare/WCRCourseWare/ViewCourseWare/*.{h,m}",
+                      "WCRCourseWare/WCRCourseWare/WebCourseWare/*.{h,m}"]
 
   s.public_header_files = ["WCRCourseWare/WCRCourseWare/CourseWare.h",
                            "WCRCourseWare/WCRCourseWare/WCRCourseWare.h",
-                           "WCRCourseWare/WCRCourseWare/WCRAVCourseWare.h",
-                           "WCRCourseWare/WCRCourseWare/WCRImageCourseWare.h",
-                           "WCRCourseWare/WCRCourseWare/WCRViewCourseWare.h",
-                           "WCRCourseWare/WCRCourseWare/WCRWebCourseWare.h"]
+                           "WCRCourseWare/WCRCourseWare/AVCourseWare/WCRAVCourseWare.h",
+                           "WCRCourseWare/WCRCourseWare/ImageCourseWare/WCRImageCourseWare.h",
+                           "WCRCourseWare/WCRCourseWare/ViewCourseWare/WCRViewCourseWare.h",
+                           "WCRCourseWare/WCRCourseWare/WebCourseWare/WCRWebCourseWare.h"]
 
   s.dependency "ReactiveObjC"
   s.dependency "AFNetworking"
@@ -29,4 +33,65 @@ Pod::Spec.new do |s|
   s.dependency "WCRBase/Utils"
   s.dependency "WCRBase/Log"
   s.dependency "WCRPlayer"
+
+
+  s.subspec "AVCourseWare" do |ss|
+    ss.platform     = :ios, "8.0"
+    ss.source_files  = ["WCRCourseWare/WCRCourseWare/*.{h,m}",
+                        "WCRCourseWare/WCRCourseWare/AVCourseWare/*.{h,m}"]
+
+    ss.public_header_files = ["WCRCourseWare/WCRCourseWare/CourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/WCRCourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/AVCourseWare/WCRAVCourseWare.h"]
+
+    ss.dependency "ReactiveObjC"
+    ss.dependency "WCRBase/Error"
+    ss.dependency "WCRBase/Utils"
+    ss.dependency "WCRBase/Log"
+    ss.dependency "WCRPlayer"
+  end
+
+  s.subspec "ImageCourseWare" do |ss|
+    ss.platform     = :ios, "8.0"
+    ss.source_files  = ["WCRCourseWare/WCRCourseWare/*.{h,m}",
+                        "WCRCourseWare/WCRCourseWare/ImageCourseWare/*.{h,m}"]
+
+    ss.public_header_files = ["WCRCourseWare/WCRCourseWare/CourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/WCRCourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/ImageCourseWare/WCRImageCourseWare.h"]
+
+    ss.dependency "ReactiveObjC"
+    ss.dependency "WCRBase/Error"
+    ss.dependency "WCRBase/Utils"
+    ss.dependency "WCRBase/Log"
+    ss.dependency "AFNetworking"
+  end
+
+  s.subspec "WebCourseWare" do |ss|
+    ss.platform     = :ios, "8.0"
+    ss.source_files  = ["WCRCourseWare/WCRCourseWare/*.{h,m}",
+                        "WCRCourseWare/WCRCourseWare/WebCourseWare/*.{h,m}"]
+
+    ss.public_header_files = ["WCRCourseWare/WCRCourseWare/CourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/WCRCourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/WebCourseWare/WCRWebCourseWare.h"]
+
+    ss.dependency "ReactiveObjC"
+    ss.dependency "YYModel"
+    ss.dependency "WCRBase/Error"
+    ss.dependency "WCRBase/Utils"
+    ss.dependency "WCRBase/Log"
+  end
+
+
+  s.subspec "ViewCourseWare" do |ss|
+    ss.platform     = :ios, "8.0"
+    ss.source_files  = ["WCRCourseWare/WCRCourseWare/*.{h,m}",
+                        "WCRCourseWare/WCRCourseWare/ViewCourseWare/*.{h,m}"]
+
+    ss.public_header_files = ["WCRCourseWare/WCRCourseWare/CourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/WCRCourseWare.h",
+                              "WCRCourseWare/WCRCourseWare/ViewCourseWare/WCRViewCourseWare.h"]
+
+  end
 end

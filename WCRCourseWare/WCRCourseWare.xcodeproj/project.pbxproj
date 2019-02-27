@@ -11,25 +11,25 @@
 		4D23A0B0222638140059FD90 /* WCRCourseWareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0AF222638140059FD90 /* WCRCourseWareTests.m */; };
 		4D23A0CF2226398D0059FD90 /* WCRCourseWareLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0BB2226398C0059FD90 /* WCRCourseWareLog.h */; };
 		4D23A0D02226398D0059FD90 /* WCRCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0BC2226398C0059FD90 /* WCRCourseWare.m */; };
-		4D23A0D12226398D0059FD90 /* WCRWKWebviewMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0BD2226398C0059FD90 /* WCRWKWebviewMessageHandler.m */; };
-		4D23A0D22226398D0059FD90 /* WCRWKWebviewMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0BE2226398C0059FD90 /* WCRWKWebviewMessageHandler.h */; };
-		4D23A0D32226398D0059FD90 /* WCRImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0BF2226398C0059FD90 /* WCRImageCourseWare.m */; };
-		4D23A0D42226398D0059FD90 /* WCRImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0C02226398C0059FD90 /* WCRImageCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D23A0D52226398D0059FD90 /* WCRError+WebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0C12226398C0059FD90 /* WCRError+WebCourseWare.m */; };
-		4D23A0D62226398D0059FD90 /* WCRViewCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0C22226398D0059FD90 /* WCRViewCourseWare.m */; };
-		4D23A0D72226398D0059FD90 /* WCRWebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0C32226398D0059FD90 /* WCRWebCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D23A0D82226398D0059FD90 /* WCRError+AVCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0C42226398D0059FD90 /* WCRError+AVCourseWare.h */; };
-		4D23A0D92226398D0059FD90 /* WCRError+AVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0C52226398D0059FD90 /* WCRError+AVCourseWare.m */; };
-		4D23A0DA2226398D0059FD90 /* WCRError+ImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0C62226398D0059FD90 /* WCRError+ImageCourseWare.m */; };
-		4D23A0DB2226398D0059FD90 /* WCRViewCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0C72226398D0059FD90 /* WCRViewCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D23A0DC2226398D0059FD90 /* WCRCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0C82226398D0059FD90 /* WCRCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D23A0DD2226398D0059FD90 /* WCRCourseWareLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0C92226398D0059FD90 /* WCRCourseWareLog.m */; };
-		4D23A0DE2226398D0059FD90 /* WCRAVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0CA2226398D0059FD90 /* WCRAVCourseWare.m */; };
-		4D23A0DF2226398D0059FD90 /* WCRError+WebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0CB2226398D0059FD90 /* WCRError+WebCourseWare.h */; };
-		4D23A0E02226398D0059FD90 /* WCRAVCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0CC2226398D0059FD90 /* WCRAVCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D23A0E12226398D0059FD90 /* WCRWebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D23A0CD2226398D0059FD90 /* WCRWebCourseWare.m */; };
-		4D23A0E22226398D0059FD90 /* WCRError+ImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0CE2226398D0059FD90 /* WCRError+ImageCourseWare.h */; };
 		4D23A0E422263A060059FD90 /* CourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23A0E322263A060059FD90 /* CourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D270EDE22267B7D00741BAD /* WCRError+ImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270ECB22267B7D00741BAD /* WCRError+ImageCourseWare.h */; };
+		4D270EDF22267B7D00741BAD /* WCRImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270ECC22267B7D00741BAD /* WCRImageCourseWare.h */; };
+		4D270EE022267B7D00741BAD /* WCRError+ImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270ECD22267B7D00741BAD /* WCRError+ImageCourseWare.m */; };
+		4D270EE122267B7D00741BAD /* WCRImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270ECE22267B7D00741BAD /* WCRImageCourseWare.m */; };
+		4D270EE222267B7D00741BAD /* WCRViewCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270ED022267B7D00741BAD /* WCRViewCourseWare.h */; };
+		4D270EE322267B7D00741BAD /* WCRViewCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270ED122267B7D00741BAD /* WCRViewCourseWare.m */; };
+		4D270EE422267B7D00741BAD /* WCRAVCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270ED322267B7D00741BAD /* WCRAVCourseWare.h */; };
+		4D270EE522267B7D00741BAD /* WCRError+AVCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270ED422267B7D00741BAD /* WCRError+AVCourseWare.h */; };
+		4D270EE622267B7D00741BAD /* WCRAVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270ED522267B7D00741BAD /* WCRAVCourseWare.m */; };
+		4D270EE722267B7D00741BAD /* WCRError+AVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270ED622267B7D00741BAD /* WCRError+AVCourseWare.m */; };
+		4D270EE822267B7D00741BAD /* WCRWebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270ED822267B7D00741BAD /* WCRWebCourseWare.h */; };
+		4D270EE922267B7D00741BAD /* WCRError+WebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270ED922267B7D00741BAD /* WCRError+WebCourseWare.m */; };
+		4D270EEA22267B7D00741BAD /* WCRWKWebviewMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270EDA22267B7D00741BAD /* WCRWKWebviewMessageHandler.m */; };
+		4D270EEB22267B7D00741BAD /* WCRError+WebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270EDB22267B7D00741BAD /* WCRError+WebCourseWare.h */; };
+		4D270EEC22267B7D00741BAD /* WCRWebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270EDC22267B7D00741BAD /* WCRWebCourseWare.m */; };
+		4D270EED22267B7D00741BAD /* WCRWKWebviewMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D270EDD22267B7D00741BAD /* WCRWKWebviewMessageHandler.h */; };
 		99D8B0F653C09B09FBCC5B05 /* libPods-WCRCourseWareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A402775B0E6D011B4EA1D9D /* libPods-WCRCourseWareTests.a */; };
 		CBF5D3ED69609BC7A7901360 /* libPods-WCRCourseWare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6B5B3F2ECFD786E23DEFA /* libPods-WCRCourseWare.a */; };
 /* End PBXBuildFile section */
@@ -56,25 +56,25 @@
 		4D23A0B1222638140059FD90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D23A0BB2226398C0059FD90 /* WCRCourseWareLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCourseWareLog.h; sourceTree = "<group>"; };
 		4D23A0BC2226398C0059FD90 /* WCRCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWare.m; sourceTree = "<group>"; };
-		4D23A0BD2226398C0059FD90 /* WCRWKWebviewMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWKWebviewMessageHandler.m; sourceTree = "<group>"; };
-		4D23A0BE2226398C0059FD90 /* WCRWKWebviewMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWKWebviewMessageHandler.h; sourceTree = "<group>"; };
-		4D23A0BF2226398C0059FD90 /* WCRImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRImageCourseWare.m; sourceTree = "<group>"; };
-		4D23A0C02226398C0059FD90 /* WCRImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRImageCourseWare.h; sourceTree = "<group>"; };
-		4D23A0C12226398C0059FD90 /* WCRError+WebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+WebCourseWare.m"; sourceTree = "<group>"; };
-		4D23A0C22226398D0059FD90 /* WCRViewCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRViewCourseWare.m; sourceTree = "<group>"; };
-		4D23A0C32226398D0059FD90 /* WCRWebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWebCourseWare.h; sourceTree = "<group>"; };
-		4D23A0C42226398D0059FD90 /* WCRError+AVCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+AVCourseWare.h"; sourceTree = "<group>"; };
-		4D23A0C52226398D0059FD90 /* WCRError+AVCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+AVCourseWare.m"; sourceTree = "<group>"; };
-		4D23A0C62226398D0059FD90 /* WCRError+ImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+ImageCourseWare.m"; sourceTree = "<group>"; };
-		4D23A0C72226398D0059FD90 /* WCRViewCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRViewCourseWare.h; sourceTree = "<group>"; };
 		4D23A0C82226398D0059FD90 /* WCRCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCourseWare.h; sourceTree = "<group>"; };
 		4D23A0C92226398D0059FD90 /* WCRCourseWareLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWareLog.m; sourceTree = "<group>"; };
-		4D23A0CA2226398D0059FD90 /* WCRAVCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRAVCourseWare.m; sourceTree = "<group>"; };
-		4D23A0CB2226398D0059FD90 /* WCRError+WebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+WebCourseWare.h"; sourceTree = "<group>"; };
-		4D23A0CC2226398D0059FD90 /* WCRAVCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRAVCourseWare.h; sourceTree = "<group>"; };
-		4D23A0CD2226398D0059FD90 /* WCRWebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWebCourseWare.m; sourceTree = "<group>"; };
-		4D23A0CE2226398D0059FD90 /* WCRError+ImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+ImageCourseWare.h"; sourceTree = "<group>"; };
 		4D23A0E322263A060059FD90 /* CourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseWare.h; sourceTree = "<group>"; };
+		4D270ECB22267B7D00741BAD /* WCRError+ImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+ImageCourseWare.h"; sourceTree = "<group>"; };
+		4D270ECC22267B7D00741BAD /* WCRImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRImageCourseWare.h; sourceTree = "<group>"; };
+		4D270ECD22267B7D00741BAD /* WCRError+ImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+ImageCourseWare.m"; sourceTree = "<group>"; };
+		4D270ECE22267B7D00741BAD /* WCRImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRImageCourseWare.m; sourceTree = "<group>"; };
+		4D270ED022267B7D00741BAD /* WCRViewCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRViewCourseWare.h; sourceTree = "<group>"; };
+		4D270ED122267B7D00741BAD /* WCRViewCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRViewCourseWare.m; sourceTree = "<group>"; };
+		4D270ED322267B7D00741BAD /* WCRAVCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRAVCourseWare.h; sourceTree = "<group>"; };
+		4D270ED422267B7D00741BAD /* WCRError+AVCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+AVCourseWare.h"; sourceTree = "<group>"; };
+		4D270ED522267B7D00741BAD /* WCRAVCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRAVCourseWare.m; sourceTree = "<group>"; };
+		4D270ED622267B7D00741BAD /* WCRError+AVCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+AVCourseWare.m"; sourceTree = "<group>"; };
+		4D270ED822267B7D00741BAD /* WCRWebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWebCourseWare.h; sourceTree = "<group>"; };
+		4D270ED922267B7D00741BAD /* WCRError+WebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+WebCourseWare.m"; sourceTree = "<group>"; };
+		4D270EDA22267B7D00741BAD /* WCRWKWebviewMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWKWebviewMessageHandler.m; sourceTree = "<group>"; };
+		4D270EDB22267B7D00741BAD /* WCRError+WebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+WebCourseWare.h"; sourceTree = "<group>"; };
+		4D270EDC22267B7D00741BAD /* WCRWebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWebCourseWare.m; sourceTree = "<group>"; };
+		4D270EDD22267B7D00741BAD /* WCRWKWebviewMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWKWebviewMessageHandler.h; sourceTree = "<group>"; };
 		C7C2366FCE6DC9A6D0B3E168 /* Pods-WCRCourseWareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareTests/Pods-WCRCourseWareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCAAB865C31BE042213CA01D /* Pods-WCRCourseWare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWare/Pods-WCRCourseWare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,24 +135,12 @@
 				4D23A0E322263A060059FD90 /* CourseWare.h */,
 				4D23A0C82226398D0059FD90 /* WCRCourseWare.h */,
 				4D23A0BC2226398C0059FD90 /* WCRCourseWare.m */,
-				4D23A0CC2226398D0059FD90 /* WCRAVCourseWare.h */,
-				4D23A0CA2226398D0059FD90 /* WCRAVCourseWare.m */,
-				4D23A0C42226398D0059FD90 /* WCRError+AVCourseWare.h */,
-				4D23A0C52226398D0059FD90 /* WCRError+AVCourseWare.m */,
-				4D23A0C02226398C0059FD90 /* WCRImageCourseWare.h */,
-				4D23A0BF2226398C0059FD90 /* WCRImageCourseWare.m */,
-				4D23A0CE2226398D0059FD90 /* WCRError+ImageCourseWare.h */,
-				4D23A0C62226398D0059FD90 /* WCRError+ImageCourseWare.m */,
-				4D23A0C72226398D0059FD90 /* WCRViewCourseWare.h */,
-				4D23A0C22226398D0059FD90 /* WCRViewCourseWare.m */,
-				4D23A0C32226398D0059FD90 /* WCRWebCourseWare.h */,
-				4D23A0CD2226398D0059FD90 /* WCRWebCourseWare.m */,
-				4D23A0CB2226398D0059FD90 /* WCRError+WebCourseWare.h */,
-				4D23A0C12226398C0059FD90 /* WCRError+WebCourseWare.m */,
-				4D23A0BE2226398C0059FD90 /* WCRWKWebviewMessageHandler.h */,
-				4D23A0BD2226398C0059FD90 /* WCRWKWebviewMessageHandler.m */,
 				4D23A0BB2226398C0059FD90 /* WCRCourseWareLog.h */,
 				4D23A0C92226398D0059FD90 /* WCRCourseWareLog.m */,
+				4D270ED222267B7D00741BAD /* AVCourseWare */,
+				4D270ECA22267B7D00741BAD /* ImageCourseWare */,
+				4D270ECF22267B7D00741BAD /* ViewCourseWare */,
+				4D270ED722267B7D00741BAD /* WebCourseWare */,
 				4D23A0A5222638140059FD90 /* Info.plist */,
 			);
 			path = WCRCourseWare;
@@ -165,6 +153,50 @@
 				4D23A0B1222638140059FD90 /* Info.plist */,
 			);
 			path = WCRCourseWareTests;
+			sourceTree = "<group>";
+		};
+		4D270ECA22267B7D00741BAD /* ImageCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D270ECC22267B7D00741BAD /* WCRImageCourseWare.h */,
+				4D270ECE22267B7D00741BAD /* WCRImageCourseWare.m */,
+				4D270ECD22267B7D00741BAD /* WCRError+ImageCourseWare.m */,
+				4D270ECB22267B7D00741BAD /* WCRError+ImageCourseWare.h */,
+			);
+			path = ImageCourseWare;
+			sourceTree = "<group>";
+		};
+		4D270ECF22267B7D00741BAD /* ViewCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D270ED022267B7D00741BAD /* WCRViewCourseWare.h */,
+				4D270ED122267B7D00741BAD /* WCRViewCourseWare.m */,
+			);
+			path = ViewCourseWare;
+			sourceTree = "<group>";
+		};
+		4D270ED222267B7D00741BAD /* AVCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D270ED322267B7D00741BAD /* WCRAVCourseWare.h */,
+				4D270ED522267B7D00741BAD /* WCRAVCourseWare.m */,
+				4D270ED422267B7D00741BAD /* WCRError+AVCourseWare.h */,
+				4D270ED622267B7D00741BAD /* WCRError+AVCourseWare.m */,
+			);
+			path = AVCourseWare;
+			sourceTree = "<group>";
+		};
+		4D270ED722267B7D00741BAD /* WebCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D270ED822267B7D00741BAD /* WCRWebCourseWare.h */,
+				4D270EDC22267B7D00741BAD /* WCRWebCourseWare.m */,
+				4D270EDB22267B7D00741BAD /* WCRError+WebCourseWare.h */,
+				4D270ED922267B7D00741BAD /* WCRError+WebCourseWare.m */,
+				4D270EDD22267B7D00741BAD /* WCRWKWebviewMessageHandler.h */,
+				4D270EDA22267B7D00741BAD /* WCRWKWebviewMessageHandler.m */,
+			);
+			path = WebCourseWare;
 			sourceTree = "<group>";
 		};
 		72C93DCAE0EC22DC0647F236 /* Pods */ = {
@@ -185,17 +217,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D270EED22267B7D00741BAD /* WCRWKWebviewMessageHandler.h in Headers */,
+				4D270EE222267B7D00741BAD /* WCRViewCourseWare.h in Headers */,
+				4D270EEB22267B7D00741BAD /* WCRError+WebCourseWare.h in Headers */,
+				4D270EDE22267B7D00741BAD /* WCRError+ImageCourseWare.h in Headers */,
 				4D23A0E422263A060059FD90 /* CourseWare.h in Headers */,
-				4D23A0E02226398D0059FD90 /* WCRAVCourseWare.h in Headers */,
-				4D23A0D72226398D0059FD90 /* WCRWebCourseWare.h in Headers */,
-				4D23A0D42226398D0059FD90 /* WCRImageCourseWare.h in Headers */,
-				4D23A0DB2226398D0059FD90 /* WCRViewCourseWare.h in Headers */,
+				4D270EE822267B7D00741BAD /* WCRWebCourseWare.h in Headers */,
 				4D23A0DC2226398D0059FD90 /* WCRCourseWare.h in Headers */,
-				4D23A0D22226398D0059FD90 /* WCRWKWebviewMessageHandler.h in Headers */,
-				4D23A0D82226398D0059FD90 /* WCRError+AVCourseWare.h in Headers */,
-				4D23A0E22226398D0059FD90 /* WCRError+ImageCourseWare.h in Headers */,
-				4D23A0DF2226398D0059FD90 /* WCRError+WebCourseWare.h in Headers */,
+				4D270EDF22267B7D00741BAD /* WCRImageCourseWare.h in Headers */,
+				4D270EE522267B7D00741BAD /* WCRError+AVCourseWare.h in Headers */,
 				4D23A0CF2226398D0059FD90 /* WCRCourseWareLog.h in Headers */,
+				4D270EE422267B7D00741BAD /* WCRAVCourseWare.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,16 +401,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D270EE022267B7D00741BAD /* WCRError+ImageCourseWare.m in Sources */,
 				4D23A0D02226398D0059FD90 /* WCRCourseWare.m in Sources */,
-				4D23A0DA2226398D0059FD90 /* WCRError+ImageCourseWare.m in Sources */,
-				4D23A0D12226398D0059FD90 /* WCRWKWebviewMessageHandler.m in Sources */,
+				4D270EE922267B7D00741BAD /* WCRError+WebCourseWare.m in Sources */,
+				4D270EE122267B7D00741BAD /* WCRImageCourseWare.m in Sources */,
 				4D23A0DD2226398D0059FD90 /* WCRCourseWareLog.m in Sources */,
-				4D23A0D52226398D0059FD90 /* WCRError+WebCourseWare.m in Sources */,
-				4D23A0E12226398D0059FD90 /* WCRWebCourseWare.m in Sources */,
-				4D23A0D32226398D0059FD90 /* WCRImageCourseWare.m in Sources */,
-				4D23A0D92226398D0059FD90 /* WCRError+AVCourseWare.m in Sources */,
-				4D23A0D62226398D0059FD90 /* WCRViewCourseWare.m in Sources */,
-				4D23A0DE2226398D0059FD90 /* WCRAVCourseWare.m in Sources */,
+				4D270EEC22267B7D00741BAD /* WCRWebCourseWare.m in Sources */,
+				4D270EE722267B7D00741BAD /* WCRError+AVCourseWare.m in Sources */,
+				4D270EEA22267B7D00741BAD /* WCRWKWebviewMessageHandler.m in Sources */,
+				4D270EE322267B7D00741BAD /* WCRViewCourseWare.m in Sources */,
+				4D270EE622267B7D00741BAD /* WCRAVCourseWare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
