@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WCRCourseWare"
-  s.version      = "1.1.1"
+  s.version      = "1.1.2"
   s.summary      = "WCRCourseWare SDK"
   s.description  = <<-DESC
                   WCRCourseWare SDK 是专门为课件设计的基础架构，具有打开网页课件、音视频课件、图片课件和白板课件的能力。

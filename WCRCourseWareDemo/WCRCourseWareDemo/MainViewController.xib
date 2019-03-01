@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad10_5" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6V-XB-JFS">
+                    <rect key="frame" x="20" y="40" width="526" height="377"/>
+                    <color key="backgroundColor" red="0.37663560210000002" green="1" blue="0.92574961339999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="ViewCourseWare"/>
+                    <connections>
+                        <action selector="viewButtonTap:" destination="-1" eventType="touchUpInside" id="FVP-OW-P3f"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyX-1X-lkV">
+                    <rect key="frame" x="566" y="40" width="526" height="377"/>
+                    <color key="backgroundColor" red="0.86741186770000001" green="1" blue="0.1960587057" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="ImageCourseWare"/>
+                    <connections>
+                        <action selector="imageButtonTap:" destination="-1" eventType="touchUpInside" id="nH7-UB-IGR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyC-Xz-2ka">
+                    <rect key="frame" x="566" y="437" width="526" height="377"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="AVCourseWare"/>
+                    <connections>
+                        <action selector="avButtonTap:" destination="-1" eventType="touchUpInside" id="sfk-w7-d52"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StI-uD-ooY">
+                    <rect key="frame" x="20" y="437" width="526" height="377"/>
+                    <color key="backgroundColor" red="0.19948195229999999" green="1" blue="0.1504815572" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="WebCourseWare"/>
+                    <connections>
+                        <action selector="webButtonTap:" destination="-1" eventType="touchUpInside" id="Ygm-Da-NwF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="StI-uD-ooY" firstAttribute="width" secondItem="t6V-XB-JFS" secondAttribute="width" id="9KL-FJ-c5M"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="eyX-1X-lkV" secondAttribute="trailing" constant="20" id="FjC-iE-50O"/>
+                <constraint firstItem="StI-uD-ooY" firstAttribute="height" secondItem="t6V-XB-JFS" secondAttribute="height" id="HaE-z4-wuQ"/>
+                <constraint firstItem="eyX-1X-lkV" firstAttribute="height" secondItem="t6V-XB-JFS" secondAttribute="height" id="JEc-5R-bxJ"/>
+                <constraint firstItem="eyX-1X-lkV" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="JfX-dP-3BE"/>
+                <constraint firstItem="StI-uD-ooY" firstAttribute="top" secondItem="t6V-XB-JFS" secondAttribute="bottom" constant="20" id="Kp3-4t-NMF"/>
+                <constraint firstItem="cyC-Xz-2ka" firstAttribute="width" secondItem="t6V-XB-JFS" secondAttribute="width" id="LcA-au-lfF"/>
+                <constraint firstItem="cyC-Xz-2ka" firstAttribute="height" secondItem="t6V-XB-JFS" secondAttribute="height" id="Sqa-0f-Sfa"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cyC-Xz-2ka" secondAttribute="trailing" constant="20" id="TAx-bW-Wu7"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="StI-uD-ooY" secondAttribute="bottom" constant="20" id="W5z-3V-HTK"/>
+                <constraint firstItem="t6V-XB-JFS" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="Yte-xx-qeU"/>
+                <constraint firstItem="StI-uD-ooY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="adb-jD-UJg"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="cyC-Xz-2ka" secondAttribute="bottom" constant="20" id="brb-0x-zMb"/>
+                <constraint firstItem="eyX-1X-lkV" firstAttribute="width" secondItem="t6V-XB-JFS" secondAttribute="width" id="gHo-Ej-eAL"/>
+                <constraint firstItem="eyX-1X-lkV" firstAttribute="leading" secondItem="t6V-XB-JFS" secondAttribute="trailing" constant="20" id="tHu-9I-n5x"/>
+                <constraint firstItem="t6V-XB-JFS" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="vZe-fN-DQa"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="12.949640287769785" y="36.690647482014391"/>
+        </view>
+    </objects>
+</document>

@@ -8,9 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		01ECF94D051323D884BA26B5 /* libPods-WCRCourseWareDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 734D50C0FCC3D5E3DEC00B35 /* libPods-WCRCourseWareDemo.a */; };
+		4D07F07122277455009B43D0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D07F06F22277455009B43D0 /* MainViewController.m */; };
+		4D07F07222277455009B43D0 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D07F07022277455009B43D0 /* MainViewController.xib */; };
+		4D07F079222778AB009B43D0 /* ViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D07F077222778AB009B43D0 /* ViewViewController.m */; };
+		4D07F07A222778AB009B43D0 /* ViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D07F078222778AB009B43D0 /* ViewViewController.xib */; };
+		4D07F07E222778BB009B43D0 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D07F07C222778BB009B43D0 /* ImageViewController.m */; };
+		4D07F07F222778BB009B43D0 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D07F07D222778BB009B43D0 /* ImageViewController.xib */; };
+		4D07F083222778C7009B43D0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D07F081222778C7009B43D0 /* WebViewController.m */; };
+		4D07F084222778C7009B43D0 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D07F082222778C7009B43D0 /* WebViewController.xib */; };
+		4D07F088222778D8009B43D0 /* AVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D07F086222778D8009B43D0 /* AVViewController.m */; };
+		4D07F089222778D8009B43D0 /* AVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D07F087222778D8009B43D0 /* AVViewController.xib */; };
 		4D270EFC22267C1D00741BAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270EFB22267C1D00741BAD /* AppDelegate.m */; };
-		4D270EFF22267C1D00741BAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270EFE22267C1D00741BAD /* ViewController.m */; };
-		4D270F0222267C1D00741BAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D270F0022267C1D00741BAD /* Main.storyboard */; };
 		4D270F0422267C1F00741BAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D270F0322267C1F00741BAD /* Assets.xcassets */; };
 		4D270F0722267C1F00741BAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D270F0522267C1F00741BAD /* LaunchScreen.storyboard */; };
 		4D270F0A22267C1F00741BAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D270F0922267C1F00741BAD /* main.m */; };
@@ -18,12 +26,24 @@
 
 /* Begin PBXFileReference section */
 		324D4092FC233081E7A67821 /* Pods-WCRCourseWareDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		4D07F06E22277455009B43D0 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		4D07F06F22277455009B43D0 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		4D07F07022277455009B43D0 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		4D07F076222778AB009B43D0 /* ViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewViewController.h; sourceTree = "<group>"; };
+		4D07F077222778AB009B43D0 /* ViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewViewController.m; sourceTree = "<group>"; };
+		4D07F078222778AB009B43D0 /* ViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewViewController.xib; sourceTree = "<group>"; };
+		4D07F07B222778BB009B43D0 /* ImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		4D07F07C222778BB009B43D0 /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		4D07F07D222778BB009B43D0 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		4D07F080222778C7009B43D0 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		4D07F081222778C7009B43D0 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		4D07F082222778C7009B43D0 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		4D07F085222778D8009B43D0 /* AVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVViewController.h; sourceTree = "<group>"; };
+		4D07F086222778D8009B43D0 /* AVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVViewController.m; sourceTree = "<group>"; };
+		4D07F087222778D8009B43D0 /* AVViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AVViewController.xib; sourceTree = "<group>"; };
 		4D270EF722267C1D00741BAD /* WCRCourseWareDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCRCourseWareDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D270EFA22267C1D00741BAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4D270EFB22267C1D00741BAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4D270EFD22267C1D00741BAD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4D270EFE22267C1D00741BAD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		4D270F0122267C1D00741BAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D270F0322267C1F00741BAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D270F0622267C1F00741BAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D270F0822267C1F00741BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,9 +95,21 @@
 			children = (
 				4D270EFA22267C1D00741BAD /* AppDelegate.h */,
 				4D270EFB22267C1D00741BAD /* AppDelegate.m */,
-				4D270EFD22267C1D00741BAD /* ViewController.h */,
-				4D270EFE22267C1D00741BAD /* ViewController.m */,
-				4D270F0022267C1D00741BAD /* Main.storyboard */,
+				4D07F06E22277455009B43D0 /* MainViewController.h */,
+				4D07F06F22277455009B43D0 /* MainViewController.m */,
+				4D07F07022277455009B43D0 /* MainViewController.xib */,
+				4D07F076222778AB009B43D0 /* ViewViewController.h */,
+				4D07F077222778AB009B43D0 /* ViewViewController.m */,
+				4D07F078222778AB009B43D0 /* ViewViewController.xib */,
+				4D07F07B222778BB009B43D0 /* ImageViewController.h */,
+				4D07F07C222778BB009B43D0 /* ImageViewController.m */,
+				4D07F07D222778BB009B43D0 /* ImageViewController.xib */,
+				4D07F080222778C7009B43D0 /* WebViewController.h */,
+				4D07F081222778C7009B43D0 /* WebViewController.m */,
+				4D07F082222778C7009B43D0 /* WebViewController.xib */,
+				4D07F085222778D8009B43D0 /* AVViewController.h */,
+				4D07F086222778D8009B43D0 /* AVViewController.m */,
+				4D07F087222778D8009B43D0 /* AVViewController.xib */,
 				4D270F0322267C1F00741BAD /* Assets.xcassets */,
 				4D270F0522267C1F00741BAD /* LaunchScreen.storyboard */,
 				4D270F0822267C1F00741BAD /* Info.plist */,
@@ -154,9 +186,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D07F07F222778BB009B43D0 /* ImageViewController.xib in Resources */,
 				4D270F0722267C1F00741BAD /* LaunchScreen.storyboard in Resources */,
+				4D07F07A222778AB009B43D0 /* ViewViewController.xib in Resources */,
+				4D07F084222778C7009B43D0 /* WebViewController.xib in Resources */,
+				4D07F089222778D8009B43D0 /* AVViewController.xib in Resources */,
+				4D07F07222277455009B43D0 /* MainViewController.xib in Resources */,
 				4D270F0422267C1F00741BAD /* Assets.xcassets in Resources */,
-				4D270F0222267C1D00741BAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,8 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D270EFF22267C1D00741BAD /* ViewController.m in Sources */,
+				4D07F07E222778BB009B43D0 /* ImageViewController.m in Sources */,
+				4D07F083222778C7009B43D0 /* WebViewController.m in Sources */,
 				4D270F0A22267C1F00741BAD /* main.m in Sources */,
+				4D07F088222778D8009B43D0 /* AVViewController.m in Sources */,
+				4D07F079222778AB009B43D0 /* ViewViewController.m in Sources */,
+				4D07F07122277455009B43D0 /* MainViewController.m in Sources */,
 				4D270EFC22267C1D00741BAD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,14 +265,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4D270F0022267C1D00741BAD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D270F0122267C1D00741BAD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4D270F0522267C1F00741BAD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -1,31 +1,45 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - Masonry (1.1.0)
   - ReactiveObjC (3.1.0)
-  - WCRBase/Error (1.6.0)
-  - WCRBase/Log (1.6.0)
-  - WCRBase/Utils (1.6.0)
-  - WCRCourseWare/AVCourseWare (1.1.1):
+  - WCRBase/Error (1.8.0)
+  - WCRBase/Log (1.8.0)
+  - WCRBase/Utils (1.8.0)
+  - WCRCourseWare (1.1.1):
+    - WCRCourseWare/CourseWare (= 1.1.1)
+  - WCRCourseWare/CourseWare (1.1.1):
+    - AFNetworking
     - ReactiveObjC
     - WCRBase/Error
     - WCRBase/Log
     - WCRBase/Utils
     - WCRPlayer
-  - WCRPlayer (1.2.1):
+    - YYModel
+  - WCRPlayer (1.2.3):
+    - WCRPlayer/Player (= 1.2.3)
+  - WCRPlayer/Player (1.2.3):
     - ReactiveObjC
     - WCRBase/Error
     - WCRBase/Utils
-    - WCRPlayer/ALiPlayer (= 1.2.1)
-    - WCRPlayer/AVPlayer (= 1.2.1)
-  - WCRPlayer/ALiPlayer (1.2.1):
-    - ReactiveObjC
-    - WCRBase/Error
-    - WCRBase/Utils
-  - WCRPlayer/AVPlayer (1.2.1):
-    - ReactiveObjC
-    - WCRBase/Error
-    - WCRBase/Utils
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - "WCRCourseWare/AVCourseWare (from `/Users/oyq/Documents/公司代码/WCRCourseWare`)"
+  - Masonry
+  - WCRCourseWare (from `../`)
 
 SPEC REPOS:
   http://10.2.250.21/wcr_client/WCRBaseCocoaPods.git:
@@ -33,18 +47,24 @@ SPEC REPOS:
   http://10.2.250.21/wcr_client/WCRPlayerCocoaPods.git:
     - WCRPlayer
   https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Masonry
     - ReactiveObjC
+    - YYModel
 
 EXTERNAL SOURCES:
   WCRCourseWare:
-    :path: "/Users/oyq/Documents/公司代码/WCRCourseWare"
+    :path: "../"
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
-  WCRBase: 60b0e925a3334dbd0eca19f8c9e5f158dbeafe1e
+  WCRBase: 49daa59371ba5dce6a7c463c387b20bc16da3daa
   WCRCourseWare: 5cc22802126ab912c66efa902351a77e15a7c46e
-  WCRPlayer: 292d8facfdc4661768baa70ce5849c5d5f0c901e
+  WCRPlayer: 34d01943ba8f0ae9357f968bf198598e5b8fe97d
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 1fe25dbcd2a7028432f547e1897cc206c455f104
+PODFILE CHECKSUM: faf097f97a26d1525ffc3b23f9ffb17c10b2f5aa
 
 COCOAPODS: 1.5.3

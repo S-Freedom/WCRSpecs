@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageViewController">
+            <connections>
+                <outlet property="courseWareView" destination="Fm2-zu-Wcg" id="4Nk-1z-IYI"/>
+                <outlet property="urlTextField" destination="Tfl-rb-QAB" id="ecG-gE-dKD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-zu-Wcg">
+                    <rect key="frame" x="20" y="40" width="984" height="400"/>
+                    <color key="backgroundColor" red="0.86741186770000001" green="1" blue="0.1960587057" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="4y2-VU-Uae"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1q-Hs-Znu">
+                    <rect key="frame" x="20" y="460" width="984" height="100"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ze1-Ir-JXu">
+                            <rect key="frame" x="0.0" y="0.0" width="492" height="100"/>
+                            <state key="normal" title="创建"/>
+                            <connections>
+                                <action selector="createButtonTap:" destination="-1" eventType="touchUpInside" id="AO8-7s-GE4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-ih-Ayd">
+                            <rect key="frame" x="492" y="0.0" width="492" height="100"/>
+                            <state key="normal" title="销毁"/>
+                            <connections>
+                                <action selector="destoryButtonTap:" destination="-1" eventType="touchUpInside" id="Wbl-HM-chb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Afc-mp-ZHu"/>
+                        <constraint firstAttribute="height" constant="100" id="NRa-2o-c4W"/>
+                        <constraint firstItem="ze1-Ir-JXu" firstAttribute="width" secondItem="OSI-ih-Ayd" secondAttribute="width" id="RHc-3V-ZN6"/>
+                        <constraint firstItem="ze1-Ir-JXu" firstAttribute="height" secondItem="OSI-ih-Ayd" secondAttribute="height" id="ROH-Ye-d7f"/>
+                    </constraints>
+                </stackView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="图片地址" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Tfl-rb-QAB">
+                    <rect key="frame" x="130" y="570" width="874" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="l9b-mX-4tH"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图片地址:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74u-NR-Tf4">
+                    <rect key="frame" x="20" y="570" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="9LD-MR-6lU"/>
+                        <constraint firstAttribute="height" constant="30" id="9sg-Zr-Mog"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Tfl-rb-QAB" firstAttribute="leading" secondItem="74u-NR-Tf4" secondAttribute="trailing" constant="10" id="9fh-7h-Xuw"/>
+                <constraint firstItem="B1q-Hs-Znu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="9iI-JV-ZF3"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Fm2-zu-Wcg" secondAttribute="trailing" constant="20" id="AHU-ry-els"/>
+                <constraint firstItem="Fm2-zu-Wcg" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="GVX-Is-eMq"/>
+                <constraint firstItem="74u-NR-Tf4" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="KMF-0w-dW4"/>
+                <constraint firstItem="B1q-Hs-Znu" firstAttribute="top" secondItem="Fm2-zu-Wcg" secondAttribute="bottom" constant="20" id="SAZ-2C-qMG"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="B1q-Hs-Znu" secondAttribute="trailing" constant="20" id="g0M-eK-cSc"/>
+                <constraint firstItem="Tfl-rb-QAB" firstAttribute="leading" secondItem="74u-NR-Tf4" secondAttribute="trailing" constant="10" id="kVm-Dp-t0S"/>
+                <constraint firstItem="Fm2-zu-Wcg" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="koK-yH-Uky"/>
+                <constraint firstItem="74u-NR-Tf4" firstAttribute="top" secondItem="B1q-Hs-Znu" secondAttribute="bottom" constant="10" id="l7y-ru-p6h"/>
+                <constraint firstItem="Tfl-rb-QAB" firstAttribute="top" secondItem="B1q-Hs-Znu" secondAttribute="bottom" constant="10" id="o6x-SO-lm2"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Tfl-rb-QAB" secondAttribute="trailing" constant="20" id="sze-ur-NON"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+</document>

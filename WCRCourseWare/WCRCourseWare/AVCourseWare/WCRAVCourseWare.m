@@ -98,7 +98,7 @@
 }
 - (void)seekToTime:(NSTimeInterval)time{
     WCRCWLogInfo(@"seekToTime:%@ %f",self.url,time);
-    if (fabs(time - self.currentTime) > 1) {
+    if (fabs(time - self.currentTime) > 1000) {
         [self.player seekToTime:time];
     }else{
         WCRCWLogInfo(@"相差绝对值没有超过1秒");
@@ -114,8 +114,8 @@
     return self.player.bufferDuration;
 }
 
--(void)player:(WCRPlayer *)player stateChange:(WCRPlayerStatus)status{
-    WCRCWLogInfo(@"player:%@ stateChange:%lu",self.url,(unsigned long)status);
+-(void)player:(WCRPlayer *)player statusChange:(WCRPlayerStatus)status{
+    WCRCWLogInfo(@"player:%@ statusChange:%lu",self.url,(unsigned long)status);
     switch (status) {
         case WCRPlayerStatusDidLoad:{
             if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
