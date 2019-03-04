@@ -1,0 +1,981 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21E496F75E7F991A2DB68DDD /* libPods-WCRCourseWareSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AD9B3617EB4F0B46237E36D /* libPods-WCRCourseWareSDK.a */; };
+		4D272365222D2895002AB949 /* WCRCourseWareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D27235B222D2895002AB949 /* WCRCourseWareSDK.framework */; };
+		4D27236A222D2895002AB949 /* WCRCourseWareSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D272369222D2895002AB949 /* WCRCourseWareSDKTests.m */; };
+		4D27236C222D2895002AB949 /* WCRCourseWareSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D27235E222D2895002AB949 /* WCRCourseWareSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D27237D222D28A9002AB949 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D27237C222D28A9002AB949 /* AppDelegate.m */; };
+		4D272385222D28AA002AB949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D272384222D28AA002AB949 /* Assets.xcassets */; };
+		4D272388222D28AA002AB949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D272386222D28AA002AB949 /* LaunchScreen.storyboard */; };
+		4D27238B222D28AA002AB949 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D27238A222D28AA002AB949 /* main.m */; };
+		4D2723A7222D28C4002AB949 /* WCRCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D27238F222D28C3002AB949 /* WCRCourseWare.m */; };
+		4D2723A8222D28C4002AB949 /* WCRAVCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D272391222D28C3002AB949 /* WCRAVCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D2723A9222D28C4002AB949 /* WCRError+AVCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D272392222D28C3002AB949 /* WCRError+AVCourseWare.h */; };
+		4D2723AA222D28C4002AB949 /* WCRAVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D272393222D28C3002AB949 /* WCRAVCourseWare.m */; };
+		4D2723AB222D28C4002AB949 /* WCRError+AVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D272394222D28C3002AB949 /* WCRError+AVCourseWare.m */; };
+		4D2723AC222D28C4002AB949 /* WCRCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D272395222D28C3002AB949 /* WCRCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D2723AD222D28C4002AB949 /* WCRCourseWareLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D272396222D28C3002AB949 /* WCRCourseWareLog.h */; };
+		4D2723AE222D28C4002AB949 /* WCRViewCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D272398222D28C4002AB949 /* WCRViewCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D2723AF222D28C4002AB949 /* WCRViewCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D272399222D28C4002AB949 /* WCRViewCourseWare.m */; };
+		4D2723B0222D28C4002AB949 /* WCRCourseWareLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D27239A222D28C4002AB949 /* WCRCourseWareLog.m */; };
+		4D2723B1222D28C4002AB949 /* WCRWebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D27239C222D28C4002AB949 /* WCRWebCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D2723B2222D28C4002AB949 /* WCRError+WebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D27239D222D28C4002AB949 /* WCRError+WebCourseWare.m */; };
+		4D2723B3222D28C4002AB949 /* WCRWKWebviewMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D27239E222D28C4002AB949 /* WCRWKWebviewMessageHandler.m */; };
+		4D2723B4222D28C4002AB949 /* WCRError+WebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D27239F222D28C4002AB949 /* WCRError+WebCourseWare.h */; };
+		4D2723B5222D28C4002AB949 /* WCRWebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723A0222D28C4002AB949 /* WCRWebCourseWare.m */; };
+		4D2723B6222D28C4002AB949 /* WCRWKWebviewMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D2723A1222D28C4002AB949 /* WCRWKWebviewMessageHandler.h */; };
+		4D2723B7222D28C4002AB949 /* WCRError+ImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D2723A3222D28C4002AB949 /* WCRError+ImageCourseWare.h */; };
+		4D2723B8222D28C4002AB949 /* WCRImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D2723A4222D28C4002AB949 /* WCRImageCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D2723B9222D28C4002AB949 /* WCRError+ImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723A5222D28C4002AB949 /* WCRError+ImageCourseWare.m */; };
+		4D2723BA222D28C4002AB949 /* WCRImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723A6222D28C4002AB949 /* WCRImageCourseWare.m */; };
+		4D2723CA222D2BD5002AB949 /* AVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723BD222D2BD4002AB949 /* AVViewController.m */; };
+		4D2723CB222D2BD5002AB949 /* ViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2723BE222D2BD4002AB949 /* ViewViewController.xib */; };
+		4D2723CC222D2BD5002AB949 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723BF222D2BD4002AB949 /* WebViewController.m */; };
+		4D2723CD222D2BD5002AB949 /* AVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2723C1222D2BD4002AB949 /* AVViewController.xib */; };
+		4D2723CE222D2BD5002AB949 /* ViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723C2222D2BD4002AB949 /* ViewViewController.m */; };
+		4D2723CF222D2BD5002AB949 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2723C3222D2BD5002AB949 /* ImageViewController.xib */; };
+		4D2723D0222D2BD5002AB949 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2723C4222D2BD5002AB949 /* WebViewController.xib */; };
+		4D2723D1222D2BD5002AB949 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723C5222D2BD5002AB949 /* ImageViewController.m */; };
+		4D2723D2222D2BD5002AB949 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2723C7222D2BD5002AB949 /* MainViewController.xib */; };
+		4D2723D3222D2BD5002AB949 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2723C9222D2BD5002AB949 /* MainViewController.m */; };
+		4D2723E3222D30CE002AB949 /* WCRCourseWareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D27235B222D2895002AB949 /* WCRCourseWareSDK.framework */; };
+		69F460E9F63AC76C7B16934A /* libPods-WCRCourseWareSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 753A425531B00986696623DB /* libPods-WCRCourseWareSDKTests.a */; };
+		A594D82C8280F196D5467AF6 /* libPods-WCRCourseWareDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 164A414C7CC75B6E4AE990DB /* libPods-WCRCourseWareDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4D272366222D2895002AB949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D272352222D2895002AB949 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D27235A222D2895002AB949;
+			remoteInfo = WCRCourseWareSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0CE0EA3A492B20F7210B906A /* Pods-WCRCourseWareSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareSDKTests/Pods-WCRCourseWareSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		164A414C7CC75B6E4AE990DB /* libPods-WCRCourseWareDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WCRCourseWareDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		175A831500043B0D908FA8E3 /* Pods-WCRCourseWareSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK.release.xcconfig"; sourceTree = "<group>"; };
+		2AD9B3617EB4F0B46237E36D /* libPods-WCRCourseWareSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WCRCourseWareSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D27235B222D2895002AB949 /* WCRCourseWareSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WCRCourseWareSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D27235E222D2895002AB949 /* WCRCourseWareSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCRCourseWareSDK.h; sourceTree = "<group>"; };
+		4D27235F222D2895002AB949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D272364222D2895002AB949 /* WCRCourseWareSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WCRCourseWareSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D272369222D2895002AB949 /* WCRCourseWareSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWareSDKTests.m; sourceTree = "<group>"; };
+		4D27236B222D2895002AB949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D272379222D28A9002AB949 /* WCRCourseWareDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCRCourseWareDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D27237B222D28A9002AB949 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4D27237C222D28A9002AB949 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4D272384222D28AA002AB949 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4D272387222D28AA002AB949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4D272389222D28AA002AB949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D27238A222D28AA002AB949 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D27238F222D28C3002AB949 /* WCRCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWare.m; sourceTree = "<group>"; };
+		4D272391222D28C3002AB949 /* WCRAVCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRAVCourseWare.h; sourceTree = "<group>"; };
+		4D272392222D28C3002AB949 /* WCRError+AVCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+AVCourseWare.h"; sourceTree = "<group>"; };
+		4D272393222D28C3002AB949 /* WCRAVCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRAVCourseWare.m; sourceTree = "<group>"; };
+		4D272394222D28C3002AB949 /* WCRError+AVCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+AVCourseWare.m"; sourceTree = "<group>"; };
+		4D272395222D28C3002AB949 /* WCRCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCourseWare.h; sourceTree = "<group>"; };
+		4D272396222D28C3002AB949 /* WCRCourseWareLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCourseWareLog.h; sourceTree = "<group>"; };
+		4D272398222D28C4002AB949 /* WCRViewCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRViewCourseWare.h; sourceTree = "<group>"; };
+		4D272399222D28C4002AB949 /* WCRViewCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRViewCourseWare.m; sourceTree = "<group>"; };
+		4D27239A222D28C4002AB949 /* WCRCourseWareLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWareLog.m; sourceTree = "<group>"; };
+		4D27239C222D28C4002AB949 /* WCRWebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWebCourseWare.h; sourceTree = "<group>"; };
+		4D27239D222D28C4002AB949 /* WCRError+WebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+WebCourseWare.m"; sourceTree = "<group>"; };
+		4D27239E222D28C4002AB949 /* WCRWKWebviewMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWKWebviewMessageHandler.m; sourceTree = "<group>"; };
+		4D27239F222D28C4002AB949 /* WCRError+WebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+WebCourseWare.h"; sourceTree = "<group>"; };
+		4D2723A0222D28C4002AB949 /* WCRWebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWebCourseWare.m; sourceTree = "<group>"; };
+		4D2723A1222D28C4002AB949 /* WCRWKWebviewMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWKWebviewMessageHandler.h; sourceTree = "<group>"; };
+		4D2723A3222D28C4002AB949 /* WCRError+ImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+ImageCourseWare.h"; sourceTree = "<group>"; };
+		4D2723A4222D28C4002AB949 /* WCRImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRImageCourseWare.h; sourceTree = "<group>"; };
+		4D2723A5222D28C4002AB949 /* WCRError+ImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+ImageCourseWare.m"; sourceTree = "<group>"; };
+		4D2723A6222D28C4002AB949 /* WCRImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRImageCourseWare.m; sourceTree = "<group>"; };
+		4D2723BB222D2BD4002AB949 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		4D2723BC222D2BD4002AB949 /* AVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVViewController.h; sourceTree = "<group>"; };
+		4D2723BD222D2BD4002AB949 /* AVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVViewController.m; sourceTree = "<group>"; };
+		4D2723BE222D2BD4002AB949 /* ViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewViewController.xib; sourceTree = "<group>"; };
+		4D2723BF222D2BD4002AB949 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		4D2723C0222D2BD4002AB949 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		4D2723C1222D2BD4002AB949 /* AVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVViewController.xib; sourceTree = "<group>"; };
+		4D2723C2222D2BD4002AB949 /* ViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewViewController.m; sourceTree = "<group>"; };
+		4D2723C3222D2BD5002AB949 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		4D2723C4222D2BD5002AB949 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		4D2723C5222D2BD5002AB949 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		4D2723C6222D2BD5002AB949 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		4D2723C7222D2BD5002AB949 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		4D2723C8222D2BD5002AB949 /* ViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewViewController.h; sourceTree = "<group>"; };
+		4D2723C9222D2BD5002AB949 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		753A425531B00986696623DB /* libPods-WCRCourseWareSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WCRCourseWareSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EDD80648D10FAE05862BD15 /* Pods-WCRCourseWareSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareSDKTests/Pods-WCRCourseWareSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BBACAB89A85D5D8CF4DD606E /* Pods-WCRCourseWareDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E7E887791F4BE2B6D2280B09 /* Pods-WCRCourseWareSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		ECEC801BB4C61A5641DFEC55 /* Pods-WCRCourseWareDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D272358222D2895002AB949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21E496F75E7F991A2DB68DDD /* libPods-WCRCourseWareSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D272361222D2895002AB949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D272365222D2895002AB949 /* WCRCourseWareSDK.framework in Frameworks */,
+				69F460E9F63AC76C7B16934A /* libPods-WCRCourseWareSDKTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D272376222D28A9002AB949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D2723E3222D30CE002AB949 /* WCRCourseWareSDK.framework in Frameworks */,
+				A594D82C8280F196D5467AF6 /* libPods-WCRCourseWareDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2156BAE17C4ED1430785BD71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				164A414C7CC75B6E4AE990DB /* libPods-WCRCourseWareDemo.a */,
+				2AD9B3617EB4F0B46237E36D /* libPods-WCRCourseWareSDK.a */,
+				753A425531B00986696623DB /* libPods-WCRCourseWareSDKTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D272351222D2895002AB949 = {
+			isa = PBXGroup;
+			children = (
+				4D27235D222D2895002AB949 /* WCRCourseWareSDK */,
+				4D272368222D2895002AB949 /* WCRCourseWareSDKTests */,
+				4D27237A222D28A9002AB949 /* WCRCourseWareDemo */,
+				4D27235C222D2895002AB949 /* Products */,
+				A6BCB287068D27E47D94CAC3 /* Pods */,
+				2156BAE17C4ED1430785BD71 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4D27235C222D2895002AB949 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D27235B222D2895002AB949 /* WCRCourseWareSDK.framework */,
+				4D272364222D2895002AB949 /* WCRCourseWareSDKTests.xctest */,
+				4D272379222D28A9002AB949 /* WCRCourseWareDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D27235D222D2895002AB949 /* WCRCourseWareSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4D27235E222D2895002AB949 /* WCRCourseWareSDK.h */,
+				4D272395222D28C3002AB949 /* WCRCourseWare.h */,
+				4D27238F222D28C3002AB949 /* WCRCourseWare.m */,
+				4D272390222D28C3002AB949 /* AVCourseWare */,
+				4D2723A2222D28C4002AB949 /* ImageCourseWare */,
+				4D272397222D28C4002AB949 /* ViewCourseWare */,
+				4D27239B222D28C4002AB949 /* WebCourseWare */,
+				4D272396222D28C3002AB949 /* WCRCourseWareLog.h */,
+				4D27239A222D28C4002AB949 /* WCRCourseWareLog.m */,
+				4D27235F222D2895002AB949 /* Info.plist */,
+			);
+			path = WCRCourseWareSDK;
+			sourceTree = "<group>";
+		};
+		4D272368222D2895002AB949 /* WCRCourseWareSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D272369222D2895002AB949 /* WCRCourseWareSDKTests.m */,
+				4D27236B222D2895002AB949 /* Info.plist */,
+			);
+			path = WCRCourseWareSDKTests;
+			sourceTree = "<group>";
+		};
+		4D27237A222D28A9002AB949 /* WCRCourseWareDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4D27237B222D28A9002AB949 /* AppDelegate.h */,
+				4D27237C222D28A9002AB949 /* AppDelegate.m */,
+				4D2723BC222D2BD4002AB949 /* AVViewController.h */,
+				4D2723BD222D2BD4002AB949 /* AVViewController.m */,
+				4D2723C1222D2BD4002AB949 /* AVViewController.xib */,
+				4D2723C6222D2BD5002AB949 /* ImageViewController.h */,
+				4D2723C5222D2BD5002AB949 /* ImageViewController.m */,
+				4D2723C3222D2BD5002AB949 /* ImageViewController.xib */,
+				4D2723C0222D2BD4002AB949 /* MainViewController.h */,
+				4D2723C9222D2BD5002AB949 /* MainViewController.m */,
+				4D2723C7222D2BD5002AB949 /* MainViewController.xib */,
+				4D2723C8222D2BD5002AB949 /* ViewViewController.h */,
+				4D2723C2222D2BD4002AB949 /* ViewViewController.m */,
+				4D2723BE222D2BD4002AB949 /* ViewViewController.xib */,
+				4D2723BB222D2BD4002AB949 /* WebViewController.h */,
+				4D2723BF222D2BD4002AB949 /* WebViewController.m */,
+				4D2723C4222D2BD5002AB949 /* WebViewController.xib */,
+				4D272384222D28AA002AB949 /* Assets.xcassets */,
+				4D272386222D28AA002AB949 /* LaunchScreen.storyboard */,
+				4D272389222D28AA002AB949 /* Info.plist */,
+				4D27238A222D28AA002AB949 /* main.m */,
+			);
+			path = WCRCourseWareDemo;
+			sourceTree = "<group>";
+		};
+		4D272390222D28C3002AB949 /* AVCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D272391222D28C3002AB949 /* WCRAVCourseWare.h */,
+				4D272393222D28C3002AB949 /* WCRAVCourseWare.m */,
+				4D272392222D28C3002AB949 /* WCRError+AVCourseWare.h */,
+				4D272394222D28C3002AB949 /* WCRError+AVCourseWare.m */,
+			);
+			path = AVCourseWare;
+			sourceTree = "<group>";
+		};
+		4D272397222D28C4002AB949 /* ViewCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D272398222D28C4002AB949 /* WCRViewCourseWare.h */,
+				4D272399222D28C4002AB949 /* WCRViewCourseWare.m */,
+			);
+			path = ViewCourseWare;
+			sourceTree = "<group>";
+		};
+		4D27239B222D28C4002AB949 /* WebCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D27239C222D28C4002AB949 /* WCRWebCourseWare.h */,
+				4D2723A0222D28C4002AB949 /* WCRWebCourseWare.m */,
+				4D2723A1222D28C4002AB949 /* WCRWKWebviewMessageHandler.h */,
+				4D27239E222D28C4002AB949 /* WCRWKWebviewMessageHandler.m */,
+				4D27239F222D28C4002AB949 /* WCRError+WebCourseWare.h */,
+				4D27239D222D28C4002AB949 /* WCRError+WebCourseWare.m */,
+			);
+			path = WebCourseWare;
+			sourceTree = "<group>";
+		};
+		4D2723A2222D28C4002AB949 /* ImageCourseWare */ = {
+			isa = PBXGroup;
+			children = (
+				4D2723A4222D28C4002AB949 /* WCRImageCourseWare.h */,
+				4D2723A6222D28C4002AB949 /* WCRImageCourseWare.m */,
+				4D2723A3222D28C4002AB949 /* WCRError+ImageCourseWare.h */,
+				4D2723A5222D28C4002AB949 /* WCRError+ImageCourseWare.m */,
+			);
+			path = ImageCourseWare;
+			sourceTree = "<group>";
+		};
+		A6BCB287068D27E47D94CAC3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BBACAB89A85D5D8CF4DD606E /* Pods-WCRCourseWareDemo.debug.xcconfig */,
+				ECEC801BB4C61A5641DFEC55 /* Pods-WCRCourseWareDemo.release.xcconfig */,
+				E7E887791F4BE2B6D2280B09 /* Pods-WCRCourseWareSDK.debug.xcconfig */,
+				175A831500043B0D908FA8E3 /* Pods-WCRCourseWareSDK.release.xcconfig */,
+				9EDD80648D10FAE05862BD15 /* Pods-WCRCourseWareSDKTests.debug.xcconfig */,
+				0CE0EA3A492B20F7210B906A /* Pods-WCRCourseWareSDKTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4D272356222D2895002AB949 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D2723AE222D28C4002AB949 /* WCRViewCourseWare.h in Headers */,
+				4D2723AD222D28C4002AB949 /* WCRCourseWareLog.h in Headers */,
+				4D2723B1222D28C4002AB949 /* WCRWebCourseWare.h in Headers */,
+				4D2723B8222D28C4002AB949 /* WCRImageCourseWare.h in Headers */,
+				4D2723AC222D28C4002AB949 /* WCRCourseWare.h in Headers */,
+				4D2723A8222D28C4002AB949 /* WCRAVCourseWare.h in Headers */,
+				4D2723B6222D28C4002AB949 /* WCRWKWebviewMessageHandler.h in Headers */,
+				4D2723B7222D28C4002AB949 /* WCRError+ImageCourseWare.h in Headers */,
+				4D2723B4222D28C4002AB949 /* WCRError+WebCourseWare.h in Headers */,
+				4D2723A9222D28C4002AB949 /* WCRError+AVCourseWare.h in Headers */,
+				4D27236C222D2895002AB949 /* WCRCourseWareSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4D27235A222D2895002AB949 /* WCRCourseWareSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D27236F222D2895002AB949 /* Build configuration list for PBXNativeTarget "WCRCourseWareSDK" */;
+			buildPhases = (
+				12FE5A07812D2E3B721B4F10 /* [CP] Check Pods Manifest.lock */,
+				4D272356222D2895002AB949 /* Headers */,
+				4D272357222D2895002AB949 /* Sources */,
+				4D272358222D2895002AB949 /* Frameworks */,
+				4D272359222D2895002AB949 /* Resources */,
+				DDEA617B2802BF0F7F699DE2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WCRCourseWareSDK;
+			productName = WCRCourseWareSDK;
+			productReference = 4D27235B222D2895002AB949 /* WCRCourseWareSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4D272363222D2895002AB949 /* WCRCourseWareSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D272372222D2895002AB949 /* Build configuration list for PBXNativeTarget "WCRCourseWareSDKTests" */;
+			buildPhases = (
+				E45CDDC7AB8BBA256259A708 /* [CP] Check Pods Manifest.lock */,
+				4D272360222D2895002AB949 /* Sources */,
+				4D272361222D2895002AB949 /* Frameworks */,
+				4D272362222D2895002AB949 /* Resources */,
+				7C0777B5EDBDF74366CEAB63 /* [CP] Embed Pods Frameworks */,
+				83E85A17B2ACCD9068A521E4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D272367222D2895002AB949 /* PBXTargetDependency */,
+			);
+			name = WCRCourseWareSDKTests;
+			productName = WCRCourseWareSDKTests;
+			productReference = 4D272364222D2895002AB949 /* WCRCourseWareSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4D272378222D28A9002AB949 /* WCRCourseWareDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D27238C222D28AA002AB949 /* Build configuration list for PBXNativeTarget "WCRCourseWareDemo" */;
+			buildPhases = (
+				017D3E266C04583C4698356D /* [CP] Check Pods Manifest.lock */,
+				4D272375222D28A9002AB949 /* Sources */,
+				4D272376222D28A9002AB949 /* Frameworks */,
+				4D272377222D28A9002AB949 /* Resources */,
+				1F78C796CF27DE032E7ADF23 /* [CP] Embed Pods Frameworks */,
+				185F50BFF8D5E93C264627A3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WCRCourseWareDemo;
+			productName = WCRCourseWareDemo;
+			productReference = 4D272379222D28A9002AB949 /* WCRCourseWareDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4D272352222D2895002AB949 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = com.100tal;
+				TargetAttributes = {
+					4D27235A222D2895002AB949 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					4D272363222D2895002AB949 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					4D272378222D28A9002AB949 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 4D272355222D2895002AB949 /* Build configuration list for PBXProject "WCRCourseWareSDK" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4D272351222D2895002AB949;
+			productRefGroup = 4D27235C222D2895002AB949 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D27235A222D2895002AB949 /* WCRCourseWareSDK */,
+				4D272363222D2895002AB949 /* WCRCourseWareSDKTests */,
+				4D272378222D28A9002AB949 /* WCRCourseWareDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D272359222D2895002AB949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D272362222D2895002AB949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D272377222D28A9002AB949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D2723CD222D2BD5002AB949 /* AVViewController.xib in Resources */,
+				4D272388222D28AA002AB949 /* LaunchScreen.storyboard in Resources */,
+				4D2723CB222D2BD5002AB949 /* ViewViewController.xib in Resources */,
+				4D2723D2222D2BD5002AB949 /* MainViewController.xib in Resources */,
+				4D2723D0222D2BD5002AB949 /* WebViewController.xib in Resources */,
+				4D272385222D28AA002AB949 /* Assets.xcassets in Resources */,
+				4D2723CF222D2BD5002AB949 /* ImageViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		017D3E266C04583C4698356D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WCRCourseWareDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12FE5A07812D2E3B721B4F10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WCRCourseWareSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		185F50BFF8D5E93C264627A3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-resources.sh",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunLanguageSource.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AliyunLanguageSource.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F78C796CF27DE032E7ADF23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-frameworks.sh",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayerSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliThirdparty.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C0777B5EDBDF74366CEAB63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareSDKTests/Pods-WCRCourseWareSDKTests-frameworks.sh",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayerSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliThirdparty.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareSDKTests/Pods-WCRCourseWareSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83E85A17B2ACCD9068A521E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareSDKTests/Pods-WCRCourseWareSDKTests-resources.sh",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunLanguageSource.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AliyunLanguageSource.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareSDKTests/Pods-WCRCourseWareSDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDEA617B2802BF0F7F699DE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK-resources.sh",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunLanguageSource.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AliyunLanguageSource.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E45CDDC7AB8BBA256259A708 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WCRCourseWareSDKTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D272357222D2895002AB949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D2723B0222D28C4002AB949 /* WCRCourseWareLog.m in Sources */,
+				4D2723A7222D28C4002AB949 /* WCRCourseWare.m in Sources */,
+				4D2723B2222D28C4002AB949 /* WCRError+WebCourseWare.m in Sources */,
+				4D2723B9222D28C4002AB949 /* WCRError+ImageCourseWare.m in Sources */,
+				4D2723AF222D28C4002AB949 /* WCRViewCourseWare.m in Sources */,
+				4D2723AB222D28C4002AB949 /* WCRError+AVCourseWare.m in Sources */,
+				4D2723AA222D28C4002AB949 /* WCRAVCourseWare.m in Sources */,
+				4D2723B3222D28C4002AB949 /* WCRWKWebviewMessageHandler.m in Sources */,
+				4D2723BA222D28C4002AB949 /* WCRImageCourseWare.m in Sources */,
+				4D2723B5222D28C4002AB949 /* WCRWebCourseWare.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D272360222D2895002AB949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D27236A222D2895002AB949 /* WCRCourseWareSDKTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D272375222D28A9002AB949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D2723D1222D2BD5002AB949 /* ImageViewController.m in Sources */,
+				4D27238B222D28AA002AB949 /* main.m in Sources */,
+				4D2723CA222D2BD5002AB949 /* AVViewController.m in Sources */,
+				4D27237D222D28A9002AB949 /* AppDelegate.m in Sources */,
+				4D2723D3222D2BD5002AB949 /* MainViewController.m in Sources */,
+				4D2723CC222D2BD5002AB949 /* WebViewController.m in Sources */,
+				4D2723CE222D2BD5002AB949 /* ViewViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4D272367222D2895002AB949 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D27235A222D2895002AB949 /* WCRCourseWareSDK */;
+			targetProxy = 4D272366222D2895002AB949 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4D272386222D28AA002AB949 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D272387222D28AA002AB949 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4D27236D222D2895002AB949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D27236E222D2895002AB949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4D272370222D2895002AB949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7E887791F4BE2B6D2280B09 /* Pods-WCRCourseWareSDK.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 495Q99F5Z9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WCRCourseWareSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4D272371222D2895002AB949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 175A831500043B0D908FA8E3 /* Pods-WCRCourseWareSDK.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 495Q99F5Z9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WCRCourseWareSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4D272373222D2895002AB949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EDD80648D10FAE05862BD15 /* Pods-WCRCourseWareSDKTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 495Q99F5Z9;
+				INFOPLIST_FILE = WCRCourseWareSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4D272374222D2895002AB949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CE0EA3A492B20F7210B906A /* Pods-WCRCourseWareSDKTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 495Q99F5Z9;
+				INFOPLIST_FILE = WCRCourseWareSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4D27238D222D28AA002AB949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBACAB89A85D5D8CF4DD606E /* Pods-WCRCourseWareDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 495Q99F5Z9;
+				INFOPLIST_FILE = WCRCourseWareDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4D27238E222D28AA002AB949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECEC801BB4C61A5641DFEC55 /* Pods-WCRCourseWareDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 495Q99F5Z9;
+				INFOPLIST_FILE = WCRCourseWareDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4D272355222D2895002AB949 /* Build configuration list for PBXProject "WCRCourseWareSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D27236D222D2895002AB949 /* Debug */,
+				4D27236E222D2895002AB949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D27236F222D2895002AB949 /* Build configuration list for PBXNativeTarget "WCRCourseWareSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D272370222D2895002AB949 /* Debug */,
+				4D272371222D2895002AB949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D272372222D2895002AB949 /* Build configuration list for PBXNativeTarget "WCRCourseWareSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D272373222D2895002AB949 /* Debug */,
+				4D272374222D2895002AB949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D27238C222D28AA002AB949 /* Build configuration list for PBXNativeTarget "WCRCourseWareDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D27238D222D28AA002AB949 /* Debug */,
+				4D27238E222D28AA002AB949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4D272352222D2895002AB949 /* Project object */;
+}
