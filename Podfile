@@ -2,8 +2,7 @@
 # platform :ios, '9.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'http://10.2.250.21/wcr_client/WCRBaseCocoaPods.git'
-source 'http://10.2.250.21/wcr_client/WCRSpecs.git'
+source 'https://git.100tal.com/jituan_zhiboyun_yidongduan/WCRSpecs.git'
 
 inhibit_all_warnings!
 

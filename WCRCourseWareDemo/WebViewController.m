@@ -30,7 +30,9 @@
     self.courseWare.delegate = self;
     self.courseWare.webCourseDelegate = self;
     
-    self.urlTextField.text = @"https://ak-zby-oss-foreign.weclassroom.com/lesson/jenkins/light/198/1/787953/doc.html";
+    self.urlTextField.text = @"https://zby-oss-foreign.weclassroom.com/lesson/jenkins/25445/892593/pdfpage.html";
+//    self.urlTextField.text = @"https://ak-zby-oss-foreign.weclassroom.com/lesson/jenkins/light/198/1/787953/doc.html";
+    
 //    self.urlTextField.text = @"http://cloudclass-dev.oss-cn-beijing.aliyuncs.com/lesson/jenkins/113297/10018/pdfpage.html";
     
     self.jumpPage.text = @"2";
