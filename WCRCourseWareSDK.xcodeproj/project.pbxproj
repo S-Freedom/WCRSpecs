@@ -211,13 +211,13 @@
 			isa = PBXGroup;
 			children = (
 				4DBE3DB522437EBA000F4FF3 /* WCRCourseWareSDK.h */,
-				4DBE3DE622437F49000F4FF3 /* AVCourseWare */,
-				4DBE3DF122437F49000F4FF3 /* ImageCourseWare */,
-				4DBE3DEE22437F49000F4FF3 /* ViewCourseWare */,
 				4DBE3DEC22437F49000F4FF3 /* WCRCourseWare.h */,
 				4DBE3DEB22437F49000F4FF3 /* WCRCourseWare.m */,
 				4DBE3DED22437F49000F4FF3 /* WCRCourseWareLog.h */,
 				4DBE3DF622437F49000F4FF3 /* WCRCourseWareLog.m */,
+				4DBE3DE622437F49000F4FF3 /* AVCourseWare */,
+				4DBE3DF122437F49000F4FF3 /* ImageCourseWare */,
+				4DBE3DEE22437F49000F4FF3 /* ViewCourseWare */,
 				4DBE3DF722437F49000F4FF3 /* WebCourseWare */,
 				4DBE3DB622437EBA000F4FF3 /* Info.plist */,
 			);
@@ -265,8 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				4DBE3DE722437F49000F4FF3 /* WCRAVCourseWare.h */,
-				4DBE3DE822437F49000F4FF3 /* WCRError+AVCourseWare.h */,
 				4DBE3DE922437F49000F4FF3 /* WCRAVCourseWare.m */,
+				4DBE3DE822437F49000F4FF3 /* WCRError+AVCourseWare.h */,
 				4DBE3DEA22437F49000F4FF3 /* WCRError+AVCourseWare.m */,
 			);
 			path = AVCourseWare;
@@ -285,8 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				4DBE3DF222437F49000F4FF3 /* WCRError+ImageCourseWare.h */,
-				4DBE3DF322437F49000F4FF3 /* WCRImageCourseWare.h */,
 				4DBE3DF422437F49000F4FF3 /* WCRError+ImageCourseWare.m */,
+				4DBE3DF322437F49000F4FF3 /* WCRImageCourseWare.h */,
 				4DBE3DF522437F49000F4FF3 /* WCRImageCourseWare.m */,
 			);
 			path = ImageCourseWare;
@@ -295,12 +295,12 @@
 		4DBE3DF722437F49000F4FF3 /* WebCourseWare */ = {
 			isa = PBXGroup;
 			children = (
-				4DBE3DF822437F49000F4FF3 /* WCRWebCourseWare.h */,
-				4DBE3DF922437F49000F4FF3 /* WCRError+WebCourseWare.m */,
-				4DBE3DFA22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m */,
 				4DBE3DFB22437F49000F4FF3 /* WCRError+WebCourseWare.h */,
+				4DBE3DF922437F49000F4FF3 /* WCRError+WebCourseWare.m */,
+				4DBE3DF822437F49000F4FF3 /* WCRWebCourseWare.h */,
 				4DBE3DFC22437F49000F4FF3 /* WCRWebCourseWare.m */,
 				4DBE3DFD22437F49000F4FF3 /* WCRWKWebviewMessageHandler.h */,
+				4DBE3DFA22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m */,
 			);
 			path = WebCourseWare;
 			sourceTree = "<group>";

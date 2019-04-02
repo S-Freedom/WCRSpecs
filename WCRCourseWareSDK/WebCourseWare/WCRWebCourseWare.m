@@ -347,7 +347,7 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     WCRCWLogInfo(@"wkwebview加载完成:%@",self.url);
     self.webViewLoadSuccess = YES;
-    
+    [self disableDoubleTapScroll];
     if (self.isShouldGoToPageAfterLoad) {
         [self toPage:self.currentPage step:self.currentStep];
     }
@@ -430,6 +430,11 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
         WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
         config.allowsInlineMediaPlayback = YES;
         config.mediaPlaybackRequiresUserAction = false;
+        if ([_webView.scrollView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+            if (@available(iOS 11.0, *)) {
+                _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            }
+        }
         if([config respondsToSelector:@selector(setIgnoresViewportScaleLimits:)]) {
             if (@available(iOS 10.0, *)) {
                 config.ignoresViewportScaleLimits = YES;
@@ -462,6 +467,25 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
         _webView.scrollView.delegate = self;
     }
     return _webView;
+}
+
+/** 禁用单指双击滚动课件 */
+- (void)disableDoubleTapScroll {
+    // iterate over all subviews of the WKWebView's scrollView
+    for (UIView *subview in self.webView.scrollView.subviews) {
+        // iterate over recognizers of subview
+        for (UIGestureRecognizer *recognizer in subview.gestureRecognizers) {
+            // check the recognizer is  a UITapGestureRecognizer
+            if ([recognizer isKindOfClass:UITapGestureRecognizer.class]) {
+                // cast the UIGestureRecognizer as UITapGestureRecognizer
+                UITapGestureRecognizer *tapRecognizer = (UITapGestureRecognizer*)recognizer;
+                // check if it is a 1-finger double-tap
+                if (tapRecognizer.numberOfTapsRequired == 2 && tapRecognizer.numberOfTouchesRequired == 1) {
+                    [subview removeGestureRecognizer:recognizer];
+                }
+            }
+        }
+    }
 }
 
 -(UIView *)view{
