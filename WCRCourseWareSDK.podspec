@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   WCRCourseWareSDK 是专门为课件设计的基础架构，具有打开网页课件、音视频课件、图片课件和白板课件的能力。
                    DESC
-  s.homepage     = "http://10.2.250.21/wcr_client/WCRCourseWareSDK"
+  s.homepage     = "https://git.100tal.com/jituan_zhiboyun_yidongduan/WCRCourseWareSDK.git"
   s.license      = "MIT"
   s.author             = { "欧阳铨" => "ouyangquan1@100tal.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "http://10.2.250.21/wcr_client/WCRCourseWareSDK.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://git.100tal.com/jituan_zhiboyun_yidongduan/WCRCourseWareSDK.git", :tag => "#{s.version}" }
   s.requires_arc = true
 
   s.default_subspecs = ["CourseWare"]
