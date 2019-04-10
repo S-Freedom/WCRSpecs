@@ -11,7 +11,7 @@
 #import <WCRBase/ReactiveObjC.h>
 #import <WCRBase/NSString+Utils.h>
 #import "WCRError+ImageCourseWare.h"
-#import "WCRCourseWareLog.h"
+#import "WCRCourseWareLogger.h"
 
 
 

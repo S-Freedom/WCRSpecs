@@ -20,14 +20,14 @@
 		4DBE3E0122437F49000F4FF3 /* WCRError+AVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DEA22437F49000F4FF3 /* WCRError+AVCourseWare.m */; };
 		4DBE3E0222437F49000F4FF3 /* WCRCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DEB22437F49000F4FF3 /* WCRCourseWare.m */; };
 		4DBE3E0322437F49000F4FF3 /* WCRCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DEC22437F49000F4FF3 /* WCRCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4DBE3E0422437F49000F4FF3 /* WCRCourseWareLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DED22437F49000F4FF3 /* WCRCourseWareLog.h */; };
+		4DBE3E0422437F49000F4FF3 /* WCRCourseWareLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DED22437F49000F4FF3 /* WCRCourseWareLogger.h */; };
 		4DBE3E0522437F49000F4FF3 /* WCRViewCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DEF22437F49000F4FF3 /* WCRViewCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3E0622437F49000F4FF3 /* WCRViewCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF022437F49000F4FF3 /* WCRViewCourseWare.m */; };
 		4DBE3E0722437F49000F4FF3 /* WCRError+ImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DF222437F49000F4FF3 /* WCRError+ImageCourseWare.h */; };
 		4DBE3E0822437F49000F4FF3 /* WCRImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DF322437F49000F4FF3 /* WCRImageCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3E0922437F49000F4FF3 /* WCRError+ImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF422437F49000F4FF3 /* WCRError+ImageCourseWare.m */; };
 		4DBE3E0A22437F49000F4FF3 /* WCRImageCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF522437F49000F4FF3 /* WCRImageCourseWare.m */; };
-		4DBE3E0B22437F49000F4FF3 /* WCRCourseWareLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF622437F49000F4FF3 /* WCRCourseWareLog.m */; };
+		4DBE3E0B22437F49000F4FF3 /* WCRCourseWareLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF622437F49000F4FF3 /* WCRCourseWareLogger.m */; };
 		4DBE3E0C22437F49000F4FF3 /* WCRWebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DF822437F49000F4FF3 /* WCRWebCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3E0D22437F49000F4FF3 /* WCRError+WebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF922437F49000F4FF3 /* WCRError+WebCourseWare.m */; };
 		4DBE3E0E22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DFA22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m */; };
@@ -107,14 +107,14 @@
 		4DBE3DEA22437F49000F4FF3 /* WCRError+AVCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+AVCourseWare.m"; sourceTree = "<group>"; };
 		4DBE3DEB22437F49000F4FF3 /* WCRCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWare.m; sourceTree = "<group>"; };
 		4DBE3DEC22437F49000F4FF3 /* WCRCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCourseWare.h; sourceTree = "<group>"; };
-		4DBE3DED22437F49000F4FF3 /* WCRCourseWareLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCourseWareLog.h; sourceTree = "<group>"; };
+		4DBE3DED22437F49000F4FF3 /* WCRCourseWareLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCourseWareLogger.h; sourceTree = "<group>"; };
 		4DBE3DEF22437F49000F4FF3 /* WCRViewCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRViewCourseWare.h; sourceTree = "<group>"; };
 		4DBE3DF022437F49000F4FF3 /* WCRViewCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRViewCourseWare.m; sourceTree = "<group>"; };
 		4DBE3DF222437F49000F4FF3 /* WCRError+ImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+ImageCourseWare.h"; sourceTree = "<group>"; };
 		4DBE3DF322437F49000F4FF3 /* WCRImageCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRImageCourseWare.h; sourceTree = "<group>"; };
 		4DBE3DF422437F49000F4FF3 /* WCRError+ImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+ImageCourseWare.m"; sourceTree = "<group>"; };
 		4DBE3DF522437F49000F4FF3 /* WCRImageCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRImageCourseWare.m; sourceTree = "<group>"; };
-		4DBE3DF622437F49000F4FF3 /* WCRCourseWareLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWareLog.m; sourceTree = "<group>"; };
+		4DBE3DF622437F49000F4FF3 /* WCRCourseWareLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWareLogger.m; sourceTree = "<group>"; };
 		4DBE3DF822437F49000F4FF3 /* WCRWebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWebCourseWare.h; sourceTree = "<group>"; };
 		4DBE3DF922437F49000F4FF3 /* WCRError+WebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+WebCourseWare.m"; sourceTree = "<group>"; };
 		4DBE3DFA22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWKWebviewMessageHandler.m; sourceTree = "<group>"; };
@@ -213,8 +213,8 @@
 				4DBE3DB522437EBA000F4FF3 /* WCRCourseWareSDK.h */,
 				4DBE3DEC22437F49000F4FF3 /* WCRCourseWare.h */,
 				4DBE3DEB22437F49000F4FF3 /* WCRCourseWare.m */,
-				4DBE3DED22437F49000F4FF3 /* WCRCourseWareLog.h */,
-				4DBE3DF622437F49000F4FF3 /* WCRCourseWareLog.m */,
+				4DBE3DED22437F49000F4FF3 /* WCRCourseWareLogger.h */,
+				4DBE3DF622437F49000F4FF3 /* WCRCourseWareLogger.m */,
 				4DBE3DE622437F49000F4FF3 /* AVCourseWare */,
 				4DBE3DF122437F49000F4FF3 /* ImageCourseWare */,
 				4DBE3DEE22437F49000F4FF3 /* ViewCourseWare */,
@@ -329,7 +329,7 @@
 				4DBE3DFE22437F49000F4FF3 /* WCRAVCourseWare.h in Headers */,
 				4DBE3E0322437F49000F4FF3 /* WCRCourseWare.h in Headers */,
 				4DBE3E0F22437F49000F4FF3 /* WCRError+WebCourseWare.h in Headers */,
-				4DBE3E0422437F49000F4FF3 /* WCRCourseWareLog.h in Headers */,
+				4DBE3E0422437F49000F4FF3 /* WCRCourseWareLogger.h in Headers */,
 				4DBE3E0722437F49000F4FF3 /* WCRError+ImageCourseWare.h in Headers */,
 				4DBE3DFF22437F49000F4FF3 /* WCRError+AVCourseWare.h in Headers */,
 				4DBE3DC322437EBA000F4FF3 /* WCRCourseWareSDK.h in Headers */,
@@ -613,7 +613,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBE3E0B22437F49000F4FF3 /* WCRCourseWareLog.m in Sources */,
+				4DBE3E0B22437F49000F4FF3 /* WCRCourseWareLogger.m in Sources */,
 				4DBE3E0122437F49000F4FF3 /* WCRError+AVCourseWare.m in Sources */,
 				4DBE3E0D22437F49000F4FF3 /* WCRError+WebCourseWare.m in Sources */,
 				4DBE3E0922437F49000F4FF3 /* WCRError+ImageCourseWare.m in Sources */,

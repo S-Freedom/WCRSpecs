@@ -11,7 +11,7 @@
 #import <WCRBase/ReactiveObjC.h>
 #import <WCRBase/NSString+Utils.h>
 #import <WCRBase/NSDictionary+Utils.h>
-#import "WCRCourseWareLog.h"
+#import "WCRCourseWareLogger.h"
 #import "WCRWKWebviewMessageHandler.h"
 #import "WCRError+WebCourseWare.h"
 //#import "WCRUtils.h"

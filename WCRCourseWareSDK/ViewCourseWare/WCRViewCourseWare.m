@@ -7,7 +7,7 @@
 //
 
 #import "WCRViewCourseWare.h"
-#import "WCRCourseWareLog.h"
+#import "WCRCourseWareLogger.h"
 
 @implementation WCRViewCourseWare
 - (void)createView:(UIColor *)color{

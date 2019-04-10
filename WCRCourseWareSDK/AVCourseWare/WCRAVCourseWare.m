@@ -10,7 +10,7 @@
 #import <WCRBase/ReactiveObjC.h>
 #import <WCRBase/NSString+Utils.h>
 #import <WCRPlayerSDK/WCRPlayerSDK.h>
-#import "WCRCourseWareLog.h"
+#import "WCRCourseWareLogger.h"
 #import "WCRError+AVCourseWare.h"
 
 @interface WCRAVCourseWare ()<WCRPlayerDelegate>
