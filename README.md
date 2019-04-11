@@ -17,7 +17,7 @@ source 'https://git.100tal.com/jituan_zhiboyun_yidongduan/WCRSpecs.git'
 
 pod 'WCRCourseWareSDK'
 ```
-或单独使用子模块或组合使用
+单独使用子模块或组合使用
 ```ruby
 网页课件：
 pod 'WCRCourseWareSDK/WebCourseWare'
