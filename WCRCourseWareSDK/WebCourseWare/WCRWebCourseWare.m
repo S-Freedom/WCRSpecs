@@ -57,16 +57,16 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (WCRError * _Nullable)loadURL:(NSURL *)url{
-    WCRCWLogError(@"加载网页:%@",url);
+    WCRCWLogInfo(@"打开课件:%@",url);
     self.view = self.webView;
     
     if (url == nil) {
-        WCRCWLogError(@"加载网页 url为nil");
+        WCRCWLogError(@"打开课件 url为nil");
         return [WCRError webCourseWareErrorWithErrorCode:WCRWCWErrorCodeNilUrl];
     }
     
     if ([NSString wcr_isBlankString:url.absoluteString]) {
-        WCRCWLogError(@"加载网页 url absoluteString 为空");
+        WCRCWLogError(@"打开课件 url absoluteString 为空");
         return [WCRError webCourseWareErrorWithErrorCode:WCRWCWErrorCodeNilUrl];
     }
     
@@ -77,7 +77,7 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
     return nil;
 }
 - (void)goToPage:(NSInteger)page step:(NSInteger)step{
-    WCRCWLogInfo(@"跳转到某一页page:%lu step:%lu",(unsigned long)page,(unsigned long)step);
+    WCRCWLogInfo(@"课件翻页page:%lu step:%lu",(unsigned long)page,(unsigned long)step);
     if (page <= 0 || step == -1){
         WCRCWLogError(@"page小于0或者step等于-1");
         return;
@@ -207,8 +207,6 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (void)onJsFuncSetUp:(NSDictionary *)message{
-    WCRCWLogInfo(@"onJsFuncSetUp%@ - message:%@", self.url,message);
-    
     NSDictionary *config = [message objectForKey:@"body"];
     if (config == nil) {
         WCRCWLogError(@"setUp方法config为空");
@@ -234,8 +232,6 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (void)onJsFuncSendMessage:(NSDictionary *)message{
-    WCRCWLogInfo(@"onJsFuncSendMessage:%@ - message:%@",self.url,message);
-    
     NSDictionary *body = [message objectForKey:@"body"];
     if (body == nil) {
         WCRCWLogError(@"body 为空");
@@ -257,8 +253,6 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (void)onJsFuncSendMessageWithCallBack:(NSDictionary *)message{
-    WCRCWLogInfo(@"onJsFuncSendMessageWithCallBack:%@ - message:%@",self.url,message);
-    
     NSDictionary *body = [message objectForKey:@"body"];
     if (body == nil) {
         WCRCWLogError(@"body 为空");
@@ -294,11 +288,9 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (void)onJsFuncError:(NSDictionary *)message{
-    WCRCWLogError(@"onJsFuncError：%@",message);
 }
 
 - (void)onJsFuncScroll:(NSDictionary *)message{
-    WCRCWLogInfo(@"onJsFuncScroll:%@ - message:%@", self.url,message);
     NSNumber *body = [message objectForKey:@"body"];
     CGFloat offsetY = [body floatValue];
     self.currentRate = offsetY/self.documentHeight;
@@ -308,7 +300,6 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (void)onJsFuncHeightChange:(NSDictionary *)message{
-    WCRCWLogInfo(@"onJsFuncHeightChange:%@ - message:%@", self.url,message);
     NSNumber *body = [message objectForKey:@"body"];
     self.documentHeight = [body floatValue];
     if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
@@ -324,7 +315,7 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler{
-    WCRCWLogInfo(@"javaScriptString :%@",javaScriptString);
+    WCRCWLogInfo(@"Native To JS 交互 javaScriptString :%@",javaScriptString);
     if ([NSString wcr_isBlankString:javaScriptString]) {
         WCRCWLogError(@"javaScriptString 为空");
         return;
