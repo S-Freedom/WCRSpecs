@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WCRCourseWareSDK"
-  s.version      = "1.2.4"
+  s.version      = "1.3.0"
   s.summary      = "WCRCourseWareSDK"
   s.description  = <<-DESC
                   WCRCourseWareSDK 是专门为课件设计的基础架构，具有打开网页课件、音视频课件、图片课件和白板课件的能力。
@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
 
     ss.public_header_files = ["WCRCourseWareSDK/WCRCourseWareSDK.h",
                               "WCRCourseWareSDK/WCRCourseWare.h",
+                              "WCRCourseWareSDK/WCRCourseWareLogger.h",
                               "WCRCourseWareSDK/AVCourseWare/WCRAVCourseWare.h",
                               "WCRCourseWareSDK/ImageCourseWare/WCRImageCourseWare.h",
                               "WCRCourseWareSDK/ViewCourseWare/WCRViewCourseWare.h",
