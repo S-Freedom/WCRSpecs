@@ -33,6 +33,7 @@ target 'WCRCourseWareSDK' do
     inherit! :search_paths
     # Pods for testing
     pod "Kiwi"
+    pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
   end
 
 end
