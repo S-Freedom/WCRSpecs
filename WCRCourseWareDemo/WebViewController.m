@@ -30,11 +30,11 @@
     self.courseWare.delegate = self;
     self.courseWare.webCourseDelegate = self;
     
-    self.urlTextField.text = @"https://zby-oss-foreign.weclassroom.com/lesson/jenkins/25445/892593/pdfpage.html";
+    self.urlTextField.text = @"https://kjdsfz.cdn.aibeike.com/webkjdsfiles/893218e8ae1649a591e056e7c3bb42b9/index.html?id=2D1AB1D670E743AFBD1F36F053CA5D40&line=off&pageCount=14&devAutoChangePage=false&env=7&changePageTool=true&preview=flase";
 //    self.urlTextField.text = @"https://ak-zby-oss-foreign.weclassroom.com/lesson/jenkins/light/198/1/787953/doc.html";
     
 //    self.urlTextField.text = @"http://cloudclass-dev.oss-cn-beijing.aliyuncs.com/lesson/jenkins/113297/10018/pdfpage.html";
-    
+//    self.urlTextField.text = @"https://www.baidu.com";
     self.jumpPage.text = @"2";
     self.jumpStep.text = @"0";
     
@@ -44,7 +44,6 @@
 
 - (IBAction)createButtonTap:(id)sender {
     NSURL *url = [NSURL URLWithString:self.urlTextField.text];
-    [self.courseWare loadURL:url];
     [self.courseWareView addSubview:self.courseWare.view];
     
     [self.courseWare.view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -53,6 +52,8 @@
         make.top.equalTo(self.courseWareView.mas_top).offset(20);
         make.bottom.equalTo(self.courseWareView.mas_bottom).offset(-20);
     }];
+    
+    [self.courseWare loadURL:url];
 }
 - (IBAction)destoryButtonTap:(id)sender {
     [self.courseWare.view removeFromSuperview];
