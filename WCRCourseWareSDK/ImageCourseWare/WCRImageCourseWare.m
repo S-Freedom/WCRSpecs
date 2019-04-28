@@ -23,7 +23,6 @@
 
 - (WCRError * _Nullable)loadImageWithURL:(NSURL *)url{
     WCRCWLogInfo(@"打开图片:%@",url);
-    self.view = self.imageView;
     
     if (url == nil) {
         WCRCWLogError(@"加载图片 url为nil");
@@ -67,6 +66,10 @@
         [self loadImageWithURL:url];
     });
     
+}
+
+-(UIView *)view{
+    return self.imageView;
 }
 
 -(UIImageView *)imageView{

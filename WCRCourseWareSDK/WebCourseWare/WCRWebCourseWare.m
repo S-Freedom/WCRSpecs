@@ -14,15 +14,19 @@
 #import "WCRCourseWareLogger.h"
 #import "WCRWKWebviewMessageHandler.h"
 #import "WCRError+WebCourseWare.h"
-//#import "WCRUtils.h"
 
 static NSString * const kWCRDocJSSDKScriptMessageHandler = @"WCRDocJSSDK";
 NSString * const kWCRWebCourseWareJSFuncSetUp = @"setup";
 NSString * const kWCRWebCourseWareJSFuncSendMessage = @"sendMessage";
 NSString * const kWCRWebCourseWareJSFuncSendMessageWithCallBack = @"sendMessageWithCallback";
 NSString * const kWCRWebCourseWareJSErrorMessage = @"BUFFERING_LOAD_ERROR";
+//PDF课件高度通知
 NSString * const kWCRWebCourseWareJSScrollMessage = @"PDF_SCROLLTOP_RESULT";
 NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIGHT";
+//题库与课件高度通知
+NSString * const kWCRWebCourseWareJSDOCScrollMessage = @"DOCQS_SCROLLTOP_RESULT";
+NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT_HEIGHT";
+
 
 @interface WCRWebCourseWare ()<WKScriptMessageHandler,WKUIDelegate,WKNavigationDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) WKWebView *webView;
@@ -57,7 +61,7 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (WCRError * _Nullable)loadURL:(NSURL *)url{
-    WCRCWLogInfo(@"打开课件:%@",url);
+    WCRCWLogInfo(@"打开课件:%@ ,%@",url,[url class]);
     self.view = self.webView;
     
     if (url == nil) {
@@ -190,6 +194,10 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
         } else if ([msgName isEqualToString:kWCRWebCourseWareJSScrollMessage]) {
             [self onJsFuncScroll:msgBody];
         } else if ([msgName isEqualToString:kWCRWebCourseWareJSHeightChangeMessage]) {
+            [self onJsFuncHeightChange:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCScrollMessage]) {
+            [self onJsFuncScroll:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
             [self onJsFuncHeightChange:msgBody];
         }
         [self callBackJsFunc:msgName body:msgBody];
@@ -396,7 +404,6 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
-    WCRCWLogInfo(@"wkwebview判断是否取消加载:%@",self.url);
     if (navigationResponse.isForMainFrame && [navigationResponse.response isKindOfClass:[NSHTTPURLResponse class]] && ((NSHTTPURLResponse *)navigationResponse.response).statusCode >= 400) {
         //mainFrame状态码400以上，算失败，取消加载，会自动走到失败的代理里面
         decisionHandler(WKNavigationResponsePolicyCancel);
@@ -406,7 +413,6 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 }
 
 -(void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{
-    WCRCWLogInfo(@"wkwebview需要进行身份验证:%@",self.url);
     NSURLCredential * credential = [[NSURLCredential alloc] initWithTrust:[challenge protectionSpace].serverTrust];
     completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
 }
