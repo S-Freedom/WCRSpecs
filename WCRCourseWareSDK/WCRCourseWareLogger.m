@@ -20,6 +20,7 @@ static NSString * const liveStreamName = @"WCRCourseWareSDK";
         logger = [WCRCourseWareLogger new];
         logger.logFilePath = liveStreamLogPath;
         logger.SDKName = liveStreamName;
+        [[WCRLogger sharedLogger] openXcodeConsole:YES];
     });
     return logger;
 }

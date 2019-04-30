@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D33676E2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33676D2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m */; };
 		4DBE3DBC22437EBA000F4FF3 /* WCRCourseWareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBE3DB222437EBA000F4FF3 /* WCRCourseWareSDK.framework */; };
 		4DBE3DC322437EBA000F4FF3 /* WCRCourseWareSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DB522437EBA000F4FF3 /* WCRCourseWareSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3DD422437ECB000F4FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DD322437ECB000F4FF3 /* AppDelegate.m */; };
@@ -47,6 +48,7 @@
 		4DBE3E2C2243822C000F4FF3 /* WCRCourseWareSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBE3DB222437EBA000F4FF3 /* WCRCourseWareSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DE9F1332272A2830040F1B4 /* WCRImageCourseWareSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9F1322272A2830040F1B4 /* WCRImageCourseWareSpecs.m */; };
 		4DE9F1372272ABF70040F1B4 /* WCRViewCourseWareSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9F1362272ABF70040F1B4 /* WCRViewCourseWareSpecs.m */; };
+		4DF9E2592276F7820007E494 /* WCRWebCourseWareSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9E2582276F7820007E494 /* WCRWebCourseWareSpecs.m */; };
 		5F97227996668F98C11E5673 /* libPods-WCRCourseWareSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD352529AF704BD31F08B7F /* libPods-WCRCourseWareSDKTests.a */; };
 		724B4A8C992E4DC6C40F598C /* libPods-WCRCourseWareDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1C562CCA32C4E8407C3A93 /* libPods-WCRCourseWareDemo.a */; };
 		B152FC0210CEEA75AF439A92 /* libPods-WCRCourseWareSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAAC622E44BE011FDD5D98E /* libPods-WCRCourseWareSDK.a */; };
@@ -89,6 +91,8 @@
 		2E201A917AD4AB66699749BA /* Pods-WCRCourseWareDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareDemo.release.xcconfig"; path = "Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4BD352529AF704BD31F08B7F /* libPods-WCRCourseWareSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WCRCourseWareSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAAC622E44BE011FDD5D98E /* libPods-WCRCourseWareSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WCRCourseWareSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D2FF4422276FEEC00EBFCC4 /* WCRWebCourseWare+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WCRWebCourseWare+Test.h"; sourceTree = "<group>"; };
+		4D33676D2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRAVCourseWareSpecs.m; sourceTree = "<group>"; };
 		4DBE3DB222437EBA000F4FF3 /* WCRCourseWareSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WCRCourseWareSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBE3DB522437EBA000F4FF3 /* WCRCourseWareSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCRCourseWareSDK.h; sourceTree = "<group>"; };
 		4DBE3DB622437EBA000F4FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 		4DBE3E20224381FC000F4FF3 /* AVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVViewController.xib; sourceTree = "<group>"; };
 		4DE9F1322272A2830040F1B4 /* WCRImageCourseWareSpecs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRImageCourseWareSpecs.m; sourceTree = "<group>"; };
 		4DE9F1362272ABF70040F1B4 /* WCRViewCourseWareSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRViewCourseWareSpecs.m; sourceTree = "<group>"; };
+		4DF9E2582276F7820007E494 /* WCRWebCourseWareSpecs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRWebCourseWareSpecs.m; sourceTree = "<group>"; };
 		65B7CE67EA48A6007C5194FC /* Pods-WCRCourseWareDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareDemo.debug.xcconfig"; path = "Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		75C72ED8F5F3D744C95FBE31 /* Pods-WCRCourseWareSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareSDKTests.release.xcconfig"; path = "Target Support Files/Pods-WCRCourseWareSDKTests/Pods-WCRCourseWareSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		7991ABA29B832D727103F40A /* Pods-WCRCourseWareSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCRCourseWareSDK.debug.xcconfig"; path = "Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +237,9 @@
 				4DBE3DC222437EBA000F4FF3 /* Info.plist */,
 				4DE9F1322272A2830040F1B4 /* WCRImageCourseWareSpecs.m */,
 				4DE9F1362272ABF70040F1B4 /* WCRViewCourseWareSpecs.m */,
+				4D33676D2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m */,
+				4DF9E2582276F7820007E494 /* WCRWebCourseWareSpecs.m */,
+				4D2FF4422276FEEC00EBFCC4 /* WCRWebCourseWare+Test.h */,
 			);
 			path = WCRCourseWareSDKTests;
 			sourceTree = "<group>";
@@ -683,6 +691,8 @@
 			files = (
 				4DE9F1372272ABF70040F1B4 /* WCRViewCourseWareSpecs.m in Sources */,
 				4DE9F1332272A2830040F1B4 /* WCRImageCourseWareSpecs.m in Sources */,
+				4DF9E2592276F7820007E494 /* WCRWebCourseWareSpecs.m in Sources */,
+				4D33676E2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

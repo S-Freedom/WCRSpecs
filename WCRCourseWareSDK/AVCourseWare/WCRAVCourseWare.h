@@ -42,6 +42,7 @@ typedef NS_ENUM(NSUInteger, WCRAVCourseWareType){
 @property (nonatomic, weak) id<WCRAVCourseWareDelegate>avCourseWareDelegate;
 @property (nonatomic, strong, readonly) WCRError *error;
 @property (nonatomic, assign, readonly) WCRAVCourseWarePlayStatus status;
+@property (nonatomic, assign, readonly) WCRAVCourseWareScalingMode scalingMode;
 - (instancetype)initWithScalingMode:(WCRAVCourseWareScalingMode)scalingMode;
 - (WCRError * _Nullable)loadURL:(NSURL *)url withType:(WCRAVCourseWareType)type;
 - (void)play;
