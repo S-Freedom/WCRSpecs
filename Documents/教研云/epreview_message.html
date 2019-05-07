@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>接口消息测试</title>
+    <style>
+        .container {
+            border: 2px solid #000000;
+        }
+        iframe{
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <iframe style="width: 640px;height:480px;"
+                src="https://kjdsfz.cdn.aibeike.com/webkjdsfiles/903cedb6210e4fd399bd15587998770e/index.html?id=6956BF5695D24622B562E1D5B19F7CBB&line=off&pageCount=6&devAutoChangePage=false"></iframe>
+        </div>
+        <button onclick='onPreHandler()'>前翻页</button>
+        <button onclick='onNextHandler()'>后翻页</button>
+        <input type="text" id="input" style="width:50px;">
+        <button onclick='onPageTurningHandler()'>确认跳转</button>
+        <button onclick="onSetUpContainerScrollTopHandler()">设置容器滚动</button>
+
+        <button onclick="onSetUpAudioPlayTopHandler()">设置声音播放状态</button>
+        <button onclick="onSetUpVideoPlayTopHandler()">设置视频播放状态</button>
+
+        <button onclick="onGetCatalogueInfoHandler()">获取目录数据</button>
+        <button onclick="onSetUpBodyBackGroundHandler()">改变body的颜色</button>
+
+        <button onclick="onSetUpPageBackGroundHandler()">改变所有页面的颜色</button>
+        <button onclick="onResetPageBackGroundHandler()">还原所有页面的颜色</button>
+
+        <button onclick="onSetScrollTop()">设置画布滚动位置</button>
+        <button onclick="ongetAllTeacherRemarkHandler()">获取老师可见备注信息</button>
+
+        <button onclick="onPlayStageAnimate()">顺序播放动画</button>
+    </div>
+
+    <div class="container">
+        <div style="display:flex;">
+            <div>
+                <p>教师端 发送消息播放动画</p>
+                <iframe id="teacher" style="width: 640px;height:480px;"
+                    src="https://kjdsfz.cdn.aibeike.com/webkjdsfiles/903cedb6210e4fd399bd15587998770e/index.html?id=6956BF5695D24622B562E1D5B19F7CBB&line=off&pageCount=6&devAutoChangePage=false"></iframe>
+            </div>
+            <div>
+                <p>学生端 无法点击 自动同步教师端动画</p>
+                <iframe id="student" style="width: 640px;height:480px;"
+                    src="https://kjdsfz.cdn.aibeike.com/webkjdsfiles/903cedb6210e4fd399bd15587998770e/index.html?id=6956BF5695D24622B562E1D5B19F7CBB&line=off&pageCount=6&devAutoChangePage=false"></iframe>
+            </div>
+        </div>
+        <p>
+            <button onclick="onPlayTeacherStageAnimate()">顺序播放动画</button>
+            <button onclick="reloadStudentFrame()">刷新学生端</button>
+            <button onclick="syncCurrentPageState()">同步当前页内音视频动画状态</button>
+            <input type="text" id="input2" style="width:50px;">
+            <button onclick="setPageNum()">设置两端页码</button>
+        </p>
+    </div>
+
+    <script>
+        /**
+         * 接口说明：
+         * 
+         * 1.设置翻页接口
+         * 设置翻页有3个接口可使用 分别为：
+         * changePagePre 前翻页  参数：  showHidePage： 是否展示隐藏页 （默认为false） 
+         * changePageNext 后翻页 参数：  showHidePage： 是否展示隐藏页 （默认为false） 
+         * pageTurning 跳转页    参数：  page：跳转页的索引   speed：跳转的速度（默认为0）  showHidePage：  是否展示隐藏页   （默认为false）   
+         * 
+         * 2.容器滚动接口
+         * containerScrollTopChanged 接收课件内容器滚动的消息 参数：topValue：top位置   parentNodesId： 触发的元素id
+         * 
+         * setUpContainerScrollTop 设置课件内容器的滚动
+         * 
+         * 3.声音接口
+         * audioStateChanged 接收课件内声音状态的消息 
+         * setUpAudioState设置课件内声音的状态
+         * 可设置参数：
+         * state：（play || pause） 
+         * eId：触发的元素id
+         * muted: 是否静音(true || false)
+         * volume: 音量(0~1)
+         * currentTime:设置时间点(0~duration,duration可以通过audioStateChanged获取到)
+         * 
+         * 
+         * 4.视频接口
+         * videoStateChanged 接收课件内视频状态的消息 
+         * setUpVideoState 设置课件内视频的状态
+         * 可设置参数：
+         * state：（play || pause） eId：触发的元素id
+         * muted: 是否静音(true || false)
+         * volume: 音量(0~1)
+         * currentTime:设置时间点(0~duration,duration可以通过audioStateChanged获取到)
+         * rate:播放速率,可接受值[0.5, 1, 1.5, 2]
+         * fullScreen:是否全屏(true || false)
+         * 
+         * 5.初始化接口
+         * windowOnLoaded 课件初始化完成后
+         * 
+         * 6.获取目录接口 （注意：一定要在windowOnLoaded之后调用此接口）
+         * getCatalogueInfo 获取目录接口（返回课件每一页的数据信息） 
+         * 可在此接口查看 备注信息  （如何取到备注字段信息 请参考示例）
+         * 
+         * 7.设置背景色  （默认背景色为黑色）
+         * setUpBodyBackground  参数：data：{color}     color为颜色值（支持所有html5所支持的颜色格式）
+         * 
+         * 8.修改/重制课件页面背景色
+         * setUpPageBackground  参数：data：{color,reset}     color为颜色值（支持所有html5所支持的颜色格式）,reset为1时去掉设置的颜色，显示原课件页背景
+         * 
+         * 9.长画布滚动
+         * scrollTo 参数 {page, scrollTop, callback }  page为当前页index,scrollTop为滚动到的位置,callback为滚动结束回调消息
+         * 每一页的高度可在初始的windowOnLoaded事件中获取到
+         * 
+         * 10.动画播放
+         * playStageAnimate 
+         * 顺续播放舞台动画
+         * 返回消息结果为transferMessageSend表示需要transferMessageSend消息内容中转给学生端播放动画
+         * 返回消息结果为pageChanged的时候表示当前页动画播完了触发了翻页，需要同步给学生端翻页事件
+         * 
+         * ！！！！以上接口的使用 下面均有代码实例可参考！！！！
+         */
+        let teacherIframe = document.getElementById('teacher');
+        let studentIframe = document.getElementById('student');
+        window.addEventListener('message', function (e) {
+            switch (e.data.type) {
+                case 'pageChanged': //当前页数据 （改变页码时触发）
+                    console.log(e.data.type);
+                    console.log(e.data.info);
+                    console.log(e.data.data.questionData)
+                    break;
+                case 'windowOnLoaded':// window 加载完成事件 （初始化完成事件）
+                    console.log(e.data);
+                    break;
+                case 'containerScrollTopChanged'://容器滚动条上下改变通知
+                    console.log(e.data.data.topValue, e.data.data.parentNodesId);
+                    break;
+                case 'videoStateChanged'://视频状态改变
+                    console.log(e.data);
+                    break;
+                case 'audioStateChanged'://声音状态改变
+                    console.log(e.data);
+                    break;
+                case 'getCatalogueInfo'://获取课件目录信息接口
+                    //item字段包含当前页所有的信息  note字段为备注信息
+                    console.log(e.data.info[0].item.note);
+                    break;
+                case 'scrollTo'://长画布滚动
+                    console.log(e.data);
+                    break;
+                case'transferMessageSend':
+                    if(e.source == window.frames[1]){
+                        //接收到教师端发出的'transferMessageSend'事件后，发送'transferMessageReceive'事件给学生端，中转事件内数据data.data
+                        console.log('transferMessageSend:', e.data);
+                        let transferData = e.data.data;
+                        let postMessageType = 'transferMessageReceive';
+                        let postData = { type: postMessageType, data: transferData };
+                        studentIframe.contentWindow.postMessage(postData, '*');
+                    }
+                    break;
+                case 'getAllTeacherRemark':
+                    console.log('老师可见的备注信息');
+                    console.log(e.data.data.teacherRemarkList);
+                    break;
+            }
+        })
+
+        function onPreHandler() {
+            console.log('前翻页');
+            //showHidePage 是否展示 隐藏页 默认值为false
+            let postInfo = { 'type': 'changePagePre', 'showHidePage': 'true' }
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onNextHandler() {
+            console.log('后翻页');
+            let postInfo = { 'type': 'changePageNext' }
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onPageTurningHandler() {
+            console.log('跳转');
+            let index = document.getElementById('input').value;
+            //page     索引 0 开始    例如  第一页对应0  第二页对应1 
+            //speed    翻页的速度 
+            let postInfo = { 'type': 'pageTurning', 'page': index, 'speed': 0, 'showHidePage': true }
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onSetUpContainerScrollTopHandler() {
+            let parentNodesId = 'container_4eac9a5745756705c939a41c067b89e8' //暂时写死 应该在containerScrollTopChanged接口内获取容器数据
+            let topValue = '100';
+            let type = 'setUpContainerScrollTop';
+            let data = {
+                parentNodesId,
+                topValue
+            }
+            window.frames[0].postMessage({ data, type }, '*');
+        }
+
+        function ongetAllTeacherRemarkHandler(){
+            console.log('获取老师可见的备注信息');
+            let postInfo = {'type':'getAllTeacherRemark'};
+            window.frames[0].postMessage(postInfo,'*');
+        }
+
+        function onSetUpAudioPlayTopHandler() {
+            let state = 'play';
+            let eId = 'audio_d05871d1b275efec391986e3fa11c9fe' //暂时写死 应该在audioStateChanged接口内获取声音数据
+            let type = 'setUpAudioState';
+            let data = {
+                state,
+                eId
+            }
+            window.frames[0].postMessage({ data, type }, '*');
+        }
+
+        function onSetUpVideoPlayTopHandler() {
+            let state = 'play';
+            let eId = 'video_84bf8941a1751c59d0959e86156879b8' //暂时写死 应该在videoStateChanged接口内获取视频数据
+            let type = 'setUpVideoState';
+            let data = {
+                state,
+                eId
+            }
+            window.frames[0].postMessage({ data, type }, '*');
+        }
+
+        function onGetCatalogueInfoHandler() {
+            console.log('获取目录数据');
+            //callback  可定义message内的回调类型  默认为：getCatalogueInfo
+            let postInfo = { 'type': 'getCatalogueInfo', 'callback': 'getCatalogueInfo' };
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onSetUpBodyBackGroundHandler() {
+            let postInfo = { 'type': 'setUpBodyBackground', data: { color: 'red' } };
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onSetUpPageBackGroundHandler(){
+            let postInfo = { 'type': 'setUpPageBackground', data: { color: 'blue' } };
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onResetPageBackGroundHandler(){
+            let postInfo = { 'type': 'setUpPageBackground', data: { reset:1 } };
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onSetScrollTop() {
+            let postInfo = { 'type': 'scrollTo', page: 5, scrollTop: 500, callback: 'scrollFinished' };
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+        function onPlayStageAnimate(){
+            let postInfo = { 'type': 'playStageAnimate'};
+            window.frames[0].postMessage(postInfo, '*');
+        }
+
+
+        //触发学生端刷新，模拟学生重连
+        function reloadStudentFrame() {
+            studentIframe.src = studentIframe.src;
+        }
+
+        //学生端重连后，需要客户端先同步当前课件页码后，再发送'getCurrentPageElementState'到教师端同步当前页动画
+        function syncCurrentPageState() {
+            let type = 'getCurrentPageElementState';
+            let postData = { type };
+            teacherIframe.contentWindow.postMessage(postData, '*');
+        }
+
+        //设置两端的页码(调试用)
+        function setPageNum() {
+            let index = document.getElementById('input2').value;
+            let postData = { 'type': 'pageTurning', 'page': index, 'speed': 0, 'showHidePage': true }
+            teacherIframe.contentWindow.postMessage(postData, '*');
+            studentIframe.contentWindow.postMessage(postData, '*');
+        }
+
+        function onPlayTeacherStageAnimate(){
+            let postInfo = { 'type': 'playStageAnimate'};
+            teacherIframe.contentWindow.postMessage(postInfo, '*');
+        }
+
+    </script>
+</body>
+
+</html>
