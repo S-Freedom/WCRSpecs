@@ -7,6 +7,7 @@
 //
 
 #import "WCRCourseWare.h"
+#import "WCRCourseWare+Internal.h"
 #import <WCRBase/WCRError.h>
 
 @interface WCRCourseWare ()

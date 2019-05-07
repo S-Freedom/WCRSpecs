@@ -12,7 +12,7 @@
 #import <WCRBase/NSString+Utils.h>
 #import "WCRError+ImageCourseWare.h"
 #import "WCRCourseWareLogger.h"
-
+#import "WCRCourseWare+Internal.h"
 
 
 @interface WCRImageCourseWare ()

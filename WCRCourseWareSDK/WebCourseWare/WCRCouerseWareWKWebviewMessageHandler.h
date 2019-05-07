@@ -1,5 +1,5 @@
 //
-//  WCRWKWebviewMessageHandler.h
+//  WCRCouerseWareWKWebviewMessageHandler.h
 //  WCRWebView
 //
 //  Created by 欧阳铨 on 2018/10/31.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-@interface WCRWKWebviewMessageHandler : NSObject <WKScriptMessageHandler>
+@interface WCRCouerseWareWKWebviewMessageHandler : NSObject <WKScriptMessageHandler>
 @property (nonatomic,weak)  id<WKScriptMessageHandler> delegate;
 @end

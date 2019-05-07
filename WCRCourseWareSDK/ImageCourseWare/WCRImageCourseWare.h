@@ -13,8 +13,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WCRImageCourseWare : WCRCourseWare
-
-@property (nonatomic, strong, readonly) UIImageView *imageView;
+/**
+ 加载图片课件
+ 
+ @param url 图片课件URL
+ @return 方法是否执行成功
+ */
 - (WCRError * _Nullable)loadImageWithURL:(NSURL *)url;
 @end
 

@@ -15,29 +15,45 @@ NS_ASSUME_NONNULL_BEGIN
 @class WCRError;
 @protocol WCRCourseWareDelegate <NSObject>
 @optional
+
+/**
+ 课件即将被加载
+
+ @param courseWare 被加载的课件
+ */
 - (void)courseWareWillLoad:(WCRCourseWare *)courseWare;
+
+/**
+ 课件加载完成
+
+ @param courseWare 被加载的课件
+ @param error 加载过程中是否出现错误，nil表示加载成功
+ */
 - (void)courseWareDidLoad:(WCRCourseWare *)courseWare error:(WCRError * _Nullable)error;
 @end
 
 @interface WCRCourseWare : NSObject
-@property (nonatomic, strong) UIView *view;
-
-@property (nonatomic, strong) NSURL *url;//主url
-@property (nonatomic, strong, nullable) NSURL *offlineUrl;//离线url
-@property (nonatomic, strong) NSArray <NSURL *>*backUpUrls;//备用url数组
-@property (nonatomic, assign) NSUInteger backUpIndex;//当前用的是backUrls的哪个index
-@property (nonatomic, assign, getter=isUsingOfflineUrl) BOOL usingOfflineUrl;//是否正在使用离线url
-@property (nonatomic, assign, getter=isUsingMainUrl) BOOL usingMainUrl;//是否正在使用主url
-@property (nonatomic, assign) NSUInteger retryInterval;//重试间隔
-
-@property (nonatomic, weak) id <WCRCourseWareDelegate> delegate;
 
 /**
- 重试时使用
-
- @return 自动根据url和backUpUrls数组，计算出使用哪个url进行重试
+ 课件的view
  */
-- (NSURL *)getBackUpUrl;
+@property (nonatomic, strong) UIView *view;
+
+/**
+ 课件主URL
+ */
+@property (nonatomic, strong) NSURL *url;//主url
+
+/**
+ 课件备用URL数组
+ */
+@property (nonatomic, strong) NSArray <NSURL *>*backUpUrls;//备用url数组
+
+/**
+ 课件代理
+ */
+@property (nonatomic, weak) id <WCRCourseWareDelegate> delegate;
+
 @end
 
 NS_ASSUME_NONNULL_END

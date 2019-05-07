@@ -28,30 +28,133 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
 @class WCRWebCourseWare;
 @protocol WCRWebCourseWareDelegate <NSObject>
 @optional
-//当前被滚动的比例
+
+/**
+ 当前课件被滚动的比例
+
+ @param courseWare 被滚动的课件
+ @param rate 滚动比例[0-1.0]
+ */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewDidScroll:(CGFloat)rate;
-//当前课件的高度
+
+/**
+ 当前课件高度或高度变化
+
+ @param courseWare 高度变化课件
+ @param height 课件的高度
+ */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewHeightDidChange:(CGFloat)height;
-//只会回调添加了监听的方法
+
+/**
+ 课件js方法回调
+
+ @param courseWare 课件
+ @param messageName 回调方法名
+ @param messageBody 回调消息体
+ */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare receiveMessage:(NSString *)messageName withBody:(NSDictionary * _Nullable)messageBody;
-//网页课件获取相关setup信息的回调
+
+/**
+ 课件获取setUp信息
+
+ @param courseWare 需要获取信息的课件
+ @return 需要返回课件需要的信息字典
+ */
 - (NSDictionary *)webCourseWareSetUpDocumentMessageDictionary:(WCRWebCourseWare *)courseWare;
-//网页课件需要通过信道发送消息，并将信道消息回调给课件的回调
+
+/**
+ 课件通过信道发送消息，并在block中将信道回复的消息送回课件
+
+ @param courseWare 需要发送消息的课件
+ @param message 消息名
+ @param messageBody 消息体
+ @param completion 信道发送消息后的回复消息
+ */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare sendDocMessage:(NSString*)message withBody:(NSDictionary*)messageBody completion:(void (^ __nullable)(NSDictionary*))completion;
 @end
 
 @interface WCRWebCourseWare : WCRCourseWare
+
+/**
+ 网页课件代理
+ */
 @property (nonatomic, weak) id<WCRWebCourseWareDelegate>webCourseDelegate;
+
+/**
+ 当前滚动比例
+ */
 @property (nonatomic, assign, readonly) CGFloat currentRate;
+
+/**
+ 当前课件高度
+ */
 @property (nonatomic, assign, readonly) CGFloat documentHeight;
+
+/**
+ 加载课件
+
+ @param url 课件url
+ @return 方法是否执行成功 @see -courseWareWillLoad:; @see -courseWareDidLoad:error:;
+ */
 - (WCRError * _Nullable)loadURL:(NSURL *)url;
+
+/**
+ 课件翻页
+
+ @param page 页码
+ @param step 步数
+ */
 - (void)goToPage:(NSInteger)page step:(NSInteger)step;
+
+/**
+ 课件滚动
+
+ @param page 页码
+ @param rate 滚动比例
+ */
 - (void)page:(NSInteger)page scrollToRate:(CGFloat)rate;
+
+/**
+ 模拟鼠标点击
+
+ @param click 点击的位置
+ */
 - (void)mouseClick:(CGRect)click;
+
+/**
+ 注册消息监听
+
+ @param messageName 消息名字
+ */
 - (void)registerMessageWithMessageName:(NSString *)messageName;
+
+/**
+ 反注册消息监听
+ 
+ @param messageName 消息名字
+ */
 - (void)unregisterMessageWithMessageName:(NSString *)messageName;
+
+/**
+ 反注册所有消息监听
+ 
+ */
 - (void)unregisterAllMessages;
+
+/**
+ 返回所有注册的消息
+
+ @return 注册消息名字数组
+ */
 - (NSArray *)allRegisterMessages;
+
+/**
+ 发送自定义消息到课件
+
+ @param messageName 消息名字
+ @param messageBody 消息体
+ @param completionHandler 消息回调block
+ */
 - (void)sendMessage:(NSString *)messageName withBody:(NSDictionary *)messageBody completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
 @end
 

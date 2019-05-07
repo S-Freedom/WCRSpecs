@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D33676E2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33676D2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m */; };
+		4D95D4D122815C4400560B32 /* WCRCourseWare+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D95D4D022815C4400560B32 /* WCRCourseWare+Internal.h */; };
 		4DBE3DBC22437EBA000F4FF3 /* WCRCourseWareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBE3DB222437EBA000F4FF3 /* WCRCourseWareSDK.framework */; };
 		4DBE3DC322437EBA000F4FF3 /* WCRCourseWareSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DB522437EBA000F4FF3 /* WCRCourseWareSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3DD422437ECB000F4FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DD322437ECB000F4FF3 /* AppDelegate.m */; };
@@ -30,10 +31,10 @@
 		4DBE3E0B22437F49000F4FF3 /* WCRCourseWareLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF622437F49000F4FF3 /* WCRCourseWareLogger.m */; };
 		4DBE3E0C22437F49000F4FF3 /* WCRWebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DF822437F49000F4FF3 /* WCRWebCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3E0D22437F49000F4FF3 /* WCRError+WebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF922437F49000F4FF3 /* WCRError+WebCourseWare.m */; };
-		4DBE3E0E22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DFA22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m */; };
+		4DBE3E0E22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DFA22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.m */; };
 		4DBE3E0F22437F49000F4FF3 /* WCRError+WebCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DFB22437F49000F4FF3 /* WCRError+WebCourseWare.h */; };
 		4DBE3E1022437F49000F4FF3 /* WCRWebCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DFC22437F49000F4FF3 /* WCRWebCourseWare.m */; };
-		4DBE3E1122437F49000F4FF3 /* WCRWKWebviewMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DFD22437F49000F4FF3 /* WCRWKWebviewMessageHandler.h */; };
+		4DBE3E1122437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DFD22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.h */; };
 		4DBE3E21224381FC000F4FF3 /* AVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3E12224381FC000F4FF3 /* AVViewController.m */; };
 		4DBE3E22224381FC000F4FF3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3E13224381FC000F4FF3 /* MainViewController.m */; };
 		4DBE3E23224381FC000F4FF3 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3E14224381FC000F4FF3 /* ImageViewController.m */; };
@@ -93,6 +94,7 @@
 		4CAAC622E44BE011FDD5D98E /* libPods-WCRCourseWareSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WCRCourseWareSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2FF4422276FEEC00EBFCC4 /* WCRWebCourseWare+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WCRWebCourseWare+Test.h"; sourceTree = "<group>"; };
 		4D33676D2276AC3C00F02AD9 /* WCRAVCourseWareSpecs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRAVCourseWareSpecs.m; sourceTree = "<group>"; };
+		4D95D4D022815C4400560B32 /* WCRCourseWare+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WCRCourseWare+Internal.h"; sourceTree = "<group>"; };
 		4DBE3DB222437EBA000F4FF3 /* WCRCourseWareSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WCRCourseWareSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBE3DB522437EBA000F4FF3 /* WCRCourseWareSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCRCourseWareSDK.h; sourceTree = "<group>"; };
 		4DBE3DB622437EBA000F4FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,10 +123,10 @@
 		4DBE3DF622437F49000F4FF3 /* WCRCourseWareLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCourseWareLogger.m; sourceTree = "<group>"; };
 		4DBE3DF822437F49000F4FF3 /* WCRWebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWebCourseWare.h; sourceTree = "<group>"; };
 		4DBE3DF922437F49000F4FF3 /* WCRError+WebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCRError+WebCourseWare.m"; sourceTree = "<group>"; };
-		4DBE3DFA22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWKWebviewMessageHandler.m; sourceTree = "<group>"; };
+		4DBE3DFA22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRCouerseWareWKWebviewMessageHandler.m; sourceTree = "<group>"; };
 		4DBE3DFB22437F49000F4FF3 /* WCRError+WebCourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WCRError+WebCourseWare.h"; sourceTree = "<group>"; };
 		4DBE3DFC22437F49000F4FF3 /* WCRWebCourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRWebCourseWare.m; sourceTree = "<group>"; };
-		4DBE3DFD22437F49000F4FF3 /* WCRWKWebviewMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRWKWebviewMessageHandler.h; sourceTree = "<group>"; };
+		4DBE3DFD22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRCouerseWareWKWebviewMessageHandler.h; sourceTree = "<group>"; };
 		4DBE3E12224381FC000F4FF3 /* AVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVViewController.m; sourceTree = "<group>"; };
 		4DBE3E13224381FC000F4FF3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4DBE3E14224381FC000F4FF3 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				4DBE3DB522437EBA000F4FF3 /* WCRCourseWareSDK.h */,
 				4DBE3DEC22437F49000F4FF3 /* WCRCourseWare.h */,
+				4D95D4D022815C4400560B32 /* WCRCourseWare+Internal.h */,
 				4DBE3DEB22437F49000F4FF3 /* WCRCourseWare.m */,
 				4DBE3DED22437F49000F4FF3 /* WCRCourseWareLogger.h */,
 				4DBE3DF622437F49000F4FF3 /* WCRCourseWareLogger.m */,
@@ -310,8 +313,8 @@
 				4DBE3DF922437F49000F4FF3 /* WCRError+WebCourseWare.m */,
 				4DBE3DF822437F49000F4FF3 /* WCRWebCourseWare.h */,
 				4DBE3DFC22437F49000F4FF3 /* WCRWebCourseWare.m */,
-				4DBE3DFD22437F49000F4FF3 /* WCRWKWebviewMessageHandler.h */,
-				4DBE3DFA22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m */,
+				4DBE3DFD22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.h */,
+				4DBE3DFA22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.m */,
 			);
 			path = WebCourseWare;
 			sourceTree = "<group>";
@@ -333,8 +336,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBE3E1122437F49000F4FF3 /* WCRWKWebviewMessageHandler.h in Headers */,
+				4DBE3E1122437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.h in Headers */,
 				4DBE3E0522437F49000F4FF3 /* WCRViewCourseWare.h in Headers */,
+				4D95D4D122815C4400560B32 /* WCRCourseWare+Internal.h in Headers */,
 				4DBE3E0822437F49000F4FF3 /* WCRImageCourseWare.h in Headers */,
 				4DBE3E0C22437F49000F4FF3 /* WCRWebCourseWare.h in Headers */,
 				4DBE3DFE22437F49000F4FF3 /* WCRAVCourseWare.h in Headers */,
@@ -679,7 +683,7 @@
 				4DBE3E0A22437F49000F4FF3 /* WCRImageCourseWare.m in Sources */,
 				4DBE3E1022437F49000F4FF3 /* WCRWebCourseWare.m in Sources */,
 				4DBE3E0622437F49000F4FF3 /* WCRViewCourseWare.m in Sources */,
-				4DBE3E0E22437F49000F4FF3 /* WCRWKWebviewMessageHandler.m in Sources */,
+				4DBE3E0E22437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.m in Sources */,
 				4DBE3E0022437F49000F4FF3 /* WCRAVCourseWare.m in Sources */,
 				4DBE3E0222437F49000F4FF3 /* WCRCourseWare.m in Sources */,
 			);
@@ -954,6 +958,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LLVM_LTO = YES_THIN;
 				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareDemoOYQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -973,6 +978,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.100tal.WCRCourseWareDemoOYQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

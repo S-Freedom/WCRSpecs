@@ -12,8 +12,9 @@
 #import <WCRBase/NSString+Utils.h>
 #import <WCRBase/NSDictionary+Utils.h>
 #import "WCRCourseWareLogger.h"
-#import "WCRWKWebviewMessageHandler.h"
+#import "WCRCouerseWareWKWebviewMessageHandler.h"
 #import "WCRError+WebCourseWare.h"
+#import "WCRCourseWare+Internal.h"
 
 static NSString * const kWCRDocJSSDKScriptMessageHandler = @"WCRDocJSSDK";
 NSString * const kWCRWebCourseWareJSFuncSetUp = @"setup";
@@ -448,7 +449,7 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
         } else if ([config respondsToSelector:@selector(setMediaPlaybackRequiresUserAction:)]) {
             config.mediaPlaybackRequiresUserAction = NO;
         }
-        WCRWKWebviewMessageHandler *messageHandler = [[WCRWKWebviewMessageHandler alloc] init];
+        WCRCouerseWareWKWebviewMessageHandler *messageHandler = [[WCRCouerseWareWKWebviewMessageHandler alloc] init];
         messageHandler.delegate = self;
         [config.userContentController addScriptMessageHandler:messageHandler name:kWCRDocJSSDKScriptMessageHandler];
         

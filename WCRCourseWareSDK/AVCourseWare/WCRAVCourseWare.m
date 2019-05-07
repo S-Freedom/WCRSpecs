@@ -12,6 +12,7 @@
 #import <WCRPlayerSDK/WCRPlayerSDK.h>
 #import "WCRCourseWareLogger.h"
 #import "WCRError+AVCourseWare.h"
+#import "WCRCourseWare+Internal.h"
 
 @interface WCRAVCourseWare ()<WCRPlayerDelegate>
 @property (nonatomic, strong) WCRError *error;
