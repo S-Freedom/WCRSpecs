@@ -8,8 +8,8 @@
 
 #import "WCRCourseWareLogger.h"
 
-static NSString * const liveStreamLogPath = @"Library/Caches/WCRLiveCoreLogs";
-static NSString * const liveStreamName = @"WCRCourseWareSDK";
+static NSString * const kCourseWareLogPath = @"Library/Caches/WCRCourseWareLogs";
+static NSString * const kCourseWareName = @"WCRCourseWareSDK";
 
 @implementation WCRCourseWareLogger
 + (instancetype) sharedLogger {
@@ -18,8 +18,8 @@ static NSString * const liveStreamName = @"WCRCourseWareSDK";
     
     dispatch_once(&onceToken, ^{
         logger = [WCRCourseWareLogger new];
-        logger.logFilePath = liveStreamLogPath;
-        logger.SDKName = liveStreamName;
+        logger.logFilePath = kCourseWareLogPath;
+        logger.SDKName = kCourseWareName;
         [[WCRLogger sharedLogger] openXcodeConsole:YES];
     });
     return logger;
