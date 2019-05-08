@@ -32,3 +32,5 @@ FOUNDATION_EXPORT const unsigned char WCRCourseWareSDKVersionString[];
 #if __has_include("WCRWebCourseWare.h")
 #import <WCRCourseWareSDK/WCRWebCourseWare.h>
 #endif
+
+#import <WCRCourseWareSDK/WCRCourseWareLogger.h>

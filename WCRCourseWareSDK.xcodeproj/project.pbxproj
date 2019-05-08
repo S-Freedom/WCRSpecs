@@ -21,7 +21,7 @@
 		4DBE3E0122437F49000F4FF3 /* WCRError+AVCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DEA22437F49000F4FF3 /* WCRError+AVCourseWare.m */; };
 		4DBE3E0222437F49000F4FF3 /* WCRCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DEB22437F49000F4FF3 /* WCRCourseWare.m */; };
 		4DBE3E0322437F49000F4FF3 /* WCRCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DEC22437F49000F4FF3 /* WCRCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4DBE3E0422437F49000F4FF3 /* WCRCourseWareLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DED22437F49000F4FF3 /* WCRCourseWareLogger.h */; };
+		4DBE3E0422437F49000F4FF3 /* WCRCourseWareLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DED22437F49000F4FF3 /* WCRCourseWareLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3E0522437F49000F4FF3 /* WCRViewCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DEF22437F49000F4FF3 /* WCRViewCourseWare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DBE3E0622437F49000F4FF3 /* WCRViewCourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE3DF022437F49000F4FF3 /* WCRViewCourseWare.m */; };
 		4DBE3E0722437F49000F4FF3 /* WCRError+ImageCourseWare.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBE3DF222437F49000F4FF3 /* WCRError+ImageCourseWare.h */; };
@@ -336,6 +336,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DBE3E0422437F49000F4FF3 /* WCRCourseWareLogger.h in Headers */,
 				4DBE3E1122437F49000F4FF3 /* WCRCouerseWareWKWebviewMessageHandler.h in Headers */,
 				4DBE3E0522437F49000F4FF3 /* WCRViewCourseWare.h in Headers */,
 				4D95D4D122815C4400560B32 /* WCRCourseWare+Internal.h in Headers */,
@@ -344,7 +345,6 @@
 				4DBE3DFE22437F49000F4FF3 /* WCRAVCourseWare.h in Headers */,
 				4DBE3E0322437F49000F4FF3 /* WCRCourseWare.h in Headers */,
 				4DBE3E0F22437F49000F4FF3 /* WCRError+WebCourseWare.h in Headers */,
-				4DBE3E0422437F49000F4FF3 /* WCRCourseWareLogger.h in Headers */,
 				4DBE3E0722437F49000F4FF3 /* WCRError+ImageCourseWare.h in Headers */,
 				4DBE3DFF22437F49000F4FF3 /* WCRError+AVCourseWare.h in Headers */,
 				4DBE3DC322437EBA000F4FF3 /* WCRCourseWareSDK.h in Headers */,
