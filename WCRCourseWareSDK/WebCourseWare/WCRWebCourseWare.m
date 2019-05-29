@@ -50,6 +50,7 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
     if (self) {
         _currentPage = 1;
         _currentStep = -1;
+        _documentHeight = 0;
     }
     return self;
 }
@@ -307,7 +308,12 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
 - (void)onJsFuncScroll:(NSDictionary *)message{
     NSNumber *body = [message objectForKey:@"body"];
     CGFloat offsetY = [body floatValue];
-    self.currentRate = offsetY/self.documentHeight;
+    if (self.documentHeight != 0) {
+        self.currentRate = offsetY/self.documentHeight;
+    }else{
+        self.currentRate = 0;
+    }
+    
     if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
         [self.webCourseDelegate webCourseWare:self webViewDidScroll:self.currentRate];
     }
