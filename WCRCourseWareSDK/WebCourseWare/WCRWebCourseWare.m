@@ -75,6 +75,11 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
         return [WCRError webCourseWareErrorWithErrorCode:WCRWCWErrorCodeNilUrl];
     }
     
+    if ([NSString wcr_isBlankString:url.scheme]) {
+        WCRCWLogError(@"打开课件 url scheme 为空");
+        return [WCRError webCourseWareErrorWithErrorCode:WCRWCWErrorCodeNilScheme];
+    }
+    
     self.webViewLoadSuccess = NO;
     NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
@@ -379,10 +384,13 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         @strongify(self);
         NSURL *url = [self getBackUpUrl];
-        WCRCWLogInfo(@"retryAfterRetryInterval:%lu url:%@",(unsigned long)interval,url);
-        if (url != nil && ![NSString wcr_isBlankString:url.absoluteString]) {
+        if (url != nil && ![NSString wcr_isBlankString:url.absoluteString] && ![NSString wcr_isBlankString:url.scheme]) {
+            WCRCWLogInfo(@"retryAfterRetryInterval:%lu url:%@",(unsigned long)interval,url);
             NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
             [self.webView loadRequest:urlRequest];
+        }else{
+            //相同间隔后，取下一条url进行重试
+            [self retryAfterRetryInterval:interval];
         }
     });
     

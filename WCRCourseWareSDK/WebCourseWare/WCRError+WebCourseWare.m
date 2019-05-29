@@ -15,6 +15,7 @@ static NSString* const kWCRWebCourseWareErrorDescriptions[] = {
     @"无错误",             //WCRLSErrorCodeOK
     @"JS内部错误",
     @"空网页地址",
+    @"地址scheme为空",
     @"未知错误"              //WCRLSErrorCodeUnknown
 };
 

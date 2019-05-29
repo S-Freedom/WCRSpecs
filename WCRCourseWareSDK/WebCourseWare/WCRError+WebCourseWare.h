@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, WCRWCWErrorCode) {
 
     WCRWCWErrorCodeJSError,
     WCRWCWErrorCodeNilUrl,
+    WCRWCWErrorCodeNilScheme,
     WCRWCWErrorCodeUnknown
 };
 
