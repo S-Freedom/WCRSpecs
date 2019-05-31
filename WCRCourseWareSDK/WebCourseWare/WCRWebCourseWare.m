@@ -131,7 +131,8 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
         return;
     }
     self.currentRate = rate;
-    if (self.isWebViewLoadSuccess) {
+    //判断高度不等于0，防止没有回调高度就进行滚动，导致滚动的位置不正确，然后在接收到高度变化时，再进行一次滚动操作
+    if (self.isWebViewLoadSuccess && self.documentHeight != 0) {
         NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRate * self.documentHeight)];
         [self evaluateJavaScript:rateScript completionHandler:nil];
         self.shouldRateAfterLoad = NO;
@@ -308,14 +309,13 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
 - (void)onJsFuncScroll:(NSDictionary *)message{
     NSNumber *body = [message objectForKey:@"body"];
     CGFloat offsetY = [body floatValue];
+    CGFloat rate = 0;
     if (self.documentHeight != 0) {
-        self.currentRate = offsetY/self.documentHeight;
-    }else{
-        self.currentRate = 0;
+        rate = offsetY/self.documentHeight;
     }
     
     if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
-        [self.webCourseDelegate webCourseWare:self webViewDidScroll:self.currentRate];
+        [self.webCourseDelegate webCourseWare:self webViewDidScroll:rate];
     }
 }
 
