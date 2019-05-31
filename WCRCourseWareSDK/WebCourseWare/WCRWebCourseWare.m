@@ -312,6 +312,7 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
     CGFloat rate = 0;
     if (self.documentHeight != 0) {
         rate = offsetY/self.documentHeight;
+        self.currentRate = rate;
     }
     
     if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
