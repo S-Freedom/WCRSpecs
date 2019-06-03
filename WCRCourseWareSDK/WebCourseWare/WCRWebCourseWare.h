@@ -91,6 +91,11 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
 @property (nonatomic, assign, readonly) CGFloat documentHeight;
 
 /**
+ 使用允许用户主动滚动（默认为YES）
+ */
+@property (nonatomic, assign, getter=isUserScrollEnable) BOOL userScrollEnable;
+
+/**
  加载课件
 
  @param url 课件url

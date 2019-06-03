@@ -87,6 +87,12 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
     
     return nil;
 }
+
+-(void)setUserScrollEnable:(BOOL)userScrollEnable{
+    _userScrollEnable = userScrollEnable;
+    self.webView.scrollView.scrollEnabled = userScrollEnable;
+}
+
 - (void)goToPage:(NSInteger)page step:(NSInteger)step{
     WCRCWLogInfo(@"课件翻页page:%lu step:%lu",(unsigned long)page,(unsigned long)step);
     if (page <= 0 || step == -1){
@@ -476,7 +482,6 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
         
         _webView.scrollView.bounces = NO;
         _webView.scrollView.bouncesZoom = NO;
-        _webView.scrollView.scrollEnabled = NO;
         _webView.scrollView.delegate = self;
     }
     return _webView;
