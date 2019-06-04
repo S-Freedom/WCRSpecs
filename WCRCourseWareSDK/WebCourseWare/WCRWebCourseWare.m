@@ -167,6 +167,22 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
         self.shouldMouseClickAfterLoad = YES;
     }
 }
+- (void)syncJSAction{
+    /*
+     TODO
+     优化，使用数组存储需要执行的js语句，而不是存储每一个操作
+     */
+    if (self.isShouldGoToPageAfterLoad) {
+        [self toPage:self.currentPage step:self.currentStep];
+    }
+    if (self.isShouldRateAfterLoad) {
+        [self page:self.currentPage scrollToRate:self.currentRate];
+    }
+    if (self.isShouldMouseClickAfterLoad) {
+        [self mouseClick:self.mouseClickRect];
+    }
+}
+
 - (void)registerMessageWithMessageName:(NSString *)messageName{
     [self.messagesSet addObject:messageName];
 }
@@ -251,6 +267,9 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
                                  , [NSString wcr_jsonWithDictionary:callbackContent]];
         [self evaluateJavaScript:callbackMsg completionHandler:nil];
     }
+    
+    //nova课件，教研云课件等走setUp回调的课件，在此同步翻页等操作
+    [self syncJSAction];
 }
 
 - (void)onJsFuncSendMessage:(NSDictionary *)message{
@@ -366,15 +385,8 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
     WCRCWLogInfo(@"wkwebview加载完成:%@",self.url);
     self.webViewLoadSuccess = YES;
     [self disableDoubleTapScroll];
-    if (self.isShouldGoToPageAfterLoad) {
-        [self toPage:self.currentPage step:self.currentStep];
-    }
-    if (self.isShouldRateAfterLoad) {
-        [self page:self.currentPage scrollToRate:self.currentRate];
-    }
-    if (self.isShouldMouseClickAfterLoad) {
-        [self mouseClick:self.mouseClickRect];
-    }
+    //普通pdf课件等不走setUp回调的课件，在Webview回调加载完成时，同步翻页等操作
+    [self syncJSAction];
     
     if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
         [self.delegate courseWareDidLoad:self error:nil];
