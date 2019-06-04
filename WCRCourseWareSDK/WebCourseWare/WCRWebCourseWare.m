@@ -333,6 +333,10 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
 
 - (void)onJsFuncScroll:(NSDictionary *)message{
     NSNumber *body = [message objectForKey:@"body"];
+    if (body == nil) {
+        WCRLogError(@"body 为空");
+        return;
+    }
     CGFloat offsetY = [body floatValue];
     CGFloat rate = 0;
     if (self.documentHeight != 0) {
@@ -347,8 +351,12 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
 
 - (void)onJsFuncHeightChange:(NSDictionary *)message{
     NSNumber *body = [message objectForKey:@"body"];
+    if (body == nil) {
+        WCRLogError(@"body 为空");
+        return;
+    }
     self.documentHeight = [body floatValue];
-    if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
+    if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
         [self.webCourseDelegate webCourseWare:self webViewHeightDidChange:self.documentHeight];
     }
     if (self.isWebViewLoadSuccess) {
