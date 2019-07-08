@@ -27,6 +27,8 @@ NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIG
 //题库与课件高度通知
 NSString * const kWCRWebCourseWareJSDOCScrollMessage = @"DOCQS_SCROLLTOP_RESULT";
 NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT_HEIGHT";
+//课件壳打印日志消息
+NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 
 @interface WCRWebCourseWare ()<WKScriptMessageHandler,WKUIDelegate,WKNavigationDelegate,UIScrollViewDelegate>
@@ -229,6 +231,8 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
             [self onJsFuncScroll:msgBody];
         } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
             [self onJsFuncHeightChange:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSWebLog]){
+            [self onJsFuncWebLog:msgBody];
         }
         [self callBackJsFunc:msgName body:msgBody];
     }else{
@@ -366,6 +370,14 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
     }else{
         self.shouldRateAfterLoad = YES;
     }
+}
+
+- (void)onJsFuncWebLog:(NSDictionary *)message{
+    if (message == nil) {
+        WCRLogError(@"message 为空");
+        return;
+    }
+    WCRCWLogInfo(@"onJsFuncWebLog:%@",message);
 }
 
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler{
