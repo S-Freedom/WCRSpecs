@@ -13,7 +13,7 @@ target 'WCRCourseWareDemo' do
   # Pods for WCRCourseWareDemo
   pod 'Masonry'
   pod 'ReactiveObjC'
-  pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
+  #pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
 end
 
 target 'WCRCourseWareSDK' do
@@ -27,13 +27,13 @@ target 'WCRCourseWareSDK' do
   pod 'WCRBase/Log'
   pod 'WCRBase/Error'
   pod 'WCRBase/Utils'
-  pod 'WCRPlayerSDK'
+  pod 'WCRPlayerSDK/AVPlayer'
 
   target 'WCRCourseWareSDKTests' do
     inherit! :search_paths
     # Pods for testing
     pod "Kiwi"
-    pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
+    #pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
   end
 
 end
