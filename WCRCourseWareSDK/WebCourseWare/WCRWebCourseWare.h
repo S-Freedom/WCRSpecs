@@ -96,6 +96,11 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
 @property (nonatomic, assign, getter=isUserScrollEnable) BOOL userScrollEnable;
 
 /**
+ 设置课件是否透明（默认为NO）,只有在-courseWareWillLoad:回调之前设置有效
+ */
+@property (nonatomic, assign, getter=isDocumentOpaque) BOOL documentOpaque;
+
+/**
  加载课件
 
  @param url 课件url

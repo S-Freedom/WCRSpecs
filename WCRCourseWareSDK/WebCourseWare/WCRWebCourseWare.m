@@ -449,9 +449,12 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         sizeJavascript = [NSString stringWithFormat:@"var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=%f, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');document.getElementsByTagName('head')[0].appendChild(meta);", self.view.bounds.size.width];
     }
     [webView evaluateJavaScript:sizeJavascript completionHandler:nil];
-    //设置课件t透明
-    NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
-    [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
+    
+    if (self.isDocumentOpaque) {
+        //设置课件t透明
+        NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
+        [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
+    }
     //注入停用长按图片显示保存菜单,在课件中停用iOS11后的drag&drop功能
     NSString *dragJavascript = @"document.body.style.webkitTouchCallout='none';document.body.setAttribute('ondragstart','return false');";
     [webView evaluateJavaScript:dragJavascript completionHandler:nil];
