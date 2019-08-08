@@ -142,7 +142,9 @@
             [self callBackStatusChange:WCRAVCourseWarePlayStatusError];
             //重试播放
             self.playable = NO;
-            [self retryAfterRetryInterval:self.retryInterval];
+            if (self.player.error.code != WCRAVPlayerErrorCodeStatusIllegal) {
+                [self retryAfterRetryInterval:self.retryInterval];
+            }
             break;
         }
         default:
