@@ -99,10 +99,21 @@
 }
 - (void)seekToTime:(NSTimeInterval)time{
     WCRCWLogInfo(@"seekToTime:%@ %f",self.url,time);
-    if (fabs(time - self.currentTime) > 1000) {
+    if (isnan(time)) {
+        WCRCWLogInfo(@"seek的时间为nan %f",time);
+        return;
+    }
+    
+    if (isnan(self.currentTime)) {
+        //在没有到readyToPlay的时候self.currentTime的值为nan
+        //不需要计算误差
         [self.player seekToTime:time];
     }else{
-        WCRCWLogInfo(@"相差绝对值没有超过1秒");
+        if (fabs(time - self.currentTime) > 1000) {
+            [self.player seekToTime:time];
+        }else{
+            WCRCWLogInfo(@"相差绝对值没有超过1秒 %f %f",time, self.currentTime);
+        }
     }
 }
 - (NSTimeInterval)currentTime{
