@@ -86,6 +86,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     self.webViewLoadSuccess = NO;
     NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
+    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
+        [self.delegate courseWareWillLoad:self];
+    }
     
     return nil;
 }
@@ -360,6 +363,10 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         return;
     }
     self.documentHeight = [body floatValue];
+    if (!self.documentHeight) {
+        WCRLogError(@"高度 为0");
+        return;
+    }
     if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
         [self.webCourseDelegate webCourseWare:self webViewHeightDidChange:self.documentHeight];
     }
@@ -396,9 +403,6 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 -(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
     WCRCWLogInfo(@"wkwebview开始加载:%@",self.url);
-    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
-        [self.delegate courseWareWillLoad:self];
-    }
 }
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
