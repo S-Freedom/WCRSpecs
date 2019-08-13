@@ -38,9 +38,6 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
 @property (nonatomic, strong) NSMutableSet *messagesSet;
 @property (nonatomic, copy) NSString *callBackJsString;
 @property (nonatomic, assign, getter=isWebViewLoadSuccess) BOOL webViewLoadSuccess;
-@property (nonatomic, assign, getter=isShouldGoToPageAfterLoad) BOOL shouldGoToPageAfterLoad;
-@property (nonatomic, assign, getter=isShouldRateAfterLoad) BOOL shouldRateAfterLoad;
-@property (nonatomic, assign, getter=isShouldMouseClickAfterLoad) BOOL shouldMouseClickAfterLoad;
 @property (nonatomic, strong) NSMutableArray *messageNames;
 @property (nonatomic, strong) NSMutableArray *messageBodys;
 @property (nonatomic, strong) NSMutableArray *evaluateJaveScripts;
@@ -90,7 +87,9 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     self.webViewLoadSuccess = NO;
     NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
-    
+    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
+        [self.delegate courseWareWillLoad:self];
+    }
     return nil;
 }
 
@@ -111,7 +110,7 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     }
     NSString* toPageScript = [NSString stringWithFormat:
                               @"if (window.slideAPI) {"
-                              "window.slideAPI.gotoSlideStep(%d, %d);"
+                              "    window.slideAPI.gotoSlideStep(%d, %d);"
                               "} else {"
                               "    window.enableGotoSlide = true; "
                               "    window.gotoSlide(%d, %d);"
@@ -119,10 +118,8 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
                               , (int)(page-1), (int)(step), (int)(page-1), (int)(step)];
     if (self.isWebViewLoadSuccess) {
         [self evaluateJavaScript:toPageScript completionHandler:nil];
-        self.shouldGoToPageAfterLoad = NO;
     }else{
         [self.evaluateJaveScripts addObject:toPageScript];
-        self.shouldGoToPageAfterLoad = YES;
     }
     
 }
@@ -143,10 +140,8 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
         NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(rate * self.documentHeight)];
         if (self.isWebViewLoadSuccess) {
             [self evaluateJavaScript:rateScript completionHandler:nil];
-            self.shouldRateAfterLoad = NO;
         }else{
             [self.evaluateJaveScripts addObject:rateScript];
-            self.shouldRateAfterLoad = YES;
         }
     }
     
@@ -166,21 +161,18 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     NSString *mouseClickScript = [NSString stringWithFormat:@"mouse_click(%d,%d)",(int)newX,(int)newY];
     if (self.isWebViewLoadSuccess) {
         [self evaluateJavaScript:mouseClickScript completionHandler:nil];
-        self.shouldMouseClickAfterLoad = NO;
     }else{
         [self.evaluateJaveScripts addObject:mouseClickScript];
-        self.shouldMouseClickAfterLoad = YES;
     }
 }
 
 - (void)docLoadFinishAfterConfirmDocState {
-    WCRCWLogInfo(@"confirmDocState");
-    NSString* content = [NSString stringWithFormat:@"{\"msg\":\"%@\", \"body\":%@}", [self.messageNames firstObject], [NSString wcr_jsonWithDictionary:[self.messageBodys firstObject]]];
-    
-    NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
-    [self evaluateJavaScript:js completionHandler:nil];
-    [self.messageBodys removeObjectAtIndex:0];
-    [self.messageNames removeObjectAtIndex:0];
+    WCRCWLogInfo(@"docLoadFinishAfterConfirmDocState");
+    for (int i = 0; i<= self.messageNames.count; i++) {
+        NSString* content = [NSString stringWithFormat:@"{\"msg\":\"%@\", \"body\":%@}", self.messageNames[i], [NSString wcr_jsonWithDictionary:self.messageBodys[i]]];
+        NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
+        [self evaluateJavaScript:js completionHandler:nil];
+    }
 }
 - (void)syncJSAction{
     if (self.messageNames.count && self.messageBodys.count &&self.callBackJsString) {
@@ -203,20 +195,18 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
 - (NSArray *)allRegisterMessages{
     return [self.messagesSet allObjects];
 }
+
 - (void)sendMessage:(NSString *)messageName withBody:(NSDictionary *)messageBody completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler{
     if (![NSString wcr_isBlankString:self.callBackJsString]) {
         NSString* content = [NSString stringWithFormat:@"{\"msg\":\"%@\", \"body\":%@}", messageName, [NSString wcr_jsonWithDictionary:messageBody]];
         
         NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
         [self evaluateJavaScript:js completionHandler:completionHandler];
-    }else if ([messageName isEqualToString:kWCRWWebCourseWareJSAuthorizeDocName] && [[messageBody objectForKey:@"type"] isEqualToString:kWCRWebCourseWareJSAuthorizeDocBody]){
+    } else {
         [self.messageNames addObject:messageName];
         [self.messageBodys addObject:messageBody];
-        
-    } else {
         WCRCWLogError(@"callBackJsString为空 messageName:%@ messageBody:%@",messageName,messageBody);
     }
-    
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
@@ -370,15 +360,18 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
         return;
     }
     self.documentHeight = [body floatValue];
+    if (!self.documentHeight) {
+        WCRLogError(@"高度 为0");
+        return;
+    }
     if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
         [self.webCourseDelegate webCourseWare:self webViewHeightDidChange:self.documentHeight];
     }
+    NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRate * self.documentHeight)];
     if (self.isWebViewLoadSuccess) {
-        NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRate * self.documentHeight)];
         [self evaluateJavaScript:rateScript completionHandler:nil];
-        self.shouldRateAfterLoad = NO;
     }else{
-        self.shouldRateAfterLoad = YES;
+        [self.evaluateJaveScripts addObject:rateScript];
     }
 }
 
@@ -406,9 +399,6 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
 
 -(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
     WCRCWLogInfo(@"wkwebview开始加载:%@",self.url);
-    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
-        [self.delegate courseWareWillLoad:self];
-    }
 }
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
@@ -459,9 +449,12 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
         sizeJavascript = [NSString stringWithFormat:@"var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=%f, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');document.getElementsByTagName('head')[0].appendChild(meta);", self.view.bounds.size.width];
     }
     [webView evaluateJavaScript:sizeJavascript completionHandler:nil];
-    //设置课件t透明
-    NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
-    [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
+
+    if (self.isDocumentOpaque) {
+        //设置课件t透明
+        NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
+        [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
+    }
     //注入停用长按图片显示保存菜单,在课件中停用iOS11后的drag&drop功能
     NSString *dragJavascript = @"document.body.style.webkitTouchCallout='none';document.body.setAttribute('ondragstart','return false');";
     [webView evaluateJavaScript:dragJavascript completionHandler:nil];
