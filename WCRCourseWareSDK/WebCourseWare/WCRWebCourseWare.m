@@ -136,9 +136,8 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     }
     self.currentRate = rate;
     //判断高度不等于0，防止没有回调高度就进行滚动，导致滚动的位置不正确，然后在接收到高度变化时，再进行一次滚动操作
-    if (self.documentHeight != 0) {
         NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(rate * self.documentHeight)];
-        if (self.isWebViewLoadSuccess) {
+        if (self.isWebViewLoadSuccess && self.documentHeight != 0) {
             [self evaluateJavaScript:rateScript completionHandler:nil];
         }else{
             [self.evaluateJaveScripts addObject:rateScript];
@@ -166,18 +165,20 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     }
 }
 
-- (void)docLoadFinishAfterConfirmDocState {
-    WCRCWLogInfo(@"docLoadFinishAfterConfirmDocState");
+- (void)executeCallBackAfterMessage {
+    WCRCWLogInfo(@"executeCallBackAfterMessage");
     for (int i = 0; i<= self.messageNames.count; i++) {
         NSString* content = [NSString stringWithFormat:@"{\"msg\":\"%@\", \"body\":%@}", self.messageNames[i], [NSString wcr_jsonWithDictionary:self.messageBodys[i]]];
         NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
         [self evaluateJavaScript:js completionHandler:nil];
     }
+    [self.messageNames removeAllObjects];
+    [self.messageBodys removeAllObjects];
 }
 - (void)syncJSAction{
      //TODO  需要做消息保序操作。
     if (self.messageNames.count && self.messageBodys.count &&self.callBackJsString) {
-        [self docLoadFinishAfterConfirmDocState];
+        [self executeCallBackAfterMessage];
     }
     for (NSString *js in self.evaluateJaveScripts) {
         [self evaluateJavaScript:js completionHandler:nil];
@@ -204,8 +205,10 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
         NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
         [self evaluateJavaScript:js completionHandler:completionHandler];
     } else {
-        [self.messageNames addObject:messageName];
-        [self.messageBodys addObject:messageBody];
+        if (![NSString wcr_isBlankString:messageName]) {
+            [self.messageNames addObject:messageName];
+            [self.messageBodys addObject:messageBody];
+        }
         WCRCWLogError(@"callBackJsString为空 messageName:%@ messageBody:%@",messageName,messageBody);
     }
 }
