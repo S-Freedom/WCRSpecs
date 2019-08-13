@@ -11,6 +11,7 @@
 #import <WCRBase/ReactiveObjC.h>
 #import <WCRBase/NSString+Utils.h>
 #import <WCRBase/NSDictionary+Utils.h>
+#import <WCRBase/UIView+LayoutSubviewsCallback.h>
 #import "WCRCourseWareLogger.h"
 #import "WCRCouerseWareWKWebviewMessageHandler.h"
 #import "WCRError+WebCourseWare.h"
@@ -44,6 +45,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 @property (nonatomic, assign) CGFloat currentRate;
 @property (nonatomic, assign) CGRect mouseClickRect;
 @property (nonatomic, assign) CGFloat documentHeight;
+@property (nonatomic, assign) CGSize webViewLastSize;
 @end
 
 @implementation WCRWebCourseWare
@@ -81,6 +83,23 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     if ([NSString wcr_isBlankString:url.scheme]) {
         WCRCWLogError(@"打开课件 url scheme 为空");
         return [WCRError webCourseWareErrorWithErrorCode:WCRWCWErrorCodeNilScheme];
+    }
+    
+    //记录此时webview的size
+    self.webViewLastSize = self.webView.bounds.size;
+    if (!self.webView.layoutSubviewsCallback) {
+        @weakify(self);
+        self.webView.layoutSubviewsCallback = ^(UIView * _Nonnull view) {
+            @strongify(self);
+            //当前webview的size变化时，pdf课件不会自适应，需要刷新一下webView
+            CGSize oldSize = self.webViewLastSize;
+            CGSize newSize = view.bounds.size;
+            if (!CGSizeEqualToSize(oldSize, newSize)) {
+                WCRCWLogInfo(@"size 改变造成webView reload %@ %@",NSStringFromCGSize(oldSize),NSStringFromCGSize(newSize));
+                [self.webView reload];
+            }
+            self.webViewLastSize = newSize;
+        };
     }
     
     self.webViewLoadSuccess = NO;
