@@ -29,7 +29,9 @@ NSString * const kWCRWebCourseWareJSDOCScrollMessage = @"DOCQS_SCROLLTOP_RESULT"
 NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT_HEIGHT";
 //课件壳打印日志消息
 NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
-
+//授权课件翻页信息
+NSString *const kWCRWebCourseWareJSAuthorizeDocBody = @"transferMessageSend";
+NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseWare";
 
 @interface WCRWebCourseWare ()<WKScriptMessageHandler,WKUIDelegate,WKNavigationDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) WKWebView *webView;
@@ -39,10 +41,12 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 @property (nonatomic, assign, getter=isShouldGoToPageAfterLoad) BOOL shouldGoToPageAfterLoad;
 @property (nonatomic, assign, getter=isShouldRateAfterLoad) BOOL shouldRateAfterLoad;
 @property (nonatomic, assign, getter=isShouldMouseClickAfterLoad) BOOL shouldMouseClickAfterLoad;
+@property (nonatomic, strong) NSMutableArray *messageNames;
+@property (nonatomic, strong) NSMutableArray *messageBodys;
+@property (nonatomic, strong) NSMutableArray *evaluateJaveScripts;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger currentStep;
 @property (nonatomic, assign) CGFloat currentRate;
-@property (nonatomic, assign) CGRect mouseClickRect;
 @property (nonatomic, assign) CGFloat documentHeight;
 @end
 
@@ -86,9 +90,6 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     self.webViewLoadSuccess = NO;
     NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
-    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
-        [self.delegate courseWareWillLoad:self];
-    }
     
     return nil;
 }
@@ -108,27 +109,22 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         WCRCWLogInfo(@"已经是当前页的某一步");
         return;
     }
-    self.currentPage = page;
-    self.currentStep = step;
-    if (self.isWebViewLoadSuccess) {
-        [self toPage:page step:step];
-        self.shouldGoToPageAfterLoad = NO;
-    }else{
-        self.shouldGoToPageAfterLoad = YES;
-    }
-   
-}
-
-- (void)toPage:(NSInteger)page step:(NSInteger)step{
     NSString* toPageScript = [NSString stringWithFormat:
                               @"if (window.slideAPI) {"
-                              "    window.slideAPI.gotoSlideStep(%d, %d);"
+                              "window.slideAPI.gotoSlideStep(%d, %d);"
                               "} else {"
                               "    window.enableGotoSlide = true; "
                               "    window.gotoSlide(%d, %d);"
                               "}"
                               , (int)(page-1), (int)(step), (int)(page-1), (int)(step)];
-    [self evaluateJavaScript:toPageScript completionHandler:nil];
+    if (self.isWebViewLoadSuccess) {
+        [self evaluateJavaScript:toPageScript completionHandler:nil];
+        self.shouldGoToPageAfterLoad = NO;
+    }else{
+        [self.evaluateJaveScripts addObject:toPageScript];
+        self.shouldGoToPageAfterLoad = YES;
+    }
+    
 }
 
 - (void)page:(NSInteger)page scrollToRate:(CGFloat)rate{
@@ -143,48 +139,55 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     }
     self.currentRate = rate;
     //判断高度不等于0，防止没有回调高度就进行滚动，导致滚动的位置不正确，然后在接收到高度变化时，再进行一次滚动操作
-    if (self.isWebViewLoadSuccess && self.documentHeight != 0) {
-        NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRate * self.documentHeight)];
-        [self evaluateJavaScript:rateScript completionHandler:nil];
-        self.shouldRateAfterLoad = NO;
-    }else{
-        self.shouldRateAfterLoad = YES;
+    if (self.documentHeight != 0) {
+        NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(rate * self.documentHeight)];
+        if (self.isWebViewLoadSuccess) {
+            [self evaluateJavaScript:rateScript completionHandler:nil];
+            self.shouldRateAfterLoad = NO;
+        }else{
+            [self.evaluateJaveScripts addObject:rateScript];
+            self.shouldRateAfterLoad = YES;
+        }
     }
+    
 }
 - (void)mouseClick:(CGRect)click{
     WCRCWLogInfo(@"模拟鼠标点击 x:%f y:%f w:%f h:%f",click.origin.x,click.origin.y,click.size.width,click.size.height);
-    self.mouseClickRect = click;
+    CGFloat webViewWidth = self.webView.bounds.size.width;
+    CGFloat webViewHeight = self.webView.bounds.size.height;
+    
+    CGFloat x = click.origin.x;
+    CGFloat y = click.origin.y;
+    CGFloat w = click.size.width;
+    CGFloat h = click.size.height;
+    
+    CGFloat newX = webViewWidth * x / w;
+    CGFloat newY = webViewHeight * y / h;
+    NSString *mouseClickScript = [NSString stringWithFormat:@"mouse_click(%d,%d)",(int)newX,(int)newY];
     if (self.isWebViewLoadSuccess) {
-        CGFloat webViewWidth = self.webView.bounds.size.width;
-        CGFloat webViewHeight = self.webView.bounds.size.height;
-        
-        CGFloat x = click.origin.x;
-        CGFloat y = click.origin.y;
-        CGFloat w = click.size.width;
-        CGFloat h = click.size.height;
-        
-        CGFloat newX = webViewWidth * x / w;
-        CGFloat newY = webViewHeight * y / h;
-        NSString *mouseClickScript = [NSString stringWithFormat:@"mouse_click(%d,%d)",(int)newX,(int)newY];
         [self evaluateJavaScript:mouseClickScript completionHandler:nil];
         self.shouldMouseClickAfterLoad = NO;
     }else{
+        [self.evaluateJaveScripts addObject:mouseClickScript];
         self.shouldMouseClickAfterLoad = YES;
     }
 }
+
+- (void)docLoadFinishAfterConfirmDocState {
+    WCRCWLogInfo(@"confirmDocState");
+    NSString* content = [NSString stringWithFormat:@"{\"msg\":\"%@\", \"body\":%@}", [self.messageNames firstObject], [NSString wcr_jsonWithDictionary:[self.messageBodys firstObject]]];
+    
+    NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
+    [self evaluateJavaScript:js completionHandler:nil];
+    [self.messageBodys removeObjectAtIndex:0];
+    [self.messageNames removeObjectAtIndex:0];
+}
 - (void)syncJSAction{
-    /*
-     TODO
-     优化，使用数组存储需要执行的js语句，而不是存储每一个操作
-     */
-    if (self.isShouldGoToPageAfterLoad) {
-        [self toPage:self.currentPage step:self.currentStep];
+    if (self.messageNames.count && self.messageBodys.count &&self.callBackJsString) {
+        [self docLoadFinishAfterConfirmDocState];
     }
-    if (self.isShouldRateAfterLoad) {
-        [self page:self.currentPage scrollToRate:self.currentRate];
-    }
-    if (self.isShouldMouseClickAfterLoad) {
-        [self mouseClick:self.mouseClickRect];
+    for (NSString *js in self.evaluateJaveScripts) {
+        [self evaluateJavaScript:js completionHandler:nil];
     }
 }
 
@@ -204,9 +207,13 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     if (![NSString wcr_isBlankString:self.callBackJsString]) {
         NSString* content = [NSString stringWithFormat:@"{\"msg\":\"%@\", \"body\":%@}", messageName, [NSString wcr_jsonWithDictionary:messageBody]];
         
-        NSString* js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
+        NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
         [self evaluateJavaScript:js completionHandler:completionHandler];
-    }else{
+    }else if ([messageName isEqualToString:kWCRWWebCourseWareJSAuthorizeDocName] && [[messageBody objectForKey:@"type"] isEqualToString:kWCRWebCourseWareJSAuthorizeDocBody]){
+        [self.messageNames addObject:messageName];
+        [self.messageBodys addObject:messageBody];
+        
+    } else {
         WCRCWLogError(@"callBackJsString为空 messageName:%@ messageBody:%@",messageName,messageBody);
     }
     
@@ -363,10 +370,6 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         return;
     }
     self.documentHeight = [body floatValue];
-    if (!self.documentHeight) {
-        WCRLogError(@"高度 为0");
-        return;
-    }
     if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
         [self.webCourseDelegate webCourseWare:self webViewHeightDidChange:self.documentHeight];
     }
@@ -403,6 +406,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 -(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
     WCRCWLogInfo(@"wkwebview开始加载:%@",self.url);
+    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
+        [self.delegate courseWareWillLoad:self];
+    }
 }
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
@@ -453,12 +459,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         sizeJavascript = [NSString stringWithFormat:@"var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=%f, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');document.getElementsByTagName('head')[0].appendChild(meta);", self.view.bounds.size.width];
     }
     [webView evaluateJavaScript:sizeJavascript completionHandler:nil];
-    
-    if (self.isDocumentOpaque) {
-        //设置课件t透明
-        NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
-        [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
-    }
+    //设置课件t透明
+    NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
+    [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
     //注入停用长按图片显示保存菜单,在课件中停用iOS11后的drag&drop功能
     NSString *dragJavascript = @"document.body.style.webkitTouchCallout='none';document.body.setAttribute('ondragstart','return false');";
     [webView evaluateJavaScript:dragJavascript completionHandler:nil];
@@ -554,5 +557,25 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         _messagesSet = [NSMutableSet set];
     }
     return _messagesSet;
+}
+
+- (NSMutableArray *)messageBodys {
+    if (!_messageBodys) {
+        _messageBodys = [NSMutableArray array];
+    }
+    return _messageBodys;
+}
+
+- (NSMutableArray *)messageNames {
+    if (!_messageNames) {
+        _messageNames = [NSMutableArray array];
+    }
+    return _messageNames;
+}
+-(NSMutableArray *)evaluateJaveScripts {
+    if (!_evaluateJaveScripts) {
+        _evaluateJaveScripts = [NSMutableArray array];
+    }
+    return _evaluateJaveScripts;
 }
 @end
