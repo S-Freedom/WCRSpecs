@@ -175,6 +175,7 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     }
 }
 - (void)syncJSAction{
+     //TODO  需要做消息保序操作。
     if (self.messageNames.count && self.messageBodys.count &&self.callBackJsString) {
         [self docLoadFinishAfterConfirmDocState];
     }
