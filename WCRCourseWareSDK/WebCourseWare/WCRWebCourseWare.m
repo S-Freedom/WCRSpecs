@@ -22,14 +22,13 @@ NSString * const kWCRWebCourseWareJSFuncSendMessage = @"sendMessage";
 NSString * const kWCRWebCourseWareJSFuncSendMessageWithCallBack = @"sendMessageWithCallback";
 NSString * const kWCRWebCourseWareJSErrorMessage = @"BUFFERING_LOAD_ERROR";
 //PDF课件高度通知
+NSString * const kWCRWebCourseWareJSScrollMessage = @"PDF_SCROLLTOP_RESULT";
 NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIGHT";
 //题库与课件高度通知
+NSString * const kWCRWebCourseWareJSDOCScrollMessage = @"DOCQS_SCROLLTOP_RESULT";
 NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT_HEIGHT";
 //课件壳打印日志消息
 NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
-//授权课件翻页信息
-NSString *const kWCRWebCourseWareJSAuthorizeDocBody = @"transferMessageSend";
-NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseWare";
 
 @interface WCRWebCourseWare ()<WKScriptMessageHandler,WKUIDelegate,WKNavigationDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) WKWebView *webView;
@@ -106,6 +105,8 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
         WCRCWLogInfo(@"已经是当前页的某一步");
         return;
     }
+    self.currentPage = page;
+    self.currentStep = step;
     NSString* toPageScript = [NSString stringWithFormat:
                               @"if (window.slideAPI) {"
                               "    window.slideAPI.gotoSlideStep(%d, %d);"
@@ -211,31 +212,34 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     }
 }
 
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
-    if ([message.name isEqualToString:@"WCRDocJSSDK"]) {
-        NSString* msgBodyString = (NSString*)message.body;
-        NSDictionary* msgBody = [NSDictionary wcr_dictionaryWithJSON:msgBodyString];
-        NSString* msgName = [msgBody objectForKey:@"message"];
-        WCRCWLogInfo(@"收到WCRDocJSSDK消息:%@ msgBody:%@",msgName,msgBody);
-        if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSetUp]) {
-            [self onJsFuncSetUp:msgBody];
-        } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessage]) {
-            [self onJsFuncSendMessage:msgBody];
-        } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessageWithCallBack]) {
-            [self onJsFuncSendMessageWithCallBack:msgBody];
-        }else if ([msgName isEqualToString:kWCRWebCourseWareJSErrorMessage]) {
-            [self onJsFuncError:msgBody];
-        }else if ([msgName isEqualToString:kWCRWebCourseWareJSHeightChangeMessage]) {
-            [self onJsFuncHeightChange:msgBody];
-        }else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
-            [self onJsFuncHeightChange:msgBody];
-        } else if ([msgName isEqualToString:kWCRWebCourseWareJSWebLog]){
-            [self onJsFuncWebLog:msgBody];
-        }
-        [self callBackJsFunc:msgName body:msgBody];
-    }else{
-        WCRCWLogInfo(@"收到非WCRDocJSSDK消息:%@",message.name);
+- (void)userContentController:(WKUserContentController *)userContentController  if ([message.name isEqualToString:@"WCRDocJSSDK"]) {
+    NSString* msgBodyString = (NSString*)message.body;
+    NSDictionary* msgBody = [NSDictionary wcr_dictionaryWithJSON:msgBodyString];
+    NSString* msgName = [msgBody objectForKey:@"message"];
+    WCRCWLogInfo(@"收到WCRDocJSSDK消息:%@ msgBody:%@",msgName,msgBody);
+    if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSetUp]) {
+        [self onJsFuncSetUp:msgBody];
+    } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessage]) {
+        [self onJsFuncSendMessage:msgBody];
+    } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessageWithCallBack]) {
+        [self onJsFuncSendMessageWithCallBack:msgBody];
+    }else if ([msgName isEqualToString:kWCRWebCourseWareJSErrorMessage]) {
+        [self onJsFuncError:msgBody];
+    } else if ([msgName isEqualToString:kWCRWebCourseWareJSScrollMessage]) {
+        [self onJsFuncScroll:msgBody];
+    } else if ([msgName isEqualToString:kWCRWebCourseWareJSHeightChangeMessage]) {
+        [self onJsFuncHeightChange:msgBody];
+    } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCScrollMessage]) {
+        [self onJsFuncScroll:msgBody];
+    } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
+        [self onJsFuncHeightChange:msgBody];
+    } else if ([msgName isEqualToString:kWCRWebCourseWareJSWebLog]){
+        [self onJsFuncWebLog:msgBody];
     }
+    [self callBackJsFunc:msgName body:msgBody];
+}else{
+    WCRCWLogInfo(@"收到非WCRDocJSSDK消息:%@",message.name);
+}
 }
 
 - (void)callBackJsFunc:(NSString *)name body:(NSDictionary *)body{
@@ -331,6 +335,9 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
 }
 
 - (void)onJsFuncError:(NSDictionary *)message{
+}
+
+- (void)onJsFuncScroll:(NSDictionary *)message{
 }
 
 - (void)onJsFuncHeightChange:(NSDictionary *)message{
