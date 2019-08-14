@@ -139,6 +139,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         if (self.isWebViewLoadSuccess && self.documentHeight != 0) {
             [self evaluateJavaScript:rateScript completionHandler:nil];
         }else{
+           //为0时候存储起来在change的时候会先走到0然后在走change后的值没有必要
             if (self.documentHeight != 0) {
                 [self.evaluateJaveScripts addObject:rateScript];
             }
@@ -212,36 +213,36 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     }
 }
 
-- (void)userContentController:(WKUserContentController *)userContentController  if ([message.name isEqualToString:@"WCRDocJSSDK"]) {
-    NSString* msgBodyString = (NSString*)message.body;
-    NSDictionary* msgBody = [NSDictionary wcr_dictionaryWithJSON:msgBodyString];
-    NSString* msgName = [msgBody objectForKey:@"message"];
-    WCRCWLogInfo(@"收到WCRDocJSSDK消息:%@ msgBody:%@",msgName,msgBody);
-    if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSetUp]) {
-        [self onJsFuncSetUp:msgBody];
-    } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessage]) {
-        [self onJsFuncSendMessage:msgBody];
-    } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessageWithCallBack]) {
-        [self onJsFuncSendMessageWithCallBack:msgBody];
-    }else if ([msgName isEqualToString:kWCRWebCourseWareJSErrorMessage]) {
-        [self onJsFuncError:msgBody];
-    } else if ([msgName isEqualToString:kWCRWebCourseWareJSScrollMessage]) {
-        [self onJsFuncScroll:msgBody];
-    } else if ([msgName isEqualToString:kWCRWebCourseWareJSHeightChangeMessage]) {
-        [self onJsFuncHeightChange:msgBody];
-    } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCScrollMessage]) {
-        [self onJsFuncScroll:msgBody];
-    } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
-        [self onJsFuncHeightChange:msgBody];
-    } else if ([msgName isEqualToString:kWCRWebCourseWareJSWebLog]){
-        [self onJsFuncWebLog:msgBody];
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
+    if ([message.name isEqualToString:@"WCRDocJSSDK"]) {
+        NSString* msgBodyString = (NSString*)message.body;
+        NSDictionary* msgBody = [NSDictionary wcr_dictionaryWithJSON:msgBodyString];
+        NSString* msgName = [msgBody objectForKey:@"message"];
+        WCRCWLogInfo(@"收到WCRDocJSSDK消息:%@ msgBody:%@",msgName,msgBody);
+        if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSetUp]) {
+            [self onJsFuncSetUp:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessage]) {
+            [self onJsFuncSendMessage:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSFuncSendMessageWithCallBack]) {
+            [self onJsFuncSendMessageWithCallBack:msgBody];
+        }else if ([msgName isEqualToString:kWCRWebCourseWareJSErrorMessage]) {
+            [self onJsFuncError:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSScrollMessage]) {
+            [self onJsFuncScroll:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSHeightChangeMessage]) {
+            [self onJsFuncHeightChange:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCScrollMessage]) {
+            [self onJsFuncScroll:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
+            [self onJsFuncHeightChange:msgBody];
+        } else if ([msgName isEqualToString:kWCRWebCourseWareJSWebLog]){
+            [self onJsFuncWebLog:msgBody];
+        }
+        [self callBackJsFunc:msgName body:msgBody];
+    }else{
+        WCRCWLogInfo(@"收到非WCRDocJSSDK消息:%@",message.name);
     }
-    [self callBackJsFunc:msgName body:msgBody];
-}else{
-    WCRCWLogInfo(@"收到非WCRDocJSSDK消息:%@",message.name);
 }
-}
-
 - (void)callBackJsFunc:(NSString *)name body:(NSDictionary *)body{
     if ([self.messagesSet containsObject:name]) {
         if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:receiveMessage:withBody:)]) {
@@ -338,6 +339,24 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 }
 
 - (void)onJsFuncScroll:(NSDictionary *)message{
+    //这个方法的实现用scrollViewDidScroll代替掉啦。
+    /*
+    NSNumber *body = [message objectForKey:@"body"];
+    if (body == nil) {
+        WCRLogError(@"body 为空");
+        return;
+    }
+    CGFloat offsetY = [body floatValue];
+    CGFloat rate = 0;
+    if (self.documentHeight != 0) {
+        rate = offsetY/self.documentHeight;
+        self.currentRate = rate;
+    }
+    
+    if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
+        [self.webCourseDelegate webCourseWare:self webViewDidScroll:rate];
+    }
+     */
 }
 
 - (void)onJsFuncHeightChange:(NSDictionary *)message{
