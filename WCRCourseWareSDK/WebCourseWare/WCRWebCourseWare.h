@@ -166,7 +166,7 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  @param messageBody 消息体
  @param completionHandler 消息回调block
  */
-- (void)sendMessage:(NSString *)messageName withBody:(NSDictionary *)messageBody completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
+- (void)sendMessage:(NSString *)messageName withBody:(NSDictionary * _Nullable)messageBody completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -167,7 +167,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 - (void)executeCallBackAfterMessage {
     WCRCWLogInfo(@"executeCallBackAfterMessage");
-    for (int i = 0; i<= self.messageNames.count; i++) {
+    for (int i = 0; i< self.messageNames.count; i++) {
         NSString* content = [NSString stringWithFormat:@"{\"msg\":\"%@\", \"body\":%@}", self.messageNames[i], [NSString wcr_jsonWithDictionary:self.messageBodys[i]]];
         NSString *js = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}", self.callBackJsString, content];
         [self evaluateJavaScript:js completionHandler:nil];
@@ -183,6 +183,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     for (NSString *js in self.evaluateJaveScripts) {
         [self evaluateJavaScript:js completionHandler:nil];
     }
+    [self.evaluateJaveScripts removeAllObjects];
 }
 
 - (void)registerMessageWithMessageName:(NSString *)messageName{
@@ -207,7 +208,11 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     } else {
         if (![NSString wcr_isBlankString:messageName]) {
             [self.messageNames addObject:messageName];
-            [self.messageBodys addObject:messageBody];
+            if (messageBody != nil) {
+                [self.messageBodys addObject:messageBody];
+            } else {
+                [self.messageBodys addObject:@{}];
+            }
         }
         WCRCWLogError(@"callBackJsString为空 messageName:%@ messageBody:%@",messageName,messageBody);
     }
