@@ -22,10 +22,8 @@ NSString * const kWCRWebCourseWareJSFuncSendMessage = @"sendMessage";
 NSString * const kWCRWebCourseWareJSFuncSendMessageWithCallBack = @"sendMessageWithCallback";
 NSString * const kWCRWebCourseWareJSErrorMessage = @"BUFFERING_LOAD_ERROR";
 //PDF课件高度通知
-NSString * const kWCRWebCourseWareJSScrollMessage = @"PDF_SCROLLTOP_RESULT";
 NSString * const kWCRWebCourseWareJSHeightChangeMessage = @"PDF_PAGECONTENT_HEIGHT";
 //题库与课件高度通知
-NSString * const kWCRWebCourseWareJSDOCScrollMessage = @"DOCQS_SCROLLTOP_RESULT";
 NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT_HEIGHT";
 //课件壳打印日志消息
 NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
@@ -140,11 +138,11 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
         if (self.isWebViewLoadSuccess && self.documentHeight != 0) {
             [self evaluateJavaScript:rateScript completionHandler:nil];
         }else{
-            [self.evaluateJaveScripts addObject:rateScript];
+            if (self.documentHeight != 0) {
+                [self.evaluateJaveScripts addObject:rateScript];
+            }
         }
     }
-    
-}
 - (void)mouseClick:(CGRect)click{
     WCRCWLogInfo(@"模拟鼠标点击 x:%f y:%f w:%f h:%f",click.origin.x,click.origin.y,click.size.width,click.size.height);
     CGFloat webViewWidth = self.webView.bounds.size.width;
@@ -227,13 +225,9 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
             [self onJsFuncSendMessageWithCallBack:msgBody];
         }else if ([msgName isEqualToString:kWCRWebCourseWareJSErrorMessage]) {
             [self onJsFuncError:msgBody];
-        } else if ([msgName isEqualToString:kWCRWebCourseWareJSScrollMessage]) {
-            [self onJsFuncScroll:msgBody];
-        } else if ([msgName isEqualToString:kWCRWebCourseWareJSHeightChangeMessage]) {
+        }else if ([msgName isEqualToString:kWCRWebCourseWareJSHeightChangeMessage]) {
             [self onJsFuncHeightChange:msgBody];
-        } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCScrollMessage]) {
-            [self onJsFuncScroll:msgBody];
-        } else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
+        }else if ([msgName isEqualToString:kWCRWebCourseWareJSDOCHeightChangeMessage]) {
             [self onJsFuncHeightChange:msgBody];
         } else if ([msgName isEqualToString:kWCRWebCourseWareJSWebLog]){
             [self onJsFuncWebLog:msgBody];
@@ -337,24 +331,6 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
 }
 
 - (void)onJsFuncError:(NSDictionary *)message{
-}
-
-- (void)onJsFuncScroll:(NSDictionary *)message{
-    NSNumber *body = [message objectForKey:@"body"];
-    if (body == nil) {
-        WCRLogError(@"body 为空");
-        return;
-    }
-    CGFloat offsetY = [body floatValue];
-    CGFloat rate = 0;
-    if (self.documentHeight != 0) {
-        rate = offsetY/self.documentHeight;
-        self.currentRate = rate;
-    }
-    
-    if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
-        [self.webCourseDelegate webCourseWare:self webViewDidScroll:rate];
-    }
 }
 
 - (void)onJsFuncHeightChange:(NSDictionary *)message{
@@ -549,16 +525,8 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY  =  scrollView.contentOffset.y;
     CGFloat offsetX  =  scrollView.contentOffset.x;
-    if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:scrollWebScrollViewWithOffsetPoint:)]) {
-        [self.webCourseDelegate webCourseWare:self scrollWebScrollViewWithOffsetPoint:CGPointMake(offsetX, offsetY)];
-    }
-}
-
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    CGFloat offsetY  =  scrollView.contentOffset.y;
-    CGFloat offsetX  =  scrollView.contentOffset.x;
-    if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:scrollWebScrollViewWithOffsetPoint:)]) {
-        [self.webCourseDelegate webCourseWare:self scrollWebScrollViewWithOffsetPoint:CGPointMake(offsetX, offsetY)];
+    if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
+        [self.webCourseDelegate webCourseWare:self webViewDidScroll:CGPointMake(offsetX, offsetY)];
     }
 }
 

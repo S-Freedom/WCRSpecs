@@ -33,9 +33,9 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  当前课件被滚动的比例
 
  @param courseWare 被滚动的课件
- @param rate 滚动比例[0-1.0]
+ @param offsetPoint 滚动位置
  */
-- (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewDidScroll:(CGFloat)rate;
+- (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewDidScroll:(CGPoint)offsetPoint;
 
 /**
  当前课件高度或高度变化
@@ -72,12 +72,12 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare sendDocMessage:(NSString*)message withBody:(NSDictionary*)messageBody completion:(void (^ __nullable)(NSDictionary*))completion;
 
-/**
- 课件内部长课件滚动距离
- @param courseWare 需要发送消息的课件
- @param offsetPoint 滚动位置
- */
-- (void)webCourseWare:(WCRWebCourseWare *)courseWare scrollWebScrollViewWithOffsetPoint:(CGPoint)offsetPoint;
+///**
+// 课件内部长课件滚动距离
+// @param courseWare 需要发送消息的课件
+// @param offsetPoint 滚动位置
+// */
+//- (void)webCourseWare:(WCRWebCourseWare *)courseWare scrollWebScrollViewWithOffsetPoint:(CGPoint)offsetPoint;
 
 @end
 
