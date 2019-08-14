@@ -545,6 +545,23 @@ NSString *const kWCRWWebCourseWareJSAuthorizeDocName = @"teaching.hudong.courseW
     }
 }
 
+#pragma mark- scrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY  =  scrollView.contentOffset.y;
+    CGFloat offsetX  =  scrollView.contentOffset.x;
+    if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:scrollWebScrollViewWithOffsetPoint:)]) {
+        [self.webCourseDelegate webCourseWare:self scrollWebScrollViewWithOffsetPoint:CGPointMake(offsetX, offsetY)];
+    }
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    CGFloat offsetY  =  scrollView.contentOffset.y;
+    CGFloat offsetX  =  scrollView.contentOffset.x;
+    if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:scrollWebScrollViewWithOffsetPoint:)]) {
+        [self.webCourseDelegate webCourseWare:self scrollWebScrollViewWithOffsetPoint:CGPointMake(offsetX, offsetY)];
+    }
+}
+
 -(UIView *)view{
     return self.webView;
 }

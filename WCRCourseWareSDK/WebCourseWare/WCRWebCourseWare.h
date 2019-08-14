@@ -71,6 +71,14 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  @param completion 信道发送消息后的回复消息
  */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare sendDocMessage:(NSString*)message withBody:(NSDictionary*)messageBody completion:(void (^ __nullable)(NSDictionary*))completion;
+
+/**
+ 课件内部长课件滚动距离
+ @param courseWare 需要发送消息的课件
+ @param offsetPoint 滚动位置
+ */
+- (void)webCourseWare:(WCRWebCourseWare *)courseWare scrollWebScrollViewWithOffsetPoint:(CGPoint)offsetPoint;
+
 @end
 
 @interface WCRWebCourseWare : WCRCourseWare
