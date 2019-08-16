@@ -33,9 +33,9 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  当前课件被滚动的比例
 
  @param courseWare 被滚动的课件
- @param rate 滚动比例[0-1.0]
+ @param offsetPoint 滚动位置
  */
-- (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewDidScroll:(CGFloat)rate;
+- (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewDidScroll:(CGPoint)offsetPoint;
 
 /**
  当前课件高度或高度变化
@@ -71,6 +71,7 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  @param completion 信道发送消息后的回复消息
  */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare sendDocMessage:(NSString*)message withBody:(NSDictionary*)messageBody completion:(void (^ __nullable)(NSDictionary*))completion;
+
 @end
 
 @interface WCRWebCourseWare : WCRCourseWare
@@ -165,7 +166,7 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  @param messageBody 消息体
  @param completionHandler 消息回调block
  */
-- (void)sendMessage:(NSString *)messageName withBody:(NSDictionary *)messageBody completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
+- (void)sendMessage:(NSString *)messageName withBody:(NSDictionary * _Nullable)messageBody completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -74,7 +74,7 @@
 }
 
 //当前被滚动的比例
-- (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewDidScroll:(CGFloat)rate{
+- (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewDidScroll:(CGPoint)offsetPoint {
     
 }
 //当前课件的高度
