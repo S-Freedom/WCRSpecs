@@ -50,11 +50,16 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 -(instancetype)init{
     self = [super init];
     if (self) {
-        _currentPage = 1;
-        _currentStep = -1;
-        _documentHeight = 0;
+        [self initParams];
     }
     return self;
+}
+
+- (void)initParams{
+    self.currentPage = 1;
+    self.currentStep = -1;
+    self.documentHeight = 0;
+    self.currentRate = 0;
 }
 
 -(void)dealloc{
@@ -94,6 +99,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
             CGSize newSize = view.bounds.size;
             if (!CGSizeEqualToSize(oldSize, newSize)) {
                 WCRCWLogInfo(@"size 改变造成webView reload %@ %@",NSStringFromCGSize(oldSize),NSStringFromCGSize(newSize));
+                [self initParams];
                 [self.webView reload];
             }
             self.webViewLastSize = newSize;
@@ -506,6 +512,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
     WCRCWLogInfo(@"wkwebview内容处理中断:%@",self.url);
+    [self initParams];
     [webView reload];
 }
 
