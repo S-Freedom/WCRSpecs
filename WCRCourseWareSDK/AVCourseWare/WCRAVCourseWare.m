@@ -33,6 +33,7 @@
 
 -(void)dealloc{
     WCRCWLogInfo(@"WCRAVCourseWare dealloc");
+    [_player stop];
     [_player destory];
     _player = nil;
 }
