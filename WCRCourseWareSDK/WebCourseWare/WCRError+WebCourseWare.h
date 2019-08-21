@@ -13,6 +13,7 @@ typedef NS_ENUM(NSUInteger, WCRWCWErrorCode) {
     WCRWCWErrorCodeOK = 0,
 
     WCRWCWErrorCodeJSError,
+    WCRWCWErrorCodeProcessDidTerminate,
     WCRWCWErrorCodeNilUrl,
     WCRWCWErrorCodeNilScheme,
     WCRWCWErrorCodeUnknown

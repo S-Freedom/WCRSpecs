@@ -99,6 +99,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
             CGSize newSize = view.bounds.size;
             if (!CGSizeEqualToSize(oldSize, newSize)) {
                 WCRCWLogInfo(@"size 改变造成webView reload %@ %@",NSStringFromCGSize(oldSize),NSStringFromCGSize(newSize));
+                if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
+                    [self.delegate courseWareWillLoad:self];
+                }
                 [self initParams];
                 [self.webView reload];
             }
@@ -107,11 +110,11 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     }
     
     self.webViewLoadSuccess = NO;
-    NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
     if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
         [self.delegate courseWareWillLoad:self];
     }
+    NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:urlRequest];
     return nil;
 }
 
@@ -366,6 +369,17 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 }
 
 - (void)onJsFuncError:(NSDictionary *)message{
+    WCRCWLogInfo(@"onJsFuncError 改变造成webView reload %@",message);
+    WCRError *error = [WCRError webCourseWareErrorWithErrorCode:WCRWCWErrorCodeJSError];
+    if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
+        [self.delegate courseWareDidLoad:self error:error];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
+        [self.delegate courseWareWillLoad:self];
+    }
+    [self initParams];
+    [self.webView reload];
 }
 
 - (void)onJsFuncScroll:(NSDictionary *)message{
@@ -467,6 +481,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         NSURL *url = [self getBackUpUrl];
         if (url != nil && ![NSString wcr_isBlankString:url.absoluteString] && ![NSString wcr_isBlankString:url.scheme]) {
             WCRCWLogInfo(@"retryAfterRetryInterval:%lu url:%@",(unsigned long)interval,url);
+            if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
+                [self.delegate courseWareWillLoad:self];
+            }
             NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
             [self.webView loadRequest:urlRequest];
         }else{
@@ -512,6 +529,15 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
     WCRCWLogInfo(@"wkwebview内容处理中断:%@",self.url);
+    WCRError *error = [WCRError webCourseWareErrorWithErrorCode:WCRWCWErrorCodeProcessDidTerminate];
+    if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
+        [self.delegate courseWareDidLoad:self error:error];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
+        [self.delegate courseWareWillLoad:self];
+    }
+    
     [self initParams];
     [webView reload];
 }
