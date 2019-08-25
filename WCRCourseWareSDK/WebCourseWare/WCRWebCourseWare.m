@@ -41,6 +41,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 @property (nonatomic, strong) NSMutableArray *evaluateJaveScripts;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger currentStep;
+@property (nonatomic, assign) CGPoint currentOffset;
 @property (nonatomic, assign) CGFloat currentRate;
 @property (nonatomic, assign) CGFloat documentHeight;
 @property (nonatomic, assign) CGSize webViewLastSize;
@@ -60,6 +61,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     self.currentStep = -1;
     self.documentHeight = 0;
     self.currentRate = 0;
+    self.currentOffset = CGPointZero;
 }
 
 -(void)dealloc{
@@ -161,18 +163,36 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         WCRCWLogError(@"rate <0.0或者rate > 1.0");
         return;
     }
+    //记录当前滚动比例
     self.currentRate = rate;
-    //判断高度不等于0，防止没有回调高度就进行滚动，导致滚动的位置不正确，然后在接收到高度变化时，再进行一次滚动操作
-        NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(rate * self.documentHeight)];
-        if (self.isWebViewLoadSuccess && self.documentHeight != 0) {
+    
+    if (self.isWebViewLoadSuccess) {
+        if (self.documentHeight != 0) {
+            //判断高度不等于0，防止没有回调高度就进行滚动，导致滚动的位置不正确
+            NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(rate * self.documentHeight)];
             [self evaluateJavaScript:rateScript completionHandler:nil];
-        }else{
-           //为0时候存储起来在change的时候会先走到0然后在走change后的值没有必要
-            if (self.documentHeight != 0) {
-                [self.evaluateJaveScripts addObject:rateScript];
+            
+            //如果scrollView当前偏移和需要滚动的偏移一样，是不会走scrollViewDidScroll回调的，这里需要手动回调一下
+            //修复问题。只有一个课件涂鸦区域的时候，打开A课件滚动到500，再打开B课件滚动到0，此时切回A课件，还是滚动到500，但是没有scrollView滚动的回调，导致涂鸦的偏移还是停留在B课件的0的位置。
+            if (CGPointEqualToPoint(self.webView.scrollView.contentOffset, CGPointMake(0, (int)(rate * self.documentHeight)))) {
+                WCRCWLogInfo(@"主动调用scrollViewDidScroll :%@",NSStringFromCGPoint(self.webView.scrollView.contentOffset));
+                [self scrollViewDidScroll:self.webView.scrollView];
             }
+            
+        }else{
+            WCRCWLogInfo(@"滚动时没有高度回调");
+            //如果高度为0，证明课件还没有通知我们高度。
+            //这时候等高度的通知：onJsFuncHeightChange。再根据存起来的self.currentRate，计算一下滚动高度，调用滚动
         }
+        
+    }else{
+        WCRCWLogInfo(@"滚动时webview未加载完成");
+        //这里不需要判断高度是否为0，因为还没有WebViewLoadSuccess，肯定没有回调高度
+        //这时候等高度的通知：onJsFuncHeightChange。再根据存起来的self.currentRate，计算一下滚动高度，调用滚动
     }
+    
+}
+
 - (void)mouseClick:(CGRect)click{
     WCRCWLogInfo(@"模拟鼠标点击 x:%f y:%f w:%f h:%f",click.origin.x,click.origin.y,click.size.width,click.size.height);
     CGFloat webViewWidth = self.webView.bounds.size.width;
@@ -606,10 +626,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 #pragma mark- scrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY  =  scrollView.contentOffset.y;
-    CGFloat offsetX  =  scrollView.contentOffset.x;
+    self.currentOffset = scrollView.contentOffset;
     if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
-        [self.webCourseDelegate webCourseWare:self webViewDidScroll:CGPointMake(offsetX, offsetY)];
+        [self.webCourseDelegate webCourseWare:self webViewDidScroll:scrollView.contentOffset];
     }
 }
 

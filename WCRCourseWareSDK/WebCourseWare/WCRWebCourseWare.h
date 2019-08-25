@@ -82,9 +82,9 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
 @property (nonatomic, weak) id<WCRWebCourseWareDelegate>webCourseDelegate;
 
 /**
- 当前滚动比例
+ 当前滚动偏移量
  */
-@property (nonatomic, assign, readonly) CGFloat currentRate;
+@property (nonatomic, assign, readonly) CGPoint currentOffset;
 
 /**
  当前课件高度
