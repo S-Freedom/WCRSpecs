@@ -115,9 +115,53 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
         [self.delegate courseWareWillLoad:self];
     }
-    NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
+    if (self.isUsingOfflineUrl && [url.scheme isEqualToString:@"file"]) {
+        [self loadWebViewWithLocalFilePath:url];
+    }else{
+        NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:urlRequest];
+    }
     return nil;
+}
+//加载本地文件
+- (void)loadWebViewWithLocalFilePath:(NSURL *)path {
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
+        NSURL *baseDirURL =  [path URLByDeletingLastPathComponent];
+        if (@available(iOS 9.0, *)) {
+            [self.webView loadFileURL:path allowingReadAccessToURL:baseDirURL];
+        }
+    }else{
+        //8.0系统webviwe无法直接加载document路径下文件,需要把文件拷贝到tmp文件目录下
+        NSString *lastComponent = path.lastPathComponent;
+        NSURL *originFiles = [path URLByDeletingLastPathComponent];
+        NSURL *newFilePath = [self copyFileToTmpDirectory:originFiles];
+        if (newFilePath) {
+            newFilePath  = [newFilePath URLByAppendingPathComponent:lastComponent];
+            NSURLRequest *request = [NSURLRequest requestWithURL:newFilePath];
+            [self.webView loadRequest:request];
+        }else{
+            WCRCWLogError(@"离线课件拷贝出错");
+            [self retryAfterRetryInterval:self.retryInterval];
+        }
+    }
+}
+//拷贝文件至tmp文件夹
+- (NSURL *)copyFileToTmpDirectory:(NSURL *)originPath {
+    NSError *error = nil;
+    if (!originPath.fileURL || ![originPath checkResourceIsReachableAndReturnError:&error]) {
+        return nil;
+    }
+    //创建WCRCourse文件夹作为总目录来存放课件资源
+    NSFileManager *fileManager= [NSFileManager defaultManager];
+    NSURL *temDirURL = [[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:@"WCRCourse"];
+    [fileManager createDirectoryAtURL:temDirURL withIntermediateDirectories:YES attributes:nil error:&error];
+    //目标地址为WCRCourse拼接上 原资源文件上一级目录名字
+    NSURL *destURL = [temDirURL URLByAppendingPathComponent:originPath.lastPathComponent];
+    //删除原有的同名文件夹
+    [fileManager removeItemAtURL:temDirURL error:&error];
+    //拷贝到目标文件夹
+    BOOL isSuccess = [fileManager copyItemAtURL:[originPath URLByDeletingLastPathComponent] toURL:temDirURL error:&error];
+    return isSuccess ? destURL : nil;
 }
 
 -(void)setUserScrollEnable:(BOOL)userScrollEnable{
