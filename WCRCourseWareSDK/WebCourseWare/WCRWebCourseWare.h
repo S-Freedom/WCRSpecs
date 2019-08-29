@@ -46,6 +46,14 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewHeightDidChange:(CGFloat)height;
 
 /**
+ 当前课件大小发生改变
+
+ @param courseWare 课件
+ @param size 课件size
+ */
+- (void)webCourseWare:(WCRWebCourseWare *)courseWare webViewSizeDidChange:(CGSize)size;
+
+/**
  课件js方法回调
 
  @param courseWare 课件

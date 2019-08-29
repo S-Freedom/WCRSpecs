@@ -43,7 +43,8 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 @property (nonatomic, assign) NSInteger currentStep;
 @property (nonatomic, assign) CGPoint currentOffset;
 @property (nonatomic, assign) CGFloat currentRate;
-@property (nonatomic, assign) CGFloat documentHeight;
+@property (nonatomic, assign) CGFloat documentHeight;//课件的高度，用于外部访问
+@property (nonatomic, assign) CGFloat contentHeight;//内容的高度，用于内部维护可滚动课件的高度
 @property (nonatomic, assign) CGSize webViewLastSize;
 @end
 
@@ -59,7 +60,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 - (void)initParams{
     self.currentPage = 1;
     self.currentStep = -1;
-    self.documentHeight = 0;
+    self.contentHeight = 0;
     self.currentRate = 0;
     self.currentOffset = CGPointZero;
 }
@@ -103,6 +104,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
                 WCRCWLogInfo(@"size 改变造成webView reload %@ %@",NSStringFromCGSize(oldSize),NSStringFromCGSize(newSize));
                 if ([self.delegate respondsToSelector:@selector(courseWareWillLoad:)]) {
                     [self.delegate courseWareWillLoad:self];
+                }
+                if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewSizeDidChange:)]) {
+                    [self.webCourseDelegate webCourseWare:self webViewSizeDidChange:newSize];
                 }
                 [self initParams];
                 [self.webView reload];
@@ -211,14 +215,14 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     self.currentRate = rate;
     
     if (self.isWebViewLoadSuccess) {
-        if (self.documentHeight != 0) {
+        if (self.contentHeight != 0) {
             //判断高度不等于0，防止没有回调高度就进行滚动，导致滚动的位置不正确
-            NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(rate * self.documentHeight)];
+            NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(rate * self.contentHeight)];
             [self evaluateJavaScript:rateScript completionHandler:nil];
             
             //如果scrollView当前偏移和需要滚动的偏移一样，是不会走scrollViewDidScroll回调的，这里需要手动回调一下
             //修复问题。只有一个课件涂鸦区域的时候，打开A课件滚动到500，再打开B课件滚动到0，此时切回A课件，还是滚动到500，但是没有scrollView滚动的回调，导致涂鸦的偏移还是停留在B课件的0的位置。
-            if (CGPointEqualToPoint(self.webView.scrollView.contentOffset, CGPointMake(0, (int)(rate * self.documentHeight)))) {
+            if (CGPointEqualToPoint(self.webView.scrollView.contentOffset, CGPointMake(0, (int)(rate * self.contentHeight)))) {
                 WCRCWLogInfo(@"主动调用scrollViewDidScroll :%@",NSStringFromCGPoint(self.webView.scrollView.contentOffset));
                 [self scrollViewDidScroll:self.webView.scrollView];
             }
@@ -456,8 +460,8 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     }
     CGFloat offsetY = [body floatValue];
     CGFloat rate = 0;
-    if (self.documentHeight != 0) {
-        rate = offsetY/self.documentHeight;
+    if (self.contentHeight != 0) {
+        rate = offsetY/self.contentHeight;
         self.currentRate = rate;
     }
     
@@ -473,15 +477,15 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         WCRLogError(@"body 为空");
         return;
     }
-    self.documentHeight = [body floatValue];
-    if (!self.documentHeight) {
+    self.contentHeight = [body floatValue];
+    if (!self.contentHeight) {
         WCRLogError(@"高度 为0");
         return;
     }
     if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
-        [self.webCourseDelegate webCourseWare:self webViewHeightDidChange:self.documentHeight];
+        [self.webCourseDelegate webCourseWare:self webViewHeightDidChange:self.contentHeight];
     }
-    NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRate * self.documentHeight)];
+    NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRate * self.contentHeight)];
     if (self.isWebViewLoadSuccess) {
         [self evaluateJavaScript:rateScript completionHandler:nil];
     }else{
@@ -705,5 +709,12 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         _evaluateJaveScripts = [NSMutableArray array];
     }
     return _evaluateJaveScripts;
+}
+
+- (CGFloat)documentHeight {
+    if (self.contentHeight > 0) {
+        return self.contentHeight;
+    }
+    return CGRectGetHeight(self.view.bounds);
 }
 @end
