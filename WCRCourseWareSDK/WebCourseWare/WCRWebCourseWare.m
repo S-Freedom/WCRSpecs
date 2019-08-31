@@ -32,6 +32,9 @@ NSString * const kWCRWebCourseWareJSDOCHeightChangeMessage = @"DOCQS_PAGECONTENT
 NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 @interface WCRWebCourseWare ()<WKScriptMessageHandler,WKUIDelegate,WKNavigationDelegate,UIScrollViewDelegate>
+
+///课件内部需要维护课件的页码和高度，而不是靠外部维护，所以需要设置目标参数和内部实际参数。
+
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) NSMutableSet *messagesSet;
 @property (nonatomic, copy) NSString *callBackJsString;
@@ -39,13 +42,17 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 @property (nonatomic, strong) NSMutableArray *messageNames;
 @property (nonatomic, strong) NSMutableArray *messageBodys;
 @property (nonatomic, strong) NSMutableArray *evaluateJaveScripts;
-@property (nonatomic, assign) NSInteger currentPage;
-@property (nonatomic, assign) NSInteger currentStep;
+@property (nonatomic, assign) NSInteger currentPageReal;//实际page index
+@property (nonatomic, assign) NSInteger currentStepReal;//实际step index
 @property (nonatomic, assign) CGPoint currentOffset;
-@property (nonatomic, assign) CGFloat currentRate;
+@property (nonatomic, assign) CGFloat currentRateReal;//实际滚动比例
+@property (nonatomic, assign) NSInteger currentPageTarget;//目标page index
+@property (nonatomic, assign) NSInteger currentStepTarget;//目标step index
+@property (nonatomic, assign) CGFloat currentRateTarget;//目标滚动比例
 @property (nonatomic, assign) CGFloat documentHeight;//课件的高度，用于外部访问
 @property (nonatomic, assign) CGFloat contentHeight;//内容的高度，用于内部维护可滚动课件的高度
 @property (nonatomic, assign) CGSize webViewLastSize;
+
 @end
 
 @implementation WCRWebCourseWare
@@ -58,10 +65,11 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 }
 
 - (void)initParams{
-    self.currentPage = 1;
-    self.currentStep = -1;
+    WCRCWLogInfo(@"");
+    self.currentPageReal = 1;
+    self.currentStepReal = -1;
     self.contentHeight = 0;
-    self.currentRate = 0;
+    self.currentRateReal = 0;
     self.currentOffset = CGPointZero;
 }
 
@@ -175,16 +183,19 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 - (void)goToPage:(NSInteger)page step:(NSInteger)step{
     WCRCWLogInfo(@"课件翻页page:%lu step:%lu",(unsigned long)page,(unsigned long)step);
+    self.currentPageTarget = page;
+    self.currentStepTarget = step;
     if (page <= 0 || step == -1){
         WCRCWLogError(@"page小于0或者step等于-1");
         return;
     }
-    if (page == self.currentPage && step == self.currentStep) {
+    if (page == self.currentPageReal && step == self.currentStepReal) {
         WCRCWLogInfo(@"已经是当前页的某一步");
         return;
     }
-    self.currentPage = page;
-    self.currentStep = step;
+    self.currentPageReal = page;
+    self.currentStepReal = step;
+    
     NSString* toPageScript = [NSString stringWithFormat:
                               @"if (window.slideAPI) {"
                               "    window.slideAPI.gotoSlideStep(%d, %d);"
@@ -203,7 +214,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 - (void)page:(NSInteger)page scrollToRate:(CGFloat)rate{
     WCRCWLogInfo(@"某页滚动page:%lu scrollToRate:%f",(unsigned long)page,rate);
-    if (page != self.currentPage) {
+    if (page != self.currentPageReal) {
         WCRCWLogError(@"page不等于当前页");
         return;
     }
@@ -212,8 +223,8 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         return;
     }
     //记录当前滚动比例
-    self.currentRate = rate;
-    
+    self.currentRateReal = rate;
+    self.currentRateTarget = rate;
     if (self.isWebViewLoadSuccess) {
         if (self.contentHeight != 0) {
             //判断高度不等于0，防止没有回调高度就进行滚动，导致滚动的位置不正确
@@ -378,6 +389,8 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     
     //nova课件，教研云课件等走setUp回调的课件，在此同步翻页等操作
     [self syncJSAction];
+    //翻页事件需要单独同步，因为reload时不会有cacheMessage
+    [self goToPage:self.currentPageTarget step:self.currentStepTarget];
 }
 
 - (void)onJsFuncSendMessage:(NSDictionary *)message{
@@ -452,23 +465,6 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 - (void)onJsFuncScroll:(NSDictionary *)message{
     //这个方法的实现用scrollViewDidScroll代替掉啦。
-    /*
-    NSNumber *body = [message objectForKey:@"body"];
-    if (body == nil) {
-        WCRLogError(@"body 为空");
-        return;
-    }
-    CGFloat offsetY = [body floatValue];
-    CGFloat rate = 0;
-    if (self.contentHeight != 0) {
-        rate = offsetY/self.contentHeight;
-        self.currentRate = rate;
-    }
-    
-    if (body != nil && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewDidScroll:)]) {
-        [self.webCourseDelegate webCourseWare:self webViewDidScroll:rate];
-    }
-     */
 }
 
 - (void)onJsFuncHeightChange:(NSDictionary *)message{
@@ -485,7 +481,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWare:webViewHeightDidChange:)]) {
         [self.webCourseDelegate webCourseWare:self webViewHeightDidChange:self.contentHeight];
     }
-    NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRate * self.contentHeight)];
+    NSString* rateScript = [NSString stringWithFormat:@"window.slideAPI.scrollTo(%d);", (int)(self.currentRateTarget * self.contentHeight)];
     if (self.isWebViewLoadSuccess) {
         [self evaluateJavaScript:rateScript completionHandler:nil];
     }else{
@@ -525,6 +521,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     [self disableDoubleTapScroll];
     //普通pdf课件等不走setUp回调的课件，在Webview回调加载完成时，同步翻页等操作
     [self syncJSAction];
+    [self goToPage:self.currentPageTarget step:self.currentStepTarget];
     
     if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
         [self.delegate courseWareDidLoad:self error:nil];
