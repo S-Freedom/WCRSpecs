@@ -378,7 +378,6 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         return;
     }
     
-    
     if ([self.webCourseDelegate respondsToSelector:@selector(webCourseWareSetUpDocumentMessageDictionary:)]) {
         NSDictionary *callbackContent = [self.webCourseDelegate webCourseWareSetUpDocumentMessageDictionary:self];
         NSString* callbackMsg = [NSString stringWithFormat:@"try{%@(%@);}catch(e){window.WCRDocSDK.log(e);}"
@@ -569,7 +568,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     [webView evaluateJavaScript:sizeJavascript completionHandler:nil];
 
     if (self.isDocumentOpaque) {
-        //设置课件t透明
+        //设置课件透明
         NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
         [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
     }
