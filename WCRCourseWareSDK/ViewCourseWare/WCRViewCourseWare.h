@@ -11,8 +11,15 @@
 #import <WCRCourseWareSDK/WCRCourseWare.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class WCRViewCourseWare;
+@protocol WCRViewCourseWareDelegate <NSObject>
+
+- (void)courseWare:(WCRViewCourseWare*)courseWare viewSizeDidChange:(CGSize)size;
+
+@end
 
 @interface WCRViewCourseWare : WCRCourseWare
+@property (weak, nonatomic) id<WCRViewCourseWareDelegate> viewCourseWareDelegate;
 
 /**
  创建白板课件

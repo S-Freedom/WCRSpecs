@@ -8,6 +8,12 @@
 
 #import "WCRViewCourseWare.h"
 #import "WCRCourseWareLogger.h"
+#import <WCRBase/ReactiveObjC.h>
+#import <WCRBase/UIView+LayoutSubviewsCallback.h>
+
+@interface WCRViewCourseWare ()
+@property (assign, nonatomic) CGSize viewLastSize;
+@end
 
 @implementation WCRViewCourseWare
 - (void)createView:(UIColor *)color{
@@ -19,6 +25,21 @@
     
     if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
         [self.delegate courseWareDidLoad:self error:nil];
+    }
+    self.viewLastSize = self.view.bounds.size;
+    if (!self.view.layoutSubviewsCallback) {
+        @weakify(self);
+        self.view.layoutSubviewsCallback = ^(UIView * _Nonnull view) {
+            @strongify(self);
+            CGSize oldSize = self.viewLastSize;
+            CGSize newSize = view.bounds.size;
+            if (!CGSizeEqualToSize(oldSize, newSize)) {
+                if ([self.viewCourseWareDelegate respondsToSelector:@selector(courseWare:viewSizeDidChange:)]) {
+                    [self.viewCourseWareDelegate courseWare:self viewSizeDidChange:newSize];
+                }
+                self.viewLastSize = newSize;
+            }
+        };
     }
 }
 
