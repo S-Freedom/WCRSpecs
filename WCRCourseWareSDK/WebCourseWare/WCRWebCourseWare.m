@@ -71,6 +71,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     self.contentHeight = 0;
     self.currentRateReal = 0;
     self.currentOffset = CGPointZero;
+    self.webViewLoadSuccess = NO;
 }
 
 -(void)dealloc{
