@@ -517,6 +517,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     WCRCWLogInfo(@"wkwebview加载完成:%@",self.url);
+    //注入停用长按图片显示保存菜单
+    [webView evaluateJavaScript:@"document.documentElement.style.webkitTouchCallout='none';" completionHandler:nil];
+    
     self.webViewLoadSuccess = YES;
     [self disableDoubleTapScroll];
     //普通pdf课件等不走setUp回调的课件，在Webview回调加载完成时，同步翻页等操作
@@ -573,8 +576,8 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         NSString *opaqueJavascript = @"document.body.style.backgroundColor='transparent';document.getElementsByTagName('html')[0].style.backgroundColor='transparent'";
         [webView evaluateJavaScript:opaqueJavascript completionHandler:nil];
     }
-    //注入停用长按图片显示保存菜单,在课件中停用iOS11后的drag&drop功能
-    NSString *dragJavascript = @"document.body.style.webkitTouchCallout='none';document.body.setAttribute('ondragstart','return false');";
+    //在课件中停用iOS11后的drag&drop功能
+    NSString *dragJavascript = @"document.body.setAttribute('ondragstart','return false');";
     [webView evaluateJavaScript:dragJavascript completionHandler:nil];
 }
 
