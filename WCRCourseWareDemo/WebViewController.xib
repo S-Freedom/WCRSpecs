@@ -92,6 +92,14 @@
                                         <action selector="jumpButtonTap:" destination="-1" eventType="touchUpInside" id="8GF-aN-TXo"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j0-fX-ESL">
+                                    <rect key="frame" x="370" y="9" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="下一页"/>
+                                    <connections>
+                                        <action selector="nextPage:" destination="-1" eventType="touchUpInside" id="OS1-hi-cAN"/>
+                                    </connections>
+                                </button>
                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="第几页" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fIS-6T-Sqe">
                                     <rect key="frame" x="65" y="8" width="97" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -120,6 +128,14 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jr1-H0-v6I">
+                                    <rect key="frame" x="452" y="10" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="上一页"/>
+                                    <connections>
+                                        <action selector="lastPage:" destination="-1" eventType="touchUpInside" id="jbm-s9-wnQ"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -171,6 +187,22 @@
                         <constraint firstItem="Xte-KL-1Qq" firstAttribute="width" secondItem="pVL-GN-kzN" secondAttribute="width" id="Zfb-4c-lTI"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4a-Ji-WPs">
+                    <rect key="frame" x="755" y="71" width="62" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="开始答题"/>
+                    <connections>
+                        <action selector="start:" destination="-1" eventType="touchUpInside" id="Fn8-tE-W6Q"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auj-w0-dv6">
+                    <rect key="frame" x="755" y="109" width="62" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="停止答题"/>
+                    <connections>
+                        <action selector="stop:" destination="-1" eventType="touchUpInside" id="ZcI-uy-2Ss"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
