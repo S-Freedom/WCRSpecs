@@ -38,7 +38,7 @@
         [self.delegate courseWareWillLoad:self];
     }
     @weakify(self);
-    [self.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:nil success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+    [self.imageView wcr_setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:nil success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
         @strongify(self);
         WCRCWLogInfo(@"图片设置成功");
         [self.imageView setImage:image];
