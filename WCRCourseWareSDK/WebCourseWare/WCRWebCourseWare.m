@@ -646,6 +646,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         _webView.navigationDelegate = self;
         _webView.opaque = NO;
         
+        _webView.scrollView.pinchGestureRecognizer.enabled = NO;
         _webView.scrollView.bounces = NO;
         _webView.scrollView.bouncesZoom = NO;
         _webView.scrollView.delegate = self;

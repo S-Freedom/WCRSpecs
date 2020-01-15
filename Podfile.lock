@@ -29,7 +29,7 @@ SPEC REPOS:
   https://git.100tal.com/jituan_zhiboyun_yidongduan/WCRSpecs.git:
     - WCRBase
     - WCRPlayerSDK
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Kiwi
     - Masonry
     - ReactiveObjC
@@ -43,4 +43,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3986de99cf6a152901d22919fcb3d44f204840cc
 
-COCOAPODS: 1.6.2
+COCOAPODS: 1.8.4
