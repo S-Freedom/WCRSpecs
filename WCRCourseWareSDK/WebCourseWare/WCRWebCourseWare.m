@@ -622,7 +622,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         }
         if([config respondsToSelector:@selector(setIgnoresViewportScaleLimits:)]) {
             if (@available(iOS 10.0, *)) {
-                config.ignoresViewportScaleLimits = YES;
+                config.ignoresViewportScaleLimits = NO;
             }
         }
         if([config respondsToSelector:@selector(setMediaTypesRequiringUserActionForPlayback:)]) {
