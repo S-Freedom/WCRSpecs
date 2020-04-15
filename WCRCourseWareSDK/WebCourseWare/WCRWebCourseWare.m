@@ -16,6 +16,7 @@
 #import "WCRCouerseWareWKWebviewMessageHandler.h"
 #import "WCRError+WebCourseWare.h"
 #import "WCRCourseWare+Internal.h"
+#import <WCRBase/ReactiveObjC.h>
 
 static NSString * const kWCRDocJSSDKScriptMessageHandler = @"WCRDocJSSDK";
 NSString * const kWCRWebCourseWareJSFuncSetUp = @"setup";
@@ -52,7 +53,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 @property (nonatomic, assign) CGFloat documentHeight;//课件的高度，用于外部访问
 @property (nonatomic, assign) CGFloat contentHeight;//内容的高度，用于内部维护可滚动课件的高度
 @property (nonatomic, assign) CGSize webViewLastSize;
-
+@property (nonatomic, strong) WCRRACSignal *timerSignal;
 @end
 
 @implementation WCRWebCourseWare
@@ -525,6 +526,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     //普通pdf课件等不走setUp回调的课件，在Webview回调加载完成时，同步翻页等操作
     [self syncJSAction];
     [self goToPage:self.currentPageTarget step:self.currentStepTarget];
+    [self setupFetchStep];
     
     if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
         [self.delegate courseWareDidLoad:self error:nil];
@@ -670,6 +672,60 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
                 }
             }
         }
+    }
+}
+
+- (void)setupFetchStep {
+    if (!self.timerSignal) {
+        self.timerSignal = [[WCRRACSignal interval:1 onScheduler:[WCRRACScheduler mainThreadScheduler]] startWith:[NSDate date]];
+        @weakify(self);
+        [self.timerSignal subscribeNext:^(id  _Nullable x) {
+            @strongify(self);
+            [self fetchCurrentStepIndex];
+        }];
+    }
+    [self fetchStepCount];
+}
+
+- (void)fetchCurrentStepIndex {
+    if (self.isWebViewLoadSuccess) {
+        NSString* currentStepScript = [NSString stringWithFormat:
+                                  @"if (window.slideAPI) {"
+                                  "    window.slideAPI.currentSlideIndex;"
+                                  "} else {"
+                                  "    window.currentSlideIndex;"
+                                  "}"];
+        @weakify(self);
+        [self evaluateJavaScript:currentStepScript completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+            @strongify(self);
+            if (!error && [data isKindOfClass:NSNumber.class]) {
+                self.currentStepIndex = [(NSNumber *)data intValue];
+                if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentStepIndexChanged:totalStepCount:)]) {
+                    [self.webCourseDelegate webCourseWare:self currentStepIndexChanged:self.currentStepIndex totalStepCount:self.totalStepCount];
+                }
+            }
+        }];
+    }
+}
+
+- (void)fetchStepCount {
+    if (self.isWebViewLoadSuccess) {
+        NSString* currentStepScript = [NSString stringWithFormat:
+                                  @"if (window.slideAPI) {"
+                                  "    window.slideAPI.slidesCount;"
+                                  "} else {"
+                                  "    window.slidesCount;"
+                                  "}"];
+        @weakify(self);
+        [self evaluateJavaScript:currentStepScript completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+            @strongify(self);
+            if (!error && [data isKindOfClass:NSNumber.class]) {
+                self.totalStepCount = [(NSNumber *)data intValue];
+                if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentStepIndexChanged:totalStepCount:)]) {
+                    [self.webCourseDelegate webCourseWare:self currentStepIndexChanged:self.currentStepIndex totalStepCount:self.totalStepCount];
+                }
+            }
+        }];
     }
 }
 

@@ -80,6 +80,15 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  */
 - (void)webCourseWare:(WCRWebCourseWare *)courseWare sendDocMessage:(NSString*)message withBody:(NSDictionary*)messageBody completion:(void (^ __nullable)(NSDictionary*))completion;
 
+/**
+ 课件当前页面改变
+
+ @param courseWare self
+ @param currentStepIndex 当前页面
+ @param totalStepCount 总页面数
+ */
+- (void)webCourseWare:(WCRWebCourseWare *)courseWare currentStepIndexChanged:(NSUInteger)currentStepIndex totalStepCount:(NSUInteger)totalStepCount;
+
 @end
 
 @interface WCRWebCourseWare : WCRCourseWare
@@ -108,6 +117,16 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  设置课件是否透明（默认为NO）,只有在-courseWareWillLoad:回调之前设置有效
  */
 @property (nonatomic, assign, getter=isDocumentOpaque) BOOL documentOpaque;
+
+/**
+ 当前页数
+ */
+@property (nonatomic, assign) NSUInteger currentStepIndex;
+
+/**
+ 总页数
+ */
+@property (nonatomic, assign) NSUInteger totalStepCount;
 
 /**
  加载课件
