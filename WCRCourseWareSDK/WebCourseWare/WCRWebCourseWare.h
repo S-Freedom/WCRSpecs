@@ -84,10 +84,10 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  课件当前页面改变
 
  @param courseWare self
- @param currentStepIndex 当前页面
- @param totalStepCount 总页面数
+ @param currentPageIndex 当前页面
+ @param totalPageCount 总页面数
  */
-- (void)webCourseWare:(WCRWebCourseWare *)courseWare currentStepIndexChanged:(NSUInteger)currentStepIndex totalStepCount:(NSUInteger)totalStepCount;
+- (void)webCourseWare:(WCRWebCourseWare *)courseWare currentPageIndexChanged:(NSUInteger)currentPageIndex totalPageCount:(NSUInteger)totalPageCount;
 
 @end
 
@@ -121,12 +121,12 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
 /**
  当前页数
  */
-@property (nonatomic, assign) NSUInteger currentStepIndex;
+@property (nonatomic, assign) NSUInteger currentPageIndex;
 
 /**
  总页数
  */
-@property (nonatomic, assign) NSUInteger totalStepCount;
+@property (nonatomic, assign) NSUInteger totalPageCount;
 
 /**
  加载课件

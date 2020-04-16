@@ -681,13 +681,13 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         @weakify(self);
         [self.timerSignal subscribeNext:^(id  _Nullable x) {
             @strongify(self);
-            [self fetchCurrentStepIndex];
+            [self fetchCurrentPageIndex];
         }];
     }
-    [self fetchStepCount];
+    [self fetchPageCount];
 }
 
-- (void)fetchCurrentStepIndex {
+- (void)fetchCurrentPageIndex {
     if (self.isWebViewLoadSuccess) {
         NSString* currentStepScript = [NSString stringWithFormat:
                                   @"if (window.slideAPI) {"
@@ -699,16 +699,16 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         [self evaluateJavaScript:currentStepScript completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             @strongify(self);
             if (!error && [data isKindOfClass:NSNumber.class]) {
-                self.currentStepIndex = [(NSNumber *)data intValue];
-                if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentStepIndexChanged:totalStepCount:)]) {
-                    [self.webCourseDelegate webCourseWare:self currentStepIndexChanged:self.currentStepIndex totalStepCount:self.totalStepCount];
+                self.currentPageIndex = [(NSNumber *)data intValue];
+                if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentPageIndexChanged:totalPageCount:)]) {
+                    [self.webCourseDelegate webCourseWare:self currentPageIndexChanged:self.currentPageIndex totalPageCount:self.totalPageCount];
                 }
             }
         }];
     }
 }
 
-- (void)fetchStepCount {
+- (void)fetchPageCount {
     if (self.isWebViewLoadSuccess) {
         NSString* currentStepScript = [NSString stringWithFormat:
                                   @"if (window.slideAPI) {"
@@ -720,9 +720,9 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         [self evaluateJavaScript:currentStepScript completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             @strongify(self);
             if (!error && [data isKindOfClass:NSNumber.class]) {
-                self.totalStepCount = [(NSNumber *)data intValue];
-                if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentStepIndexChanged:totalStepCount:)]) {
-                    [self.webCourseDelegate webCourseWare:self currentStepIndexChanged:self.currentStepIndex totalStepCount:self.totalStepCount];
+                self.totalPageCount = [(NSNumber *)data intValue];
+                if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentPageIndexChanged:totalPageCount:)]) {
+                    [self.webCourseDelegate webCourseWare:self currentPageIndexChanged:self.currentPageIndex totalPageCount:self.totalPageCount];
                 }
             }
         }];
