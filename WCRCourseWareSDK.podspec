@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WCRCourseWareSDK"
-  s.version      = "1.3.32"
+  s.version      = "1.3.33"
   s.summary      = "WCRCourseWareSDK"
   s.description  = <<-DESC
                   WCRCourseWareSDK 是专门为课件设计的基础架构，具有打开网页课件、音视频课件、图片课件和白板课件的能力。
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     ss.dependency "WCRBase/Error"
     ss.dependency "WCRBase/Utils"
     ss.dependency "WCRBase/Log"
-    ss.dependency "WCRPlayerSDK/AliPlayer"
+    ss.dependency "WCRPlayerSDK/ALiPlayer"
   end
 
 
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
     ss.dependency "WCRBase/Error"
     ss.dependency "WCRBase/Utils"
     ss.dependency "WCRBase/Log"
-    ss.dependency "WCRPlayerSDK/AVPlayer"
+    ss.dependency "WCRPlayerSDK/ALiPlayer"
   end
 
   s.subspec "ImageCourseWare" do |ss|
