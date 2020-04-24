@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     ss.dependency "WCRBase/Error"
     ss.dependency "WCRBase/Utils"
     ss.dependency "WCRBase/Log"
-    ss.dependency "WCRPlayerSDK/AVPlayer"
+    ss.dependency "WCRPlayerSDK/AliPlayer"
   end
 
 

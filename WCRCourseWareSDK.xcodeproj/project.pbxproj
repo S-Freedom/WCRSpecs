@@ -363,6 +363,7 @@
 				4DBE3DAE22437EBA000F4FF3 /* Sources */,
 				4DBE3DAF22437EBA000F4FF3 /* Frameworks */,
 				4DBE3DB022437EBA000F4FF3 /* Resources */,
+				67716F3F493E9F15B3E19DCD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,6 +402,8 @@
 				4DBE3DCD22437ECA000F4FF3 /* Frameworks */,
 				4DBE3DCE22437ECA000F4FF3 /* Resources */,
 				4DBE3E2F2243822D000F4FF3 /* Embed Frameworks */,
+				0A0D69B4F3FBE38C48614755 /* [CP] Embed Pods Frameworks */,
+				D659D419892B3C5B54C58BEB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -484,6 +487,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A0D69B4F3FBE38C48614755 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67716F3F493E9F15B3E19DCD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareSDK/Pods-WCRCourseWareSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7FC929B5931E4EE532F8DC0B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,6 +585,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D659D419892B3C5B54C58BEB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WCRCourseWareDemo/Pods-WCRCourseWareDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

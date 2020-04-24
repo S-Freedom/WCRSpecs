@@ -51,7 +51,7 @@
             default:
                 break;
         }
-        _player = [[WCRPlayer alloc] initWithPlayerSdk:WCRPlayerSDKTypeAVPlayer scalingMode:mode];
+        _player = [[WCRPlayer alloc] initWithPlayerSdk:WCRPlayerSDKTypeALiPlayer scalingMode:mode];
         _player.delegate = self;
     }
     return _player;
