@@ -691,7 +691,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     if (self.isWebViewLoadSuccess) {
         NSString* currentStepScript = [NSString stringWithFormat:
                                   @"if (window.slideAPI) {"
-                                  "    window.slideAPI.currentSlideIndex;"
+                                  "    window.slideAPI.currentIndex;"
                                   "} else {"
                                   "    window.currentSlideIndex;"
                                   "}"];
@@ -712,7 +712,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     if (self.isWebViewLoadSuccess) {
         NSString* currentStepScript = [NSString stringWithFormat:
                                   @"if (window.slideAPI) {"
-                                  "    window.slideAPI.slidesCount;"
+                                  "    window.slideAPI.slidesCount();"
                                   "} else {"
                                   "    window.slidesCount;"
                                   "}"];
