@@ -181,6 +181,11 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
 -(void)setUserScrollEnable:(BOOL)userScrollEnable{
     _userScrollEnable = userScrollEnable;
     self.webView.scrollView.scrollEnabled = userScrollEnable;
+    if (userScrollEnable) {
+        [self evaluateJavaScript:@"document.body.style='overflow:auto'" completionHandler:nil];
+    } else {
+        [self evaluateJavaScript:@"document.body.style='overflow:none'" completionHandler:nil];
+    }
 }
 
 - (void)goToPage:(NSInteger)page step:(NSInteger)step{
@@ -520,6 +525,12 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     WCRCWLogInfo(@"wkwebview加载完成:%@",self.url);
     //注入停用长按图片显示保存菜单
     [webView evaluateJavaScript:@"document.documentElement.style.webkitTouchCallout='none';" completionHandler:nil];
+    
+    if (_userScrollEnable) {
+        [self evaluateJavaScript:@"document.body.style='overflow:auto'" completionHandler:nil];
+    } else {
+        [self evaluateJavaScript:@"document.body.style='overflow:none'" completionHandler:nil];
+    }
     
     self.webViewLoadSuccess = YES;
     [self disableDoubleTapScroll];
