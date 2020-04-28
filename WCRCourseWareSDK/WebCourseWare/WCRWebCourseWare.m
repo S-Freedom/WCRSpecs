@@ -216,7 +216,8 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     }else{
         [self.evaluateJaveScripts addObject:toPageScript];
     }
-    
+    //翻页后需要重新设置这个值
+    self.userScrollEnable = self.isUserScrollEnable;
 }
 
 - (void)page:(NSInteger)page scrollToRate:(CGFloat)rate{
