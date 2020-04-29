@@ -502,6 +502,8 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     }else{
         [self.evaluateJaveScripts addObject:rateScript];
     }
+    //PDF此时才加载完成,以便重新执行js脚本
+    self.userScrollEnable = self.isUserScrollEnable;
 }
 
 - (void)onJsFuncWebLog:(NSDictionary *)message{
@@ -545,7 +547,6 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
         [self.delegate courseWareDidLoad:self error:nil];
     }
-    
 }
 
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
