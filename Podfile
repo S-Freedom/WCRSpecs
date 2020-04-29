@@ -27,7 +27,7 @@ target 'WCRCourseWareSDK' do
   pod 'WCRBase/Log'
   pod 'WCRBase/Error'
   pod 'WCRBase/Utils'
-  pod 'WCRPlayerSDK/ALiPlayer'
+  pod 'WCRPlayerSDK/AVPlayer'
 
   target 'WCRCourseWareSDKTests' do
     inherit! :search_paths

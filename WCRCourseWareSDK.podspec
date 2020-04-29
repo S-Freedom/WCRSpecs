@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     ss.dependency "WCRBase/Error"
     ss.dependency "WCRBase/Utils"
     ss.dependency "WCRBase/Log"
-    ss.dependency "WCRPlayerSDK/ALiPlayer"
+    ss.dependency "WCRPlayerSDK/AVPlayer"
   end
 
 
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
     ss.dependency "WCRBase/Error"
     ss.dependency "WCRBase/Utils"
     ss.dependency "WCRBase/Log"
-    ss.dependency "WCRPlayerSDK/ALiPlayer"
+    ss.dependency "WCRPlayerSDK/AVPlayer"
   end
 
   s.subspec "ImageCourseWare" do |ss|
