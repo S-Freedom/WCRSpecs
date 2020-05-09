@@ -215,8 +215,7 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
                               @"if (window.slideAPI) {"
                               "    window.slideAPI.gotoSlideStep(%d, %d);"
                               "} else {"
-                              "    window.enableGotoSlide = true; "
-                              "    window.gotoSlide(%d, %d);"
+                              "    playbackController.gotoSlide(%d, %d);"
                               "}"
                               , (int)(page-1), (int)(step), (int)(page-1), (int)(step)];
     if (self.isWebViewLoadSuccess) {
@@ -714,9 +713,11 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
         [self evaluateJavaScript:currentStepScript completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             @strongify(self);
             if (!error && [data isKindOfClass:NSNumber.class]) {
-                self.currentPageIndex = [(NSNumber *)data intValue];
-                if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentPageIndexChanged:totalPageCount:)]) {
-                    [self.webCourseDelegate webCourseWare:self currentPageIndexChanged:self.currentPageIndex totalPageCount:self.totalPageCount];
+                if (self.currentPageIndex != [(NSNumber *)data intValue]) {                self.currentPageIndex = [(NSNumber *)data intValue];
+                    if (self.webCourseDelegate && [self.webCourseDelegate respondsToSelector:@selector(webCourseWare:currentPageIndexChanged:totalPageCount:)]) {
+                        [self.webCourseDelegate webCourseWare:self currentPageIndexChanged:self.currentPageIndex totalPageCount:self.totalPageCount];
+                    }
+
                 }
             }
         }];
