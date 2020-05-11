@@ -118,6 +118,9 @@ WCR_EXTERN NSString * const kWCRWebCourseWareJSHeightChangeMessage;
  */
 @property (nonatomic, assign, getter=isDocumentOpaque) BOOL documentOpaque;
 
+@property (nonatomic, assign, readonly) NSInteger currentPageReal;//实际page index
+@property (nonatomic, assign, readonly) NSInteger currentStepReal;//实际step index
+
 /**
  当前页数
  */
