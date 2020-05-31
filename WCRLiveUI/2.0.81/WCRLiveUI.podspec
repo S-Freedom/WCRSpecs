@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "git@gitlab.com:weclassroomios/wcrliveuipod.git", :tag => "#{s.version}"  }
+  s.source       = {:http => "http://cloudclass-static.oss-cn-beijing.aliyuncs.com/static/zby-sdk/zby-ios-sdk/WCRLiveUI/2.0.81/WCRLive.zip" }
 
   s.vendored_frameworks = ["*.framework"]
 
