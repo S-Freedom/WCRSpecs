@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
   s.dependency 'Masonry', '~> 1.1.0'
   s.dependency 'MBProgressHUD', '~> 1.1.0'
   s.dependency 'AFNetworking', '~>3.2.1'
-  s.dependency 'SDWebImage/Core', '~> 5.2.3'
+  s.dependency 'SDWebImage/Core', '~> 5.2'
   s.dependency 'YYModel', '~> 1.0.4'
   s.dependency 'AliyunPlayer_iOS', '~> 3.4.10'
-  s.dependency 'UILabel+Copyable', '1.0.1'
+  s.dependency 'UILabel+Copyable', '~> 1.0.1'
 end
