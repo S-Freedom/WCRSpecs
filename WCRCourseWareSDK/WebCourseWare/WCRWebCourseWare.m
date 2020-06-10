@@ -548,6 +548,18 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
     }
 }
 
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    
+    WCRCWLogInfo(@"wkwebview加载失败:%@",self.url);
+    NSLog(@"wkwebview加载失败:%@",self.url);
+    WCRError *wcrError = [WCRError webCourseWareErrorWithNSError:error];
+    if ([self.delegate respondsToSelector:@selector(courseWareDidLoad:error:)]) {
+        [self.delegate courseWareDidLoad:self error:wcrError];
+    }
+    //重试逻辑
+    [self retryAfterRetryInterval:self.retryInterval];
+}
+
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
     WCRCWLogInfo(@"wkwebview加载失败:%@",self.url);
     WCRError *wcrError = [WCRError webCourseWareErrorWithNSError:error];
@@ -575,7 +587,6 @@ NSString * const kWCRWebCourseWareJSWebLog = @"web_log";
             [self retryAfterRetryInterval:interval];
         }
     });
-    
 }
 
 -(void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
