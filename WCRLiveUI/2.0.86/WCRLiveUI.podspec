@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" } 
   s.author = { "weclassroom" => "weclassroom@icloud.com" } 
   s.platform = :ios, "8.0" 
-  s.source = {:http => "http://cloudclass-static.oss-cn-beijing.aliyuncs.com/static/zby-sdk/zby-ios-sdk/WCRLiveUI/2.0.84/WCRLive.zip" } 
+  s.source = {:http => "http://cloudclass-static.oss-cn-beijing.aliyuncs.com/static/zby-sdk/zby-ios-sdk/WCRLiveUI/2.0.86/WCRLive.zip" } 
   s.vendored_frameworks = ["*.framework"] 
   s.dependency 'ReactiveObjC', '~> 3.1.1' 
   s.dependency 'Masonry', '~> 1.1.0' 
